@@ -25,10 +25,14 @@ export default defineConfig({
 						{ label: 'Configuration', slug: 'getting-started/configuration' },
 					],
 				},
-				{
-					label: 'Features',
-					autogenerate: { directory: 'features' },
-				},
+			{
+				label: 'User Guide',
+				autogenerate: { directory: 'user-guide' },
+			},
+			{
+				label: 'Features',
+				autogenerate: { directory: 'features' },
+			},
 				{
 					label: 'Administration',
 					autogenerate: { directory: 'administration' },
