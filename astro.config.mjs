@@ -9,14 +9,18 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Open Intranet Docs',
+			logo: {
+				src: './src/assets/logo.svg',
+				replacesTitle: true,
+			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/droptica/openintranet' },
 			],
 			sidebar: [
+				{ label: 'Introduction', slug: 'index' },
 				{
 					label: 'Getting Started',
 					items: [
-						{ label: 'Introduction', slug: 'getting-started/introduction' },
 						{ label: 'Installation', slug: 'getting-started/installation' },
 						{ label: 'Configuration', slug: 'getting-started/configuration' },
 					],
@@ -34,6 +38,9 @@ export default defineConfig({
 					autogenerate: { directory: 'development' },
 				},
 			],
+			components: {
+				SiteTitle: './src/components/SiteTitle.astro',
+			},
 			customCss: [],
 			editLink: {
 				baseUrl: 'https://github.com/droptica/open-intranet-docs/edit/main/',
