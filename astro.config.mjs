@@ -4,7 +4,8 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://www.open-intranet.com/docs',
+	site: 'https://www.open-intranet.com',
+	base: '/docs/',
 	integrations: [
 		starlight({
 			title: 'Open Intranet Docs',
