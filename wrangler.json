@@ -1,6 +1,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "open-intranet-docs",
+	"account_id": "f1be21e4d3549cc744b8381c380eb0af",
 	"main": "src/worker.js",
 	"compatibility_date": "2025-09-27",
 	"assets": {
