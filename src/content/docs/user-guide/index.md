@@ -25,3 +25,4 @@ This guide is written for **authenticated users** — employees who log into the
 | [Your Profile](/docs/user-guide/user-profile/) | Viewing and editing your personal profile |
 | [Social Features](/docs/user-guide/social-features/) | Bookmarks, comments, and reactions |
 | [Search](/docs/user-guide/search/) | Finding content across the entire intranet |
+| [Creating Content](/docs/user-guide/creating-content/) | How to create news articles, events, and knowledge base pages |
