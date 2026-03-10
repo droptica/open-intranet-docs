@@ -1,49 +1,76 @@
-# Starlight Starter Kit: Basics
+# Open Intranet Documentation
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
+Official documentation for [Open Intranet](https://www.drupal.org/project/openintranet) — a free, open-source intranet platform built on Drupal by [Droptica](https://www.droptica.com).
+
+**Live site:** [www.open-intranet.com/docs](https://www.open-intranet.com/docs/)
+
+## What is Open Intranet?
+
+Open Intranet is a ready-to-use company intranet distribution for Drupal 11. It provides news publishing, events with calendar and maps, a hierarchical knowledge base, document management, employee directory with organization chart, user profiles, full-text search, social features (comments, likes, bookmarks), and more — all out of the box.
+
+## Documentation sections
+
+| Section | Description |
+| :--- | :--- |
+| **Getting Started** | Installation guide and post-install configuration |
+| **User Guide** | End-user documentation for every feature — homepage, news, events, knowledge base, documents, employee directory, user profiles, search, social features, and content creation |
+| **Features** | In-depth feature descriptions |
+| **Administration** | User and role management |
+| **Development** | API reference and developer resources |
+
+## Local development
+
+```bash
+npm install
+npm run dev
 ```
-npm create astro@latest -- --template starlight
-```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The dev server starts at `http://localhost:4321/docs/`.
 
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+## Project structure
 
 ```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+src/
+├── assets/              # Images and screenshots
+│   ├── getting-started/
+│   └── user-guide/
+├── content/
+│   └── docs/            # Markdown documentation pages
+│       ├── getting-started/
+│       ├── user-guide/
+│       ├── features/
+│       ├── administration/
+│       └── development/
+└── components/          # Custom Astro/Starlight components
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+Documentation pages are Markdown files in `src/content/docs/`. Each file becomes a route based on its path. Screenshots live in `src/assets/` and are referenced with relative links.
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## Commands
 
-Static assets, like favicons, can be placed in the `public/` directory.
+| Command | Action |
+| :--- | :--- |
+| `npm install` | Install dependencies |
+| `npm run dev` | Start local dev server at `localhost:4321` |
+| `npm run build` | Build production site to `./dist/` |
+| `npm run preview` | Preview the production build locally |
 
-## 🧞 Commands
+## Deployment
 
-All commands are run from the root of the project, from a terminal:
+The site is deployed to Cloudflare Workers via [Wrangler](https://developers.cloudflare.com/workers/wrangler/). The `dist/` directory is served as static assets.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Contributing
 
-## 👀 Want to learn more?
+1. Create a branch from `main`
+2. Add or edit Markdown files in `src/content/docs/`
+3. Place screenshots in the matching `src/assets/` subdirectory
+4. Submit a pull request
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+## Links
+
+- **Open Intranet project:** https://www.drupal.org/project/openintranet
+- **Issue queue:** https://www.drupal.org/project/issues/openintranet
+- **Droptica:** https://www.droptica.com
+- **Starlight docs:** https://starlight.astro.build
