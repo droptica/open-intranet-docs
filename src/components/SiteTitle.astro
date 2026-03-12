@@ -7,10 +7,22 @@ import config from 'virtual:starlight/user-config';
 	{
 		config.logo && logos.dark && (
 			<img
+				class="dark-only"
 				alt={config.logo.alt || 'Open Intranet'}
 				src={logos.dark.src}
 				width={logos.dark.width}
 				height={logos.dark.height}
+			/>
+		)
+	}
+	{
+		config.logo && logos.light && (
+			<img
+				class="light-only"
+				alt={config.logo.alt || 'Open Intranet'}
+				src={logos.light.src}
+				width={logos.light.width}
+				height={logos.light.height}
 			/>
 		)
 	}
@@ -40,6 +52,18 @@ import config from 'virtual:starlight/user-config';
 			max-width: 100%;
 			object-fit: contain;
 			object-position: 0 50%;
+		}
+		.light-only {
+			display: block;
+		}
+		.dark-only {
+			display: none;
+		}
+		:global([data-theme='dark']) .light-only {
+			display: none;
+		}
+		:global([data-theme='dark']) .dark-only {
+			display: block;
 		}
 	}
 </style>
