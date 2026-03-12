@@ -10,7 +10,8 @@ export default defineConfig({
 		starlight({
 			title: 'Open Intranet Docs',
 			logo: {
-				src: './src/assets/logo.svg',
+				light: './src/assets/logo.svg',
+				dark: './src/assets/logo-dark.svg',
 				replacesTitle: true,
 			},
 			social: [
