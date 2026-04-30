@@ -259,6 +259,22 @@ JSON:API in core is intentionally minimal but the ecosystem around it is rich:
 - **[GraphQL](https://www.drupal.org/project/graphql)** — alternative to JSON:API if your client prefers GraphQL over REST.
 - **Webhooks** — there is no built-in webhooks UI; combine [`webhooks`](https://www.drupal.org/project/webhooks) or a custom event subscriber on `hook_entity_insert/update/delete` to push events outwards.
 
+## Building custom endpoints
+
+When entity-based JSON:API resources are not enough — for example, you need a domain-specific operation (`/api/teams/{id}/sync-from-hr`), a heavily aggregated payload, or a different response shape — Drupal lets you ship your own endpoints from a custom module.
+
+Common ways to add custom endpoints:
+
+- **Drupal routes + Controllers** — declare a route in `your_module.routing.yml` pointing at a controller method that returns a `JsonResponse`. Same-domain auth, full Drupal services available, full control over the response. The simplest path for a one-off business endpoint.
+- **REST resource plugins** — annotate a class with `@RestResource` to expose it through the core `rest` module at a path of your choice. You get authentication, serialization and the standard HTTP method dispatch for free. Good for resource-style endpoints that don't fit the entity model.
+- **Views REST export display** — build a Views query in the UI and add a *REST export* display. Choose path, format (JSON / XML / HAL), filters, contextual filters, fields and access. Excellent for read-only feeds (e.g. *"top 10 most-read articles for mobile app"*) without writing code.
+- **JSON:API custom resource types** — extend JSON:API itself with a custom resource type plugin. Useful when you want a non-entity resource to play nicely with JSON:API filters / includes / pagination.
+- **OpenAPI generation** — pair any of the above with [`openapi`](https://www.drupal.org/project/openapi) and [`openapi_ui_swagger`](https://www.drupal.org/project/openapi_ui) to publish a Swagger / Redoc spec for client generators.
+
+All of these run inside the same Drupal application as JSON:API, so they reuse the same authentication providers, the same permission system and the same entity / field access checks — keeping the security story consistent across the whole API surface.
+
+For Open Intranet-specific guidance on building modules, see [`/docs/development/`](/docs/development/) or the upstream [Drupal developer guide](https://www.drupal.org/docs/develop).
+
 ## References
 
 - [JSON:API module documentation](https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module) on drupal.org
