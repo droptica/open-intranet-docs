@@ -1,11 +1,29 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.open-intranet.com',
 	base: '/docs/',
+	markdown: {
+		rehypePlugins: [
+			[
+				rehypeExternalLinks,
+				{
+					target: '_blank',
+					rel: ['noopener', 'noreferrer'],
+					content: {
+						type: 'element',
+						tagName: 'span',
+						properties: { className: ['external-link-icon'], 'aria-hidden': 'true' },
+						children: [{ type: 'text', value: '↗' }],
+					},
+				},
+			],
+		],
+	},
 	integrations: [
 		starlight({
 			title: 'Open Intranet Docs',
@@ -46,7 +64,7 @@ export default defineConfig({
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
 			},
-			customCss: [],
+			customCss: ['./src/styles/custom.css'],
 			editLink: {
 				baseUrl: 'https://github.com/droptica/open-intranet-docs/edit/main/',
 			},
