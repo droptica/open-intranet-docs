@@ -269,7 +269,6 @@ Common ways to add custom endpoints:
 - **REST resource plugins** — annotate a class with `@RestResource` to expose it through the core `rest` module at a path of your choice. You get authentication, serialization and the standard HTTP method dispatch for free. Good for resource-style endpoints that don't fit the entity model.
 - **Views REST export display** — build a Views query in the UI and add a *REST export* display. Choose path, format (JSON / XML / HAL), filters, contextual filters, fields and access. Excellent for read-only feeds (e.g. *"top 10 most-read articles for mobile app"*) without writing code.
 - **JSON:API custom resource types** — extend JSON:API itself with a custom resource type plugin. Useful when you want a non-entity resource to play nicely with JSON:API filters / includes / pagination.
-- **OpenAPI generation** — pair any of the above with [`openapi`](https://www.drupal.org/project/openapi) and [`openapi_ui_swagger`](https://www.drupal.org/project/openapi_ui) to publish a Swagger / Redoc spec for client generators.
 
 All of these run inside the same Drupal application as JSON:API, so they reuse the same authentication providers, the same permission system and the same entity / field access checks — keeping the security story consistent across the whole API surface.
 
