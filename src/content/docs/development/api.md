@@ -98,15 +98,31 @@ curl -u admin:admin \
   "https://your-intranet.com/jsonapi/node/article/cab70fbe-e2bf-4b67-8281-c5822bbbbe47"
 ```
 
-### Filter by creation date
+### Filter by status
 
-Return articles created since the start of the year:
+Return only published articles:
 
 ```bash
 curl -u admin:admin \
   -H "Accept: application/vnd.api+json" \
-  "https://your-intranet.com/jsonapi/node/article?filter[created][operator]=>=&filter[created][value]=2026-01-01T00:00:00&sort=-created"
+  "https://your-intranet.com/jsonapi/node/article?filter[status]=1&sort=-created&page[limit]=10"
 ```
+
+### Filter by creation date
+
+The `created` and `changed` fields are stored as **Unix timestamps**, so filter values must also be Unix timestamps (seconds since epoch). ISO date strings are silently ignored.
+
+Return articles created on or after `2026-01-01T00:00:00 UTC` (= `1767225600`):
+
+```bash
+curl -u admin:admin \
+  -H "Accept: application/vnd.api+json" \
+  "https://your-intranet.com/jsonapi/node/article?filter[created][operator]=>=&filter[created][value]=1767225600&sort=-created"
+```
+
+Generate the timestamp on the fly with `date -u -d '2026-01-01' +%s` (GNU) or `date -u -j -f '%Y-%m-%d' '2026-01-01' +%s` (macOS).
+
+For ISO-string filtering, use a `datetime` field on the entity (e.g. `field_publication_date` if you add one) — those accept ISO 8601 values directly.
 
 ### Sparse fieldset and includes
 
