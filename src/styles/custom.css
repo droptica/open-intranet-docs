@@ -1,0 +1,13 @@
+.sl-markdown-content .external-link-icon {
+	display: inline-block;
+	margin-inline-start: 0.15em;
+	font-size: 0.75em;
+	font-weight: 400;
+	vertical-align: 0.15em;
+	color: var(--sl-color-gray-3);
+	line-height: 1;
+}
+
+.sl-markdown-content a:hover .external-link-icon {
+	color: inherit;
+}

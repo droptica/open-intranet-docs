@@ -14,7 +14,12 @@ export default defineConfig({
 				{
 					target: '_blank',
 					rel: ['noopener', 'noreferrer'],
-					content: { type: 'text', value: ' ↗' },
+					content: {
+						type: 'element',
+						tagName: 'span',
+						properties: { className: ['external-link-icon'], 'aria-hidden': 'true' },
+						children: [{ type: 'text', value: '↗' }],
+					},
 				},
 			],
 		],
@@ -59,7 +64,7 @@ export default defineConfig({
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
 			},
-			customCss: [],
+			customCss: ['./src/styles/custom.css'],
 			editLink: {
 				baseUrl: 'https://github.com/droptica/open-intranet-docs/edit/main/',
 			},
