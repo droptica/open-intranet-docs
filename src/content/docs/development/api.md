@@ -136,7 +136,9 @@ curl -u admin:admin \
 
 ### Create a new document
 
-Documents in Open Intranet are media entities of bundle `document`, each pointing at a `file` entity. Creating one is a two-step flow: first upload the binary, then create the media wrapper. Write mode must be enabled at `/admin/config/services/jsonapi`.
+Documents in Open Intranet are media entities of bundle `document`, each pointing at a `file` entity. The two `curl` calls below are the exact API equivalent of the **Add Document** form at `/media/add/document` in the admin UI — the fields map 1:1 (Name → `name`, File → `field_media_document`, Published → `status`, Authored on → `created`, URL alias → `path`, Revision log → `revision_log_message`).
+
+Creating one is a two-step flow: first upload the binary, then create the media wrapper. Write mode must be enabled at `/admin/config/services/jsonapi`.
 
 #### Step 1 — Upload the binary file
 
@@ -185,7 +187,41 @@ curl -u admin:admin \
   "https://your-intranet.com/jsonapi/media/document"
 ```
 
-The new document is now visible in the Documents listing in the UI and via `GET /jsonapi/media/document`. See [JSON:API file uploads](https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module/file-uploads) for advanced options (chunked uploads, alternative `Content-Disposition` formats, etc.).
+The new document is now visible in the Documents listing in the UI and via `GET /jsonapi/media/document`.
+
+#### Optional fields
+
+The full mapping for the **Add Document** form, including fields exposed under *Advanced* / sidebar options:
+
+```json
+{
+  "data": {
+    "type": "media--document",
+    "attributes": {
+      "name": "Q1 financial report",
+      "status": true,
+      "created": "2026-01-15T09:00:00+00:00",
+      "path": { "alias": "/documents/finance/q1-report" },
+      "revision_log_message": "Imported via API"
+    },
+    "relationships": {
+      "field_media_document": {
+        "data": { "type": "file--file", "id": "6955302f-3352-4739-8148-daefd8be3e10" }
+      },
+      "uid": {
+        "data": { "type": "user--user", "id": "{author-uuid}" }
+      }
+    }
+  }
+}
+```
+
+- Set `status` to `false` to save as **unpublished** (draft).
+- Override `created` to backdate the document.
+- Provide `path.alias` to set a clean URL.
+- Set `uid` to assign authorship to a specific user (otherwise the authenticated user becomes the owner).
+
+See [JSON:API file uploads](https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module/file-uploads) for advanced upload options (chunked uploads, alternative `Content-Disposition` formats, etc.).
 
 ### List users
 
