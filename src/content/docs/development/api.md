@@ -58,9 +58,9 @@ You can additionally lock down the surface from the [JSON:API security guide](ht
 
 ## Endpoint catalogue
 
-URL pattern: `/jsonapi/{entity_type}/{bundle}` for collections, `/jsonapi/{entity_type}/{bundle}/{uuid}` for a single resource. The full list of resources for your site is at `/jsonapi`.
+URL pattern: `/jsonapi/{entity_type}/{bundle}` for collections, `/jsonapi/{entity_type}/{bundle}/{uuid}` for a single resource. The full, always up-to-date list of resources for your site is at `/jsonapi`.
 
-Common Open Intranet endpoints out of the box:
+A few of the most commonly used Open Intranet endpoints:
 
 | Resource | Endpoint |
 | --- | --- |
@@ -69,14 +69,20 @@ Common Open Intranet endpoints out of the box:
 | Knowledge Base pages | `/jsonapi/node/knowledge_base_page` |
 | Basic pages | `/jsonapi/node/page` |
 | Book pages | `/jsonapi/node/book` |
-| Courses / lessons | `/jsonapi/node/course`, `/jsonapi/node/course_lesson` |
-| Rooms / Bookings (recipe) | `/jsonapi/node/rmb_room`, `/jsonapi/node/rmb_booking` |
 | Documents | `/jsonapi/media/document` |
 | Images | `/jsonapi/media/image` |
 | Files | `/jsonapi/file/file` |
 | Users | `/jsonapi/user/user` |
 | Departments | `/jsonapi/taxonomy_term/department` |
 | Offices | `/jsonapi/taxonomy_term/office` |
+
+This list is **not exhaustive** — it just shows the most frequently used resources. **Every entity in Drupal automatically gets its own endpoint**:
+
+- Every content type, taxonomy vocabulary, media bundle, custom block type or paragraph type you create in the UI immediately becomes available at `/jsonapi/{entity_type}/{your_machine_name}`.
+- Every recipe you enable (e.g. **Room Booking**, **Courses**, custom recipes from your team) brings its own content types and instantly exposes them via JSON:API — no extra wiring needed.
+- Every custom entity type defined in a contrib or custom module is exposed the same way.
+
+To discover what is actually available on a given site, visit `/jsonapi` — you will see a complete list of resources with their links.
 
 ## Examples
 
