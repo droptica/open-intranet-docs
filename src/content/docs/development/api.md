@@ -136,7 +136,33 @@ curl -u admin:admin \
 
 ### Create a new document
 
-Documents in Open Intranet are media entities of bundle `document`. To create one (write mode must be enabled):
+Documents in Open Intranet are media entities of bundle `document`, each pointing at a `file` entity. Creating one is a two-step flow: first upload the binary, then create the media wrapper. Write mode must be enabled at `/admin/config/services/jsonapi`.
+
+#### Step 1 — Upload the binary file
+
+```bash
+curl -u admin:admin \
+  -X POST \
+  -H "Content-Type: application/octet-stream" \
+  -H "Accept: application/vnd.api+json" \
+  -H 'Content-Disposition: file; filename="q1-report.pdf"' \
+  --data-binary @./q1-report.pdf \
+  "https://your-intranet.com/jsonapi/media/document/field_media_document"
+```
+
+The response contains the new file's UUID (`data.id`). Capture it for the next call:
+
+```json
+{
+  "data": {
+    "type": "file--file",
+    "id": "6955302f-3352-4739-8148-daefd8be3e10",
+    "attributes": { "filename": "q1-report.pdf", "uri": { "url": "/sites/default/files/2026-04/q1-report.pdf" } }
+  }
+}
+```
+
+#### Step 2 — Create the media document
 
 ```bash
 curl -u admin:admin \
@@ -151,7 +177,7 @@ curl -u admin:admin \
       },
       "relationships": {
         "field_media_document": {
-          "data": { "type": "file--file", "id": "f12c8a9b-1234-5678-9abc-def012345678" }
+          "data": { "type": "file--file", "id": "6955302f-3352-4739-8148-daefd8be3e10" }
         }
       }
     }
@@ -159,7 +185,7 @@ curl -u admin:admin \
   "https://your-intranet.com/jsonapi/media/document"
 ```
 
-The file UUID comes from a previous file upload — see [JSON:API file uploads](https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module/file-uploads) for the binary `POST /jsonapi/{entity_type}/{bundle}/{field}` flow.
+The new document is now visible in the Documents listing in the UI and via `GET /jsonapi/media/document`. See [JSON:API file uploads](https://www.drupal.org/docs/core-modules-and-themes/core-modules/jsonapi-module/file-uploads) for advanced options (chunked uploads, alternative `Content-Disposition` formats, etc.).
 
 ### List users
 
