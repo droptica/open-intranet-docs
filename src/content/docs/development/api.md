@@ -272,7 +272,7 @@ Common ways to add custom endpoints:
 
 All of these run inside the same Drupal application as JSON:API, so they reuse the same authentication providers, the same permission system and the same entity / field access checks — keeping the security story consistent across the whole API surface.
 
-For Open Intranet-specific guidance on building modules, see [`/docs/development/`](/docs/development/) or the upstream [Drupal developer guide](https://www.drupal.org/docs/develop).
+For Open Intranet-specific guidance on building modules, see [Drupal developer guide](https://www.drupal.org/docs/develop).
 
 ## References
 
