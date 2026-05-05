@@ -1,9 +1,9 @@
 ---
 title: Installation
-description: Install Open Intranet on any host that runs Drupal 11 — production server, shared hosting, managed Drupal cloud, or locally with DDEV for evaluation.
+description: Install Open Intranet on any host that runs Drupal — production server, shared hosting, managed Drupal cloud, or locally with DDEV for evaluation.
 ---
 
-Open Intranet is a regular Drupal 11 site, so installation is the same as for any Drupal project: get the codebase, install dependencies with Composer, point a web server at `web/`, run the Drupal installer with the `openintranet` profile.
+Open Intranet is a regular Drupal site, so installation is the same as for any Drupal project: get the codebase, install dependencies with Composer, point a web server at `web/`, run the Drupal installer with the `openintranet` profile.
 
 This page focuses on the **Open Intranet–specific parts** of that process. For everything generic (provisioning a Linux box, configuring Nginx / Apache, securing MariaDB, setting up TLS, tuning PHP-FPM…) we link to upstream documentation rather than re-document it here.
 
@@ -17,7 +17,7 @@ This page focuses on the **Open Intranet–specific parts** of that process. For
 
 ## System requirements
 
-Open Intranet inherits Drupal 11's [system requirements](https://www.drupal.org/docs/getting-started/system-requirements). In short:
+Open Intranet inherits Drupal's [system requirements](https://www.drupal.org/docs/getting-started/system-requirements). In short:
 
 | Component | Required |
 | --- | --- |
@@ -155,7 +155,7 @@ curl -sL https://intranet.new/install.sh | bash
 
 ## Managed hosting
 
-If you want a production install without managing a Linux stack, Open Intranet runs on any provider that supports Drupal 11. Common ones:
+If you want a production install without managing a Linux stack, Open Intranet runs on any provider that supports Drupal. Common ones:
 
 - [Pantheon](https://pantheon.io)
 - [Acquia Cloud](https://www.acquia.com/products/drupal-cloud)
@@ -172,7 +172,7 @@ After the installer finishes, you have:
 
 | Component | Details |
 | --- | --- |
-| **Drupal core** | 11.x with all required modules |
+| **Drupal core** | Latest supported major release with all required modules |
 | **Open Intranet install profile** | Curated module + recipe stack for intranets |
 | **Front-end theme** | Open Intranet Theme (Bootstrap Barrio subtheme) |
 | **Admin theme** | Gin with the Gin Toolbar |

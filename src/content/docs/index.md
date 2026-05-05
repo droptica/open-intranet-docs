@@ -1,9 +1,9 @@
 ---
 title: Introduction
-description: Open Intranet is an open source intranet platform built as a Drupal 11 distribution. Free to use, self-hosted, fully extensible, no per-user fees.
+description: Open Intranet is an open source intranet platform built as a Drupal distribution. Free to use, self-hosted, fully extensible, no per-user fees.
 ---
 
-Open Intranet is an open source intranet platform that brings together news, knowledge, documents, people and data from your existing systems — with full data ownership and unlimited customisation. It is **free**, **self-hostable**, and built as a **Drupal  distribution**, which means it inherits the entire Drupal ecosystem.
+Open Intranet is an open source intranet platform that brings together news, knowledge, documents, people and data from your existing systems — with full data ownership and unlimited customisation. It is **free**, **self-hostable**, and built as a **Drupal distribution**, which means it inherits the entire Drupal ecosystem.
 
 ## Who is it for?
 
@@ -26,7 +26,7 @@ Drupal is a fantastic foundation for intranets because it offers:
 - **Battle-tested security** — governments, banks and public institutions have run Drupal for 20+ years; the Drupal Security Team triages CVEs and ships advisories on a fixed schedule.
 - **Unlimited extensibility** — pick from ~50,000 contributed modules, or write your own with Drupal's plugin types, hooks, events and services to bend the platform to any internal process without rebuilding from scratch.
 
-### Open Intranet is a Drupal site
+### Open Intranet is a Drupal website
 
 Once installed, Open Intranet behaves exactly like any other Drupal site. The administrative UI is Drupal's, the content model uses Drupal entities (nodes, users, media, taxonomy terms, files, groups), the templating layer is Twig, the configuration system is Drupal's YAML-based configuration management, and the command-line tooling is `drush`.
 
@@ -51,6 +51,7 @@ Open Intranet ships with around **80 contributed modules** pre-selected and pre-
 
 | Area | Pre-shipped modules |
 | --- | --- |
+| **AI** | [`ai`](https://www.drupal.org/project/ai), [`ai_provider_openai`](https://www.drupal.org/project/ai_provider_openai), [`ai_agents`](https://www.drupal.org/project/ai_agents), [`alpine_js`](https://www.drupal.org/project/alpine_js) |
 | **Editorial UX** | [`gin`](https://www.drupal.org/project/gin), [`gin_toolbar`](https://www.drupal.org/project/gin_toolbar), [`coffee`](https://www.drupal.org/project/coffee), [`frontend_editing`](https://www.drupal.org/project/frontend_editing), [`autosave_form`](https://www.drupal.org/project/autosave_form), [`diff`](https://www.drupal.org/project/diff), [`entity_clone`](https://www.drupal.org/project/entity_clone), [`book`](https://www.drupal.org/project/book) |
 | **Content authoring** | [`ckeditor5_allowed_html`](https://www.drupal.org/project/ckeditor5_allowed_html), [`ckeditor_iframe`](https://www.drupal.org/project/ckeditor_iframe), [`ckeditor_media_resize`](https://www.drupal.org/project/ckeditor_media_resize), [`smart_trim`](https://www.drupal.org/project/smart_trim), [`token`](https://www.drupal.org/project/token), [`pathauto`](https://www.drupal.org/project/pathauto), [`auto_entitylabel`](https://www.drupal.org/project/auto_entitylabel) |
 | **Forms & workflows** | [`webform`](https://www.drupal.org/project/webform), [`eca`](https://www.drupal.org/project/eca), [`bpmn_io`](https://www.drupal.org/project/bpmn_io), [`field_group`](https://www.drupal.org/project/field_group), [`inline_entity_form`](https://www.drupal.org/project/inline_entity_form) |
@@ -63,7 +64,6 @@ Open Intranet ships with around **80 contributed modules** pre-selected and pre-
 | **Media** | [`focal_point`](https://www.drupal.org/project/focal_point), [`imagemagick`](https://www.drupal.org/project/imagemagick), [`imce`](https://www.drupal.org/project/imce), [`iconify_field`](https://www.drupal.org/project/iconify_field) |
 | **Messaging** | [`smsapi`](https://www.drupal.org/project/smsapi), [`flag`](https://www.drupal.org/project/flag) |
 | **Engagement & social** | [`votingapi`](https://www.drupal.org/project/votingapi), [`votingapi_reaction`](https://www.drupal.org/project/votingapi_reaction), [`recently_read`](https://www.drupal.org/project/recently_read), [`statistics`](https://www.drupal.org/docs/8/core/modules/statistics), [`gtm`](https://www.drupal.org/project/gtm) |
-| **AI** | [`ai`](https://www.drupal.org/project/ai), [`ai_provider_openai`](https://www.drupal.org/project/ai_provider_openai), [`ai_agents`](https://www.drupal.org/project/ai_agents), [`alpine_js`](https://www.drupal.org/project/alpine_js) |
 | **Operational** | [`automatic_updates`](https://www.drupal.org/project/automatic_updates), [`backup_migrate`](https://www.drupal.org/project/backup_migrate), [`queue_ui`](https://www.drupal.org/project/queue_ui), [`recipe_tracker`](https://www.drupal.org/project/recipe_tracker), [`tour`](https://www.drupal.org/project/tour), [`project_browser`](https://www.drupal.org/project/project_browser) |
 | **Open Intranet custom** | `openintranet_access`, `openintranet_documents`, `openintranet_engagement`, `openintranet_messenger` |
 
@@ -88,7 +88,9 @@ Beyond what is already shipped, you can `composer require` any of the ~50,000 mo
 | **Performance** | [`redis`](https://www.drupal.org/project/redis), [`memcache`](https://www.drupal.org/project/memcache), [`big_pipe`](https://www.drupal.org/docs/8/core/modules/bigpipe) | Caching layer for thousands of concurrent users |
 | **Backup / DR** | [`backup_migrate`](https://www.drupal.org/project/backup_migrate) | Scheduled DB + files backups |
 
-To add any of them: `composer require drupal/<module>` then enable in the admin UI or via `drush en <module>`.
+Finding modules that meet your need can be achieved by browsing [drupal.org/project/project_module/](https://www.drupal.org/project/project_module) pages, but often a Google search or LLM discussion will give you what you what you need faster.
+
+To add new modules to your isntallation run: `composer require drupal/<module>` then enable in the admin UI or via `drush en <module>`.
 
 ### You can use Drupal recipes for repeatable customisation
 
@@ -96,7 +98,7 @@ Open Intranet ships several optional **recipes** (e.g. **Room Booking**, **Cours
 
 You can author your own recipes for company-specific configuration (e.g. "internal-policies-suite" — your own content types, workflows, default permissions and demo content) and apply them to any Open Intranet instance — staging, production, a new department site — without copy-pasting configuration.
 
-### You can host it anywhere PHP runs
+### You can host Open Intranet anywhere PHP runs
 
 Because Open Intranet is "just" a Drupal site:
 
@@ -105,7 +107,7 @@ Because Open Intranet is "just" a Drupal site:
 - **Managed Drupal hosting** like [Pantheon](https://pantheon.io), [Acquia Cloud](https://www.acquia.com/products/drupal-cloud), [Platform.sh](https://platform.sh) or [Amazee.io / Lagoon](https://amazee.io)
 - **Generic PHP hosting** with MariaDB / MySQL / PostgreSQL — typically requires SSH + Composer
 
-There is no SaaS lock-in: you can move between hosting providers by moving the codebase, the database and the `sites/default/files` directory.
+There is no SaaS lock-in: you can move between hosting providers by moving the codebase, the database and binary files.
 
 ### You patch and update with Composer
 
@@ -113,28 +115,10 @@ Updates are the same as any Drupal project — `composer update`, run database u
 
 You can pin versions, apply patches with [`cweagans/composer-patches`](https://github.com/cweagans/composer-patches) (already included), and run staging/production from the same `composer.lock`.
 
-## What Open Intranet is *not*
+## Where to learn
 
-To set realistic expectations:
-
-- **Not a SaaS** — there is no `app.openintranet.com` to sign up to. You install and run it.
-- **Not zero-effort** — running a production intranet for hundreds of users requires Linux/PHP/Drupal know-how, in-house or via a partner. There are no per-user fees, but there is OPEX (hosting + administration time).
-- **Not a black box on top of Drupal** — Open Intranet is the Drupal site itself, not a layer above it. If you avoid Drupal entirely, you will hit a wall the first time you need to extend something.
-- **Not 100% feature-parity with SharePoint / Workplace / Simpplr** — instead, it is a curated foundation with the most-requested intranet features pre-built, plus the entire Drupal ecosystem to fill any gap. Comparison docs are on the roadmap.
-
-## Total cost of ownership
-
-| Component | Open Intranet | Typical SaaS intranet |
-| --- | --- | --- |
-| **Software licence** | $0 (GPL v2+) | $4–$12 per user / month |
-| **Hosting** | $20–$200+ / month for self-host, more for managed | Included in subscription |
-| **Admin time** | In-house Drupal admin (or partner) | Vendor-handled |
-| **Customisation** | Free, unlimited (you own the code) | Per-feature SaaS charges, often blocked |
-| **Data ownership** | 100% yours | Vendor-controlled |
-
-For a 1,000-user organisation, Open Intranet typically pays back its setup cost in 6–12 months versus per-seat SaaS licensing.
-
-## Where to learn Drupal
+Read this documentation. It focuses on Open Intranet specifics and some Drupal basics. It specifically tries not to duplicate Drupal documentation and does so only when it is required to maintain logic and understanding.
+For general Drupal mechanics (entities, fields, views, plugin types, hooks, services), follow the links to drupal.org
 
 Because Open Intranet is a regular Drupal site, the entire upstream Drupal documentation applies. Useful starting points for non-Drupal teams:
 
@@ -142,8 +126,6 @@ Because Open Intranet is a regular Drupal site, the entire upstream Drupal docum
 - [Drupal User Guide](https://www.drupal.org/docs/user_guide/en/index.html) — comprehensive end-to-end manual
 - [api.drupal.org](https://api.drupal.org) — full API reference for developers
 - [drush.org](https://www.drush.org/latest/) — the command-line tool you will use a lot
-
-Open Intranet's own documentation focuses on what is **specific to Open Intranet**. For general Drupal mechanics (entities, fields, views, plugin types, hooks, services), follow the links to drupal.org rather than expecting the same depth here.
 
 ## Next steps
 
