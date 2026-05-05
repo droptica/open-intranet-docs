@@ -72,6 +72,16 @@ Point your web server at `web/`, open the site in a browser, follow the steps. W
 
 #### Option B — Drush (recommended for automation)
 
+:::tip[Make `drush` callable from anywhere]
+Drush is installed locally by Composer at `vendor/bin/drush`. To avoid prefixing every command, add a shell alias once:
+
+```bash
+echo 'alias drush="$(pwd)/vendor/bin/drush"' >> ~/.bashrc   # or ~/.zshrc
+```
+
+Or install the [Drush Launcher](https://github.com/drush-ops/drush-launcher) globally — typing `drush` then auto-discovers the project-local binary in any Drupal project on your machine.
+:::
+
 ```bash
 ./vendor/bin/drush site:install openintranet \
   --db-url=mysql://USER:PASSWORD@localhost/DATABASE \
@@ -208,10 +218,6 @@ max_execution_time = 300
 ```
 
 Or via Drush: pass `--strict=0 --uri=https://your-domain` to `drush site:install` and watch progress in `drush ws --tail`.
-
-### `drush command not found`
-
-Drush is installed locally by Composer at `vendor/bin/drush`. Run it from there, alias it (`alias drush='./vendor/bin/drush'`), or install the [Drush Launcher](https://github.com/drush-ops/drush-launcher).
 
 ### DDEV: port conflicts
 
