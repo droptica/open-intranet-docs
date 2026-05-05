@@ -16,21 +16,19 @@ Open Intranet is designed for organisations that need:
 
 It scales from small teams (50–100 employees) running it as-is, to enterprises with 7,000+ users running heavily customised implementations.
 
-## Open Intranet is a Drupal distribution - what that means
+## Open Intranet installation is a Drupal distribution - what that means
 
 Open Intranet is technically a **Drupal install profile** bundled with a curated set of contributed modules, a starter theme and a collection of **recipes** (reusable Drupal config + content bundles). When you install Open Intranet, you are installing a regular Drupal site that has been pre-configured to behave as an intranet.
 
-Drupal is a fantastic foundation for intranets because it nails the three things that make or break this kind of platform:
+Drupal is a fantastic foundation for intranets because it offers:
 
 - **Fine-grained permissions** — combine roles, per-entity access, per-group and per-department visibility to model any organisational structure.
 - **Battle-tested security** — governments, banks and public institutions have run Drupal for 20+ years; the Drupal Security Team triages CVEs and ships advisories on a fixed schedule.
 - **Unlimited extensibility** — pick from ~50,000 contributed modules, or write your own with Drupal's plugin types, hooks, events and services to bend the platform to any internal process without rebuilding from scratch.
 
-This decision shapes almost every property of the product. Below is what it means in practice.
+### Open Intranet is a Drupal site
 
-### You are running a regular Drupal site
-
-Once installed, Open Intranet behaves exactly like any other Drupal 11 site. The administrative UI is Drupal's, the content model uses Drupal entities (nodes, users, media, taxonomy terms, files, groups), the templating layer is Twig, the configuration system is Drupal's YAML-based configuration management, and the command-line tooling is `drush`.
+Once installed, Open Intranet behaves exactly like any other Drupal site. The administrative UI is Drupal's, the content model uses Drupal entities (nodes, users, media, taxonomy terms, files, groups), the templating layer is Twig, the configuration system is Drupal's YAML-based configuration management, and the command-line tooling is `drush`.
 
 There is **no proprietary admin layer** sitting on top of Drupal. There is no closed format, no parallel data store, no SaaS API contract. Everything is in the database and the codebase that you own.
 
@@ -43,7 +41,7 @@ The practical consequence is that **everything you can do on a Drupal site, you 
 - Manage configuration in code with the standard Drupal config-export workflow
 - Run any standard Drupal contrib module alongside Open Intranet's stack
 
-### You inherit thousands of Drupal modules
+### You can use thousands of Drupal modules
 
 Drupal.org has roughly **50,000 contributed modules**. Most are GPL-compatible, security-tracked and trivially installed with Composer. Because Open Intranet is just a Drupal site, all of these are available to extend it.
 
@@ -51,6 +49,7 @@ A few categories that come up often on intranets:
 
 | Category | Common modules | Use case |
 | --- | --- | --- |
+| **AI** | [`ai`](https://www.drupal.org/project/ai), [`ai_provider_openai`](https://www.drupal.org/project/ai_provider_openai), [`ai_agents`](https://www.drupal.org/project/ai_agents) | Already shipped — swap providers, add agents |
 | **Identity / SSO** | [`simple_oidc`](https://www.drupal.org/project/simple_oidc), [`samlauth`](https://www.drupal.org/project/samlauth), [`ldap`](https://www.drupal.org/project/ldap) | Microsoft Entra ID / Azure AD, Okta, Google Workspace, Keycloak, on-prem AD |
 | **Authentication** | [`tfa`](https://www.drupal.org/project/tfa), [`password_policy`](https://www.drupal.org/project/password_policy) | Two-factor auth, enterprise password rules |
 | **API / decoupled** | [`jsonapi_extras`](https://www.drupal.org/project/jsonapi_extras), [`simple_oauth`](https://www.drupal.org/project/simple_oauth), [`graphql`](https://www.drupal.org/project/graphql), [`rest_api_authentication`](https://www.drupal.org/project/rest_api_authentication) | Mobile apps, headless front-ends, third-party integrations |
@@ -61,7 +60,6 @@ A few categories that come up often on intranets:
 | **Integrations** | [`google_api_client`](https://www.drupal.org/project/google_api_client), [`microsoft_graph`](https://www.drupal.org/project/microsoft_graph), [`migrate_plus`](https://www.drupal.org/project/migrate_plus) | Microsoft 365, Google Workspace, HR/CRM/ERP imports |
 | **Performance** | [`redis`](https://www.drupal.org/project/redis), [`memcache`](https://www.drupal.org/project/memcache), [`big_pipe`](https://www.drupal.org/docs/8/core/modules/bigpipe) | Caching layer for thousands of concurrent users |
 | **Backup / DR** | [`backup_migrate`](https://www.drupal.org/project/backup_migrate) | Scheduled DB + files backups |
-| **AI** | [`ai`](https://www.drupal.org/project/ai), [`ai_provider_openai`](https://www.drupal.org/project/ai_provider_openai), [`ai_agents`](https://www.drupal.org/project/ai_agents) | Already shipped — swap providers, add agents |
 
 To add any of them: `composer require drupal/<module>` then enable in the admin UI or via `drush en <module>`.
 
