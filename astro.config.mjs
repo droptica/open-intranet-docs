@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightImageZoom from 'starlight-image-zoom';
 import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
@@ -26,6 +27,7 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
+			plugins: [starlightImageZoom()],
 			title: 'Open Intranet Docs',
 			logo: {
 				light: './src/assets/logo.svg',

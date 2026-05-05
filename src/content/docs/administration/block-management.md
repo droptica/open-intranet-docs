@@ -70,6 +70,8 @@ You can rename, move, hide or remove any of these from `/admin/structure/block`.
 
 ### Place an existing block in a region
 
+This describes how you place an existing block (already created or provided by a Drupal module) in a region.
+
 1. Go to **Structure → Block layout** (`/admin/structure/block`).
 2. Pick the region you want, click **Place block** at the right.
 3. Search by block name (e.g. *"Recently read content"* or *"Powered by Drupal"*).
