@@ -136,9 +136,9 @@ For the global page frame, stick with Block layout. For richly-laid-out landing 
 
 ## Where to learn more
 
-- [Drupal Block module documentation](https://www.drupal.org/docs/8/core/modules/block) — full reference for the Block system
+- [Drupal Block module documentation](https://www.drupal.org/docs/core-modules-and-themes/core-modules/block-module) — full reference for the Block system
 - [Working with blocks in the Drupal admin UI](https://www.drupal.org/docs/user_guide/en/block-concept.html) — beginner-friendly walkthrough in the official user guide
 - [Block visibility](https://www.drupal.org/docs/8/core/modules/block/working-with-blocks-content-blocks-and-custom-blocks#s-block-visibility) — every visibility condition Drupal core supports
 - [Block Visibility Groups](https://www.drupal.org/project/block_visibility_groups) — module page with full configuration docs
-- [Views module documentation](https://www.drupal.org/docs/8/core/modules/views) — for Views blocks
 - [Layout Builder documentation](https://www.drupal.org/docs/8/core/modules/layout-builder) — when Block layout is not enough
+- [Create a custom bloc programatically](https://www.drupal.org/docs/creating-modules/creating-custom-blocks)
