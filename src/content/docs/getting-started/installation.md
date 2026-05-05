@@ -1,214 +1,236 @@
 ---
 title: Installation
-description: Step-by-step guide to installing Open Intranet on your local machine or server.
+description: Install Open Intranet on any host that runs Drupal — production server, shared hosting, managed Drupal cloud, or locally with DDEV for evaluation.
 ---
 
-This guide walks you through installing Open Intranet from scratch. The recommended approach uses [DDEV](https://ddev.com/) — a Docker-based local development environment — which handles PHP, the database, and the web server for you.
+Open Intranet is a regular Drupal site, so installation is the same as for any Drupal project: get the codebase, install dependencies with Composer, point a web server at `web/`, run the Drupal installer with the `openintranet` profile.
 
-## Prerequisites
+This page focuses on the **Open Intranet–specific parts** of that process. For everything generic (provisioning a Linux box, configuring Nginx / Apache, securing MariaDB, setting up TLS, tuning PHP-FPM…) we link to upstream documentation rather than re-document it here.
 
-Before you begin, make sure the following tools are installed on your machine:
+## Choose your installation path
 
-| Requirement | Minimum version | Notes |
-|---|---|---|
-| **DDEV** | 1.24.0+ | [Install DDEV](https://ddev.com/get-started/) — requires Docker or Colima |
-| **Docker** or **Colima** | Latest | DDEV uses containers under the hood |
-| **Git** | 2.x | To clone the repository |
-| **Composer** | 2.x | PHP dependency manager (DDEV provides it inside the container, so a local install is optional) |
+| Path | Use it for | Skills |
+| --- | --- | --- |
+| **Production** on any Drupal-capable host | Real intranets, staging, on-prem | Standard Drupal hosting know-how (or a partner) |
+| **Local development** with DDEV | Evaluation, demos, contributing back, custom dev | Docker + Git |
+| **Managed Drupal hosting** | Zero infra ops | Provider-specific |
 
-### System requirements (if not using DDEV)
+## System requirements
 
-If you deploy Open Intranet to a traditional server without DDEV, you need:
+Open Intranet inherits Drupal's [system requirements](https://www.drupal.org/docs/getting-started/system-requirements). In short:
 
-| Requirement | Version |
-|---|---|
-| PHP | 8.3+ |
-| Database | MariaDB 10.11+ / MySQL 8.0+ / PostgreSQL 16+ |
-| Web server | Apache 2.4+ or Nginx 1.x |
-| Composer | 2.x |
-| Drush | 13.x (installed via Composer) |
+| Component | Required |
+| --- | --- |
+| **PHP** | 8.3+ with the standard Drupal extensions ([list](https://www.drupal.org/docs/getting-started/system-requirements/php-requirements)) |
+| **Database** | MariaDB, MySQL, or PostgreSQL — pick whatever your hosting supports |
+| **Web server** | Anything that can serve PHP (Nginx, Apache, Caddy, LiteSpeed…) |
+| **Composer** | 2.x |
 
-Open Intranet is built on **Drupal 11** and follows its [system requirements](https://www.drupal.org/docs/getting-started/system-requirements).
+Sizing rule of thumb: a 200-user intranet runs comfortably on a 4 GB RAM / 2 vCPU box; 1,000+ users want Redis or Memcached caching and ideally Solr for search. For higher loads see the [Drupal scaling guide](https://www.drupal.org/docs/develop/development-tools/configuration-and-deployment/distributed-deployment-considerations).
 
-## Step 1 — Clone the repository
+---
 
-Clone the Open Intranet project from drupal.org:
+## Production install
+
+Steps 1–4 are Open Intranet–specific. Steps 5–6 link out to the relevant Drupal / upstream docs because they are the same as for any Drupal site.
+
+### Step 1 — Get the codebase
+
+Clone the project from drupal.org:
 
 ```bash
 git clone https://git.drupalcode.org/project/openintranet.git
 cd openintranet
+git checkout 1.x   # or a release tag, e.g. 1.9.0
 ```
 
-Alternatively, download a release archive from the [Open Intranet project page](https://www.drupal.org/project/openintranet).
+Or download a release tarball from the [Open Intranet project page](https://www.drupal.org/project/openintranet) and unpack it.
 
-## Step 2 — Run the launch script
-
-Open Intranet includes a `launch-intranet.sh` script that automates the entire DDEV setup:
+### Step 2 — Install PHP dependencies
 
 ```bash
-bash launch-intranet.sh
+composer install --no-dev --optimize-autoloader
 ```
 
-The script performs the following steps automatically:
+This produces the `vendor/` directory with Drupal core, contrib modules, and Drush.
 
-1. **Checks for DDEV** — exits with a message if DDEV is not installed.
-2. **Configures DDEV** — creates a `.ddev` directory with the correct PHP version (8.3), docroot (`web`), and database settings.
-3. **Starts containers** — runs `ddev start` to launch the web server, database, and PHP containers.
-4. **Installs dependencies** — runs `ddev composer install` to download Drupal core, contributed modules, and libraries.
-5. **Copies the starter theme** — places the Open Intranet theme into `web/themes/custom/`.
-6. **Interactive prompts** — asks whether to remove installation files (choose **no** if you plan to contribute back).
+### Step 3 — Copy the starter theme into place
 
-When the script finishes you will see:
+The repository ships a starter theme that needs to be moved into `web/themes/custom/` before installation. The DDEV launch script does this automatically; for a manual install run:
 
-```
-Congratulations, you've installed Open Intranet!
-Next steps:
-• Run "ddev launch" to install Open Intranet in a browser
-• Run "drush site-install openintranet install_configure_form.enable_demo_content=1"
-  to install Open Intranet in a terminal
+```bash
+cp -r starter-theme/ web/themes/custom/
 ```
 
-:::tip
-Pass `-y` to skip all interactive prompts: `bash launch-intranet.sh -y`
+### Step 4 — Run the Drupal installer with the `openintranet` profile
+
+The installer runs as it does for any Drupal site, but you select the **Open Intranet** profile. Two options.
+
+#### Option A — Browser
+
+Point your web server at `web/`, open the site in a browser, follow the steps. When asked for a profile, choose **Open Intranet**. The installer applies recipes and enables modules — takes a few minutes.
+
+#### Option B — Drush (recommended for automation)
+
+:::tip[Make `drush` callable from anywhere]
+Drush is installed locally by Composer at `vendor/bin/drush`. To avoid prefixing every command, add a shell alias once:
+
+```bash
+echo 'alias drush="$(pwd)/vendor/bin/drush"' >> ~/.bashrc   # or ~/.zshrc
+```
+
+Or install the [Drush Launcher](https://github.com/drush-ops/drush-launcher) globally — typing `drush` then auto-discovers the project-local binary in any Drupal project on your machine.
 :::
 
-## Step 3 — Install the site
-
-You have two options: install via the **web browser** or via the **command line**.
-
-### Option A — Browser installation
-
-Open the site in your browser:
-
 ```bash
-ddev launch
+./vendor/bin/drush site:install openintranet \
+  --db-url=mysql://USER:PASSWORD@localhost/DATABASE \
+  --site-name="My Intranet" \
+  --account-name=admin \
+  --account-mail=admin@example.com \
+  install_configure_form.enable_demo_content=1 \
+  -y
 ```
 
-The Drupal installer will open automatically. Follow the on-screen steps:
+Drop `install_configure_form.enable_demo_content=1` for a clean install with no sample content.
 
-1. **Choose language** — select your preferred language (English is the default).
-2. **Choose profile** — **Open Intranet** should already be selected.
-3. **Verify requirements** — the installer checks that all PHP extensions and file permissions are correct.
-4. **Set up database** — DDEV handles this; the defaults are pre-filled.
-5. **Install profile** — the installer applies the Open Intranet recipes and enables all required modules. This takes a few minutes.
-6. **Configure site** — enter your site name, admin email, username, and password.
-7. **Choose content** — optionally install **demo content** (sample news, events, pages, users, and organizational structure). This is highly recommended for your first installation.
+:::tip[Demo content]
+The `enable_demo_content=1` flag applies the `default_content` recipe which loads ~50 sample news articles, events, KB pages, users with profiles, departments and a populated org chart. Highly recommended for first-time installs and demos.
+:::
 
-After installation completes, you are redirected to the **Welcome** page.
+### Step 5 — Apply optional recipes
 
-### Option B — Command-line installation (recommended)
+Open Intranet ships several optional recipes (Room Booking, Courses, FAQ, Ideas, Inventory, Kanban, Kudos, SSO Keycloak…). Enable the ones you need at:
 
-For a faster, non-interactive installation use Drush:
+```
+/admin/modules/browse/recipes
+```
 
-**With demo content (recommended for first-time users):**
+Or via Drush:
 
 ```bash
+./vendor/bin/drush recipe ../recipes/openintranet_rmb
+```
+
+Each recipe imports its own content types, fields, views, roles and demo content. You can re-apply a recipe at any time to restore defaults.
+
+---
+
+## What you also need to do (host setup)
+
+These steps are **the same for any Drupal site** and are not specific to Open Intranet. Follow the upstream documentation for your environment:
+
+| Task | Where to learn |
+| --- | --- |
+| **Provision a Linux server** | Your hosting provider's docs |
+| **Install LAMP/LEMP stack (PHP 8.3, DB, Nginx/Apache)** | [Hosting Drupal](https://www.drupal.org/docs/hosting), [PHP install guide](https://www.php.net/manual/en/install.php) |
+| **Configure web server vhost** | [Sample Nginx config for Drupal](https://www.nginx.com/resources/wiki/start/topics/recipes/drupal/), [Apache config example](https://www.drupal.org/docs/system-requirements/web-server) |
+| **Create database and DB user** | [MariaDB](https://mariadb.com/kb/en/create-database/), [PostgreSQL](https://www.postgresql.org/docs/current/sql-createdatabase.html) docs |
+| **Set file permissions** | [Drupal file permissions guide](https://www.drupal.org/docs/security-in-drupal/securing-file-permissions-and-ownership) |
+| **Enable HTTPS** | [Let's Encrypt + Certbot](https://certbot.eff.org/) |
+| **Set up cron** | [Configuring cron jobs in Drupal](https://www.drupal.org/docs/administering-a-drupal-site/cron-automated-tasks/cron-automated-tasks-overview) |
+| **Configure backups** | [Backup and Migrate module](https://www.drupal.org/project/backup_migrate) (already in the OI bundle) |
+| **Performance tuning (OPcache, APCu, Redis)** | [Drupal performance guide](https://www.drupal.org/docs/develop/development-tools/configuration-and-deployment/distributed-deployment-considerations) |
+| **`trusted_host_patterns`** | [Trusted Host Settings](https://www.drupal.org/docs/installing-drupal/trusted-host-settings) |
+
+If you have **shared hosting** with cPanel / Plesk / similar, all of the above is typically pre-set; you only need Steps 1–5 from the previous section, plus uploading the codebase to your hosting account and creating a database from the control panel.
+
+---
+
+## Local development with DDEV
+
+For local evaluation, demos and contributing back, [DDEV](https://ddev.com/) is the fastest path. It ships a PHP / web server / DB stack in Docker containers tailored to Drupal.
+
+```bash
+git clone https://git.drupalcode.org/project/openintranet.git
+cd openintranet
+./launch-intranet.sh
 ddev drush site-install openintranet install_configure_form.enable_demo_content=1 -y
-```
-
-**Without demo content (clean, empty site):**
-
-```bash
-ddev drush site-install openintranet -y
-```
-
-The `-y` flag confirms all prompts automatically. Installation typically takes 2–5 minutes depending on your machine.
-
-:::note[About demo content]
-Demo content populates the intranet with realistic sample data — news articles, events, knowledge base pages, an employee directory with user profiles, organizational groups, and a document library. Event dates are automatically randomized so they appear as upcoming. Demo content is ideal for evaluation and training.
-:::
-
-## Step 4 — Log in
-
-After installation, get a one-time administrator login link:
-
-```bash
 ddev drush user:login
 ```
 
-This prints a URL you can open in your browser. You will be logged in as the administrator (user 1).
+The `launch-intranet.sh` script handles `ddev config`, `ddev start`, `composer install` and the starter-theme copy. The site lives at `https://<directory-name>.ddev.site`.
 
-The site is now accessible at the URL shown by DDEV, typically:
+For details on the launch script and how to contribute back, see the [Open Intranet README](https://git.drupalcode.org/project/openintranet/-/blob/1.x/README.md).
 
+:::tip[One-liner]
+A scripted version that wraps everything (clone + DDEV + install) is available:
+
+```bash
+curl -sL https://intranet.new/install.sh | bash
 ```
-https://openintranet.ddev.site
-```
+:::
 
-(The exact URL depends on the directory name you cloned into.)
+---
 
-![Welcome page shown after a successful Open Intranet installation](../../../assets/getting-started/welcome-page.png)
+## Managed hosting
+
+If you want a production install without managing a Linux stack, Open Intranet runs on any provider that supports Drupal. Common ones:
+
+- [Pantheon](https://pantheon.io)
+- [Acquia Cloud](https://www.acquia.com/products/drupal-cloud)
+- [Platform.sh](https://platform.sh)
+- [Amazee.io / Lagoon](https://amazee.io)
+
+The codebase is the same — push the OI repository (or your fork) to the provider's Git endpoint, the platform handles PHP / DB / web server / TLS / scaling.
+
+---
 
 ## What was installed
 
-The Open Intranet install profile sets up a complete intranet out of the box:
+After the installer finishes, you have:
 
 | Component | Details |
-|---|---|
-| **Drupal core** | Version 11.x with all required core modules |
+| --- | --- |
+| **Drupal core** | Latest supported major release with all required modules |
+| **Open Intranet install profile** | Curated module + recipe stack for intranets |
 | **Front-end theme** | Open Intranet Theme (Bootstrap Barrio subtheme) |
 | **Admin theme** | Gin with the Gin Toolbar |
-| **Content types** | News articles, Events, Knowledge Base Pages, Basic Pages, Webforms |
+| **Content types** | News, Events, Knowledge Base, Pages, Webforms, Books |
 | **Document management** | Folder-based document library with upload and search |
-| **Employee directory** | User profiles with department, position, and contact info |
-| **Organization chart** | Interactive visual org chart based on group hierarchy |
+| **Employee directory** | User profiles with department, position, contact info, org chart |
 | **Knowledge base** | Book-structured internal documentation |
 | **Search** | Full-text search powered by Search API |
-| **Social features** | Comments, reactions (likes), bookmarks, and "must read" flags |
+| **Social features** | Comments, reactions, kudos, bookmarks, must-read flags |
 | **AI integration** | CKEditor AI assistant for content creation |
-| **SSO-ready** | Prepared for Single Sign-On integration (see [Configuration](/docs/getting-started/configuration/)) |
+| **Engagement Analytics** | RFV scoring, segments, drush commands, dashboards |
 
-## Troubleshooting
+For the full list of modules pre-shipped, see the [composer.json](https://git.drupalcode.org/project/openintranet/-/blob/1.x/composer.json) on drupal.org.
 
-### DDEV fails to start
+---
 
-Make sure Docker (or Colima) is running:
+## Troubleshooting (Open Intranet–specific)
 
-```bash
-docker info
+For generic Drupal install issues see the [Drupal install troubleshooting guide](https://www.drupal.org/docs/installing-drupal/troubleshooting-installation-issues). Below are the items that come up specifically with Open Intranet.
+
+### "Open Intranet" is not visible in the profile chooser
+
+You forgot Step 3 (copy starter theme) or Step 2 (`composer install`) did not finish. Re-run them and reload the installer page.
+
+### Recipe install times out
+
+Open Intranet's profile applies several recipes during install. On low-memory hosts the PHP process can hit the default memory limit. Bump it before re-running:
+
+```ini
+; php.ini
+memory_limit = 512M
+max_execution_time = 300
 ```
 
-If using Colima:
+Or via Drush: pass `--strict=0 --uri=https://your-domain` to `drush site:install` and watch progress in `drush ws --tail`.
 
-```bash
-colima start
-```
-
-### Port conflicts
-
-If another service is using ports 80/443, DDEV will show an error. Either stop the conflicting service or configure DDEV to use different ports:
+### DDEV: port conflicts
 
 ```bash
 ddev config --router-http-port=8080 --router-https-port=8443
 ddev restart
 ```
 
-### Composer memory errors
-
-If Composer runs out of memory inside the container:
-
-```bash
-ddev config --php-memory-limit=-1
-ddev restart
-ddev composer install
-```
-
-### Database connection errors
-
-DDEV manages the database automatically. If you see connection errors, try restarting:
-
-```bash
-ddev restart
-```
-
-### Clearing caches
-
-If something looks broken after installation, clear all caches:
-
-```bash
-ddev drush cache:rebuild
-```
+---
 
 ## Next steps
 
-- [Configuration](/docs/getting-started/configuration/) — configure site name, email, optional modules, and SSO
-- [User Guide](/docs/user-guide/) — learn how to use the intranet as an everyday employee
+- [Configuration](/docs/getting-started/configuration/) — site name, email, optional recipes, SSO setup
+- [User Guide](/docs/user-guide/) — how end users interact with the intranet
+- [REST API](/docs/development/api/) — JSON:API integration with external systems
+- [Drupal docs](https://www.drupal.org/docs) — for everything Drupal-side that is not Open Intranet–specific
