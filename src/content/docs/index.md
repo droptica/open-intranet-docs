@@ -20,7 +20,11 @@ It scales from small teams (50–100 employees) running it as-is, to enterprises
 
 Open Intranet is technically a **Drupal install profile** bundled with a curated set of contributed modules, a starter theme and a collection of **recipes** (reusable Drupal config + content bundles). When you install Open Intranet, you are installing a regular Drupal site that has been pre-configured to behave as an intranet.
 
-Drupal is a fantastic foundation for intranets specifically because it nails the three things that make or break this kind of platform: a **fine-grained permissions model** (role × permission × per-entity access × per-group / per-department visibility) that survives any organisational structure, a **security track record** trusted by governments, banks and public institutions for 20+ years with an active security team and CVE-tracked advisories, and an **extensibility model** (~50,000 contrib modules, plugin types, hooks, events, services) that lets you bend the platform to any internal process without rebuilding from scratch.
+Drupal is a fantastic foundation for intranets because it nails the three things that make or break this kind of platform:
+
+- **Fine-grained permissions** — combine roles, per-entity access, per-group and per-department visibility to model any organisational structure.
+- **Battle-tested security** — governments, banks and public institutions have run Drupal for 20+ years; the Drupal Security Team triages CVEs and ships advisories on a fixed schedule.
+- **Unlimited extensibility** — pick from ~50,000 contributed modules, or write your own with Drupal's plugin types, hooks, events and services to bend the platform to any internal process without rebuilding from scratch.
 
 This decision shapes almost every property of the product. Below is what it means in practice.
 
