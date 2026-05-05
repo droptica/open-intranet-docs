@@ -3,7 +3,7 @@ title: Introduction
 description: Open Intranet is an open source intranet platform built as a Drupal 11 distribution. Free to use, self-hosted, fully extensible, no per-user fees.
 ---
 
-Open Intranet is an open source intranet platform that brings together news, knowledge, documents, people and data from your existing systems — with full data ownership and unlimited customisation. It is **free**, **self-hostable**, and built as a **Drupal 11 distribution**, which means it inherits the entire Drupal ecosystem.
+Open Intranet is an open source intranet platform that brings together news, knowledge, documents, people and data from your existing systems — with full data ownership and unlimited customisation. It is **free**, **self-hostable**, and built as a **Drupal  distribution**, which means it inherits the entire Drupal ecosystem.
 
 ## Who is it for?
 
@@ -16,28 +16,11 @@ Open Intranet is designed for organisations that need:
 
 It scales from small teams (50–100 employees) running it as-is, to enterprises with 7,000+ users running heavily customised implementations.
 
-## Ready-to-go intranet features
+## Open Intranet is a Drupal distribution - what that means
 
-Out of the box, Open Intranet ships with a complete intranet feature set:
+Open Intranet is technically a **Drupal install profile** bundled with a curated set of contributed modules, a starter theme and a collection of **recipes** (reusable Drupal config + content bundles). When you install Open Intranet, you are installing a regular Drupal site that has been pre-configured to behave as an intranet.
 
-- **News and announcements** with department / team / role targeting
-- **Must-read tracking** with confirmation flow and compliance reports
-- **Knowledge base** with book-style hierarchy and version control
-- **Document management** with folder structure, search and previews
-- **Employee directory** with org chart, departments, offices and rich profiles
-- **Events calendar** including recurring events and `.ics` export
-- **Internal forms and workflows** powered by Webform and ECA
-- **Engagement analytics** — RFV scoring, segments (Champion / Loyal / At Risk / Dormant), drush commands, dashboards
-- **Room booking** as an optional recipe with calendar view and per-room metadata
-- **Multi-channel notifications** — email and SMS
-- **AI-assisted content** in CKEditor and AI-powered RAG search across all content
-- **Social interactions** — comments, reactions, kudos, bookmarks, mentions
-- **Full-text search** powered by Search API (Solr swap available for larger sites)
-- **Responsive UI** for desktop, tablet and mobile
-
-## Open Intranet is a Drupal 11 distribution — what that means
-
-Open Intranet is technically a **Drupal install profile** (`type: drupal-profile` in `composer.json`) bundled with a curated set of contributed modules, a starter theme and a collection of **recipes** (reusable Drupal config + content bundles). When you install Open Intranet, you are installing a regular Drupal 11 site that has been pre-configured to behave as an intranet.
+Drupal is a fantastic foundation for intranets specifically because it nails the three things that make or break this kind of platform: a **fine-grained permissions model** (role × permission × per-entity access × per-group / per-department visibility) that survives any organisational structure, a **security track record** trusted by governments, banks and public institutions for 20+ years with an active security team and CVE-tracked advisories, and an **extensibility model** (~50,000 contrib modules, plugin types, hooks, events, services) that lets you bend the platform to any internal process without rebuilding from scratch.
 
 This decision shapes almost every property of the product. Below is what it means in practice.
 
