@@ -72,15 +72,10 @@ Point your web server at `web/`, open the site in a browser, follow the steps. W
 
 #### Option B — Drush (recommended for automation)
 
-:::tip[Make `drush` callable from anywhere]
-Drush is installed locally by Composer at `vendor/bin/drush`. To avoid prefixing every command, add a shell alias once:
 
-```bash
-echo 'alias drush="$(pwd)/vendor/bin/drush"' >> ~/.bashrc   # or ~/.zshrc
-```
 
-Or install the [Drush Launcher](https://github.com/drush-ops/drush-launcher) globally — typing `drush` then auto-discovers the project-local binary in any Drupal project on your machine.
-:::
+##### Install Open Intranet with drush
+
 
 ```bash
 ./vendor/bin/drush site:install openintranet \
@@ -97,6 +92,18 @@ Drop `install_configure_form.enable_demo_content=1` for a clean install with no 
 :::tip[Demo content]
 The `enable_demo_content=1` flag applies the `default_content` recipe which loads ~50 sample news articles, events, KB pages, users with profiles, departments and a populated org chart. Highly recommended for first-time installs and demos.
 :::
+
+:::tip[ You can make `drush` callable from anywhere]
+Drush is installed locally by Composer at `vendor/bin/drush`. To avoid prefixing every command, add a shell alias once:
+
+```bash
+echo 'alias drush="$(pwd)/vendor/bin/drush"' >> ~/.bashrc   # or ~/.zshrc
+```
+
+Or install the [Drush Launcher](https://github.com/drush-ops/drush-launcher) globally — typing `drush` then auto-discovers the project-local binary in any Drupal project on your machine.
+:::
+
+
 
 ### Step 5 — Apply optional recipes
 
@@ -116,22 +123,17 @@ Each recipe imports its own content types, fields, views, roles and demo content
 
 ---
 
-## What you also need to do (host setup)
+## Not covered by this guide
 
 These steps are **the same for any Drupal site** and are not specific to Open Intranet. Follow the upstream documentation for your environment:
 
 | Task | Where to learn |
 | --- | --- |
-| **Provision a Linux server** | Your hosting provider's docs |
-| **Install LAMP/LEMP stack (PHP 8.3, DB, Nginx/Apache)** | [Hosting Drupal](https://www.drupal.org/docs/hosting), [PHP install guide](https://www.php.net/manual/en/install.php) |
 | **Configure web server vhost** | [Sample Nginx config for Drupal](https://www.nginx.com/resources/wiki/start/topics/recipes/drupal/), [Apache config example](https://www.drupal.org/docs/system-requirements/web-server) |
 | **Create database and DB user** | [MariaDB](https://mariadb.com/kb/en/create-database/), [PostgreSQL](https://www.postgresql.org/docs/current/sql-createdatabase.html) docs |
 | **Set file permissions** | [Drupal file permissions guide](https://www.drupal.org/docs/security-in-drupal/securing-file-permissions-and-ownership) |
 | **Enable HTTPS** | [Let's Encrypt + Certbot](https://certbot.eff.org/) |
 | **Set up cron** | [Configuring cron jobs in Drupal](https://www.drupal.org/docs/administering-a-drupal-site/cron-automated-tasks/cron-automated-tasks-overview) |
-| **Configure backups** | [Backup and Migrate module](https://www.drupal.org/project/backup_migrate) (already in the OI bundle) |
-| **Performance tuning (OPcache, APCu, Redis)** | [Drupal performance guide](https://www.drupal.org/docs/develop/development-tools/configuration-and-deployment/distributed-deployment-considerations) |
-| **`trusted_host_patterns`** | [Trusted Host Settings](https://www.drupal.org/docs/installing-drupal/trusted-host-settings) |
 
 If you have **shared hosting** with cPanel / Plesk / similar, all of the above is typically pre-set; you only need Steps 1–5 from the previous section, plus uploading the codebase to your hosting account and creating a database from the control panel.
 
@@ -167,10 +169,10 @@ curl -sL https://intranet.new/install.sh | bash
 
 If you want a production install without managing a Linux stack, Open Intranet runs on any provider that supports Drupal. Common ones:
 
+- [Upsun.com](https://upsun.com)
 - [Pantheon](https://pantheon.io)
-- [Acquia Cloud](https://www.acquia.com/products/drupal-cloud)
-- [Platform.sh](https://platform.sh)
 - [Amazee.io / Lagoon](https://amazee.io)
+- [Acquia Cloud](https://www.acquia.com/products/drupal-cloud)
 
 The codebase is the same — push the OI repository (or your fork) to the provider's Git endpoint, the platform handles PHP / DB / web server / TLS / scaling.
 
@@ -199,34 +201,6 @@ For the full list of modules pre-shipped, see the [composer.json](https://git.dr
 
 ---
 
-## Troubleshooting (Open Intranet–specific)
-
-For generic Drupal install issues see the [Drupal install troubleshooting guide](https://www.drupal.org/docs/installing-drupal/troubleshooting-installation-issues). Below are the items that come up specifically with Open Intranet.
-
-### "Open Intranet" is not visible in the profile chooser
-
-You forgot Step 3 (copy starter theme) or Step 2 (`composer install`) did not finish. Re-run them and reload the installer page.
-
-### Recipe install times out
-
-Open Intranet's profile applies several recipes during install. On low-memory hosts the PHP process can hit the default memory limit. Bump it before re-running:
-
-```ini
-; php.ini
-memory_limit = 512M
-max_execution_time = 300
-```
-
-Or via Drush: pass `--strict=0 --uri=https://your-domain` to `drush site:install` and watch progress in `drush ws --tail`.
-
-### DDEV: port conflicts
-
-```bash
-ddev config --router-http-port=8080 --router-https-port=8443
-ddev restart
-```
-
----
 
 ## Next steps
 
