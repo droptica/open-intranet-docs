@@ -36,6 +36,8 @@ The front-end theme `openintranet_theme` defines 24 regions. Roughly grouped:
 
 You can see them visually by visiting `/admin/structure/block/demo/openintranet_theme` — Drupal renders each region with its name overlaid, so you know exactly where a block will appear before placing it.
 
+![Region demo page showing every region of openintranet_theme with its name overlaid in yellow](../../../assets/administration/block-region-demo.png)
+
 ## What is already placed by default
 
 Open Intranet ships with a sensible default block layout. A few highlights from `openintranet_theme`:
