@@ -11,3 +11,8 @@
 .sl-markdown-content a:hover .external-link-icon {
 	color: inherit;
 }
+
+/* Hint that content images can be zoomed (handled by starlight-image-zoom). */
+.sl-markdown-content img {
+	cursor: zoom-in;
+}
