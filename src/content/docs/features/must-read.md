@@ -7,24 +7,15 @@ Open Intranet ships a **Must Read** workflow that lets editors flag a content it
 
 ## How it works
 
-```mermaid
-flowchart LR
-    Editor["Editor"] -->|"toggles Must Read on content"| Content["Content item"]
-    Content -->|"shows Mark as read button"| Reader["Reader"]
-    Reader -->|"clicks Mark as read"| FlagRecord["read flag stored"]
-    Admin["Admin"] -->|"opens Must Read Report"| Report["/admin/dashboard/must-read-report"]
-    Report -->|"Details link"| DetailsPage["Per-item details: read + not-yet lists"]
-    DetailsPage -->|"Send a reminder email"| EmailForm["Bulk email form (views_send)"]
-    EmailForm -->|"sends email"| Reader
-```
+There are three roles in the workflow.
 
-Three pieces of Drupal configuration make this work:
+**The editor** publishes a piece of content and decides it is required reading. On the edit form, the **TOOLS** tab has a single toggle — **Must Read** — that turns the feature on for that content item.
 
-- The boolean field `field_mark_as_must_read` on **News article** content — the editor-facing toggle.
-- The `read` flag — the per-user, per-content acknowledgement record (Drupal Flag module).
-- A pair of Views displays under `/admin/dashboard/must-read-report` — the report and the bulk-email form (powered by the `views_send` module).
+**The reader** opens the content like any other article. Because Must Read is on, an extra **Mark as read** button appears in the article footer, next to **Add to Bookmarks**. Clicking it stores an acknowledgement against that user and that content item, and the button immediately flips to **Mark as unread** so the reader can change their mind.
 
-There is no deadline field, no per-group targeting, and no automatic reminder — reminders are sent on demand by an administrator.
+**The administrator** sees a **Must Read Report** tab on the dashboard at `/admin/dashboard/must-read-report`. It lists every content item with Must Read enabled and how many users have clicked the button. Drilling into any row opens a per-item page with two side-by-side lists: users who *have* acknowledged the content, and users who *haven't* yet. From the bottom of the per-item page, a **Send a reminder email** button opens a bulk-email form pre-scoped to the not-yet-read audience — the administrator picks recipients, writes a subject and body, and sends. Reminders are a manual, on-demand action.
+
+Under the hood, three pieces of Drupal configuration make this work: a boolean field (`field_mark_as_must_read`) on the **News article** content type, a Drupal `read` flag that records each acknowledgement, and a pair of Views displays — the report and the bulk-email form (the latter powered by the [Views Send](https://www.drupal.org/project/views_send) module).
 
 ## Enabling Must Read on a content item
 
@@ -33,7 +24,7 @@ There is no deadline field, no per-group targeting, and no automatic reminder �
 3. Toggle **Must Read** on.
 4. Click **Save**.
 
-![News article edit form, TOOLS tab, with the Must Read toggle switched on](../../../assets/features/must-read-toggle-form.png)
+![News article edit form, TOOLS tab, with the Must Read toggle switched on](../../../assets/features/must-read/must-read-toggle-form.png)
 
 The toggle's description matches what is shipped in the recipe verbatim:
 
@@ -45,11 +36,11 @@ The toggle currently lives on the **News article** form. The underlying `read` f
 
 When a Must Read article is opened by an authenticated user, a **Mark as read** button appears in the article footer next to **Add to Bookmarks**:
 
-![Article footer with Mark as read button shown next to Add to Bookmarks](../../../assets/features/mark-as-read-button.png)
+![Article footer with Mark as read button shown next to Add to Bookmarks](../../../assets/features/must-read/mark-as-read-button.png)
 
 Clicking it sends an AJAX request and the button immediately flips to **Mark as unread**, indicating the read flag is now stored for that user:
 
-![Same article footer after clicking, button now reads Mark as unread](../../../assets/features/mark-as-unread-button.png)
+![Same article footer after clicking, button now reads Mark as unread](../../../assets/features/must-read/mark-as-unread-button.png)
 
 A user can toggle their own state at any time. Each click writes (or removes) one row in the `flagging` table.
 
@@ -57,7 +48,7 @@ A user can toggle their own state at any time. Each click writes (or removes) on
 
 Administrators with the **View Must Read Report Details** permission see a **Must Read Report** tab on the dashboard at `/admin/dashboard/must-read-report`.
 
-![Must Read Report list showing each tracked article with a count of users who have read it and a Details link](../../../assets/features/must-read-report-list.png)
+![Must Read Report list showing each tracked article with a count of users who have read it and a Details link](../../../assets/features/must-read/must-read-report-list.png)
 
 The list shows three columns:
 
@@ -73,7 +64,7 @@ Only content where **Must Read** is on (`field_mark_as_must_read = 1`) is listed
 
 Click **Details** (or visit `/admin/dashboard/must-read-report/details?entity_id={nid}`) to see a per-item breakdown:
 
-![Details view showing two tables, one of users who have read the article and one of users who haven't, with a Send a reminder email button at the bottom](../../../assets/features/must-read-report-details.png)
+![Details view showing two tables, one of users who have read the article and one of users who haven't, with a Send a reminder email button at the bottom](../../../assets/features/must-read/must-read-report-details.png)
 
 The page has two sections:
 
@@ -89,7 +80,7 @@ Clicking **Send a reminder email** opens a two-step bulk email form at `/admin/d
 1. **Pick recipients** — tick the users you want to email (use the header checkbox to select all), then click **Next**.
 2. **Compose the message** — fill in *Sender's name*, *Sender's email*, the **Subject** and **Message**, and choose a text format. You can use Drupal tokens in both the subject and the body.
 
-![Bulk reminder form: Sender, Recipients, Subject and Message fields, with batch and copy-to-sender options](../../../assets/features/send-reminder-email.png)
+![Bulk reminder form: Sender, Recipients, Subject and Message fields, with batch and copy-to-sender options](../../../assets/features/must-read/send-reminder-email.png)
 
 Other options on the form:
 
