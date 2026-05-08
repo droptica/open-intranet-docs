@@ -121,7 +121,7 @@ Click the search icon (or visit `/documents/search`) to search across the entire
 
 Each hit shows the title, the description, the original filename, the last update date and the folder path so you can jump directly to where the file lives. Folders that match by name are also returned and listed at the top of the results.
 
-There is no full-text search inside file *content* — for that you would need to add a content-extraction module like [Search API Attachments](https://www.drupal.org/project/search_api_attachments).
+Search covers the title, description and original filename of every document. To also index the *content* of files (the words inside a PDF, Word document, etc.), ask your administrator to install a content-extraction module like [Search API Attachments](https://www.drupal.org/project/search_api_attachments).
 
 ## Sharing and permissions
 

@@ -89,7 +89,7 @@ Other options on the form:
 - **Remember these values for the next time a mass mail is sent** — pre-fills the form on the next reminder.
 - **Additional email options** — set message priority (low, normal, high, etc.) and other headers.
 
-A **Back to list** link returns you to the report list. The form is provided by the [Views Send](https://www.drupal.org/project/views_send) module — there is no scheduling or cron-driven follow-up; reminders are sent on demand.
+A **Back to list** link returns you to the report list. The form is provided by the [Views Send](https://www.drupal.org/project/views_send) module and sends each reminder on demand the moment you submit it.
 
 ## Permissions
 
