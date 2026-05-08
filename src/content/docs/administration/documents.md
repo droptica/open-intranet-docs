@@ -39,7 +39,7 @@ The form has three controls:
 When a user adds a document via a cloud source, Open Intranet does **not** copy the file content; it stores the sharing URL and renders the provider's own embed iframe. This means:
 
 - The file must remain shared on the cloud provider — if the link breaks, the preview breaks.
-- The intranet has no copy of the file content, so search inside the file body is not possible (only the title, description and source URL are indexed).
+- The intranet stores only the sharing URL plus the document's title, description and metadata; search indexes those fields. To also index the file *contents* of locally-uploaded files, install a content-extraction module like [Search API Attachments](https://www.drupal.org/project/search_api_attachments).
 - Per-file access on the cloud provider is independent of intranet access. A document linked from Google Drive but shared as "Anyone with the link" is, in practice, accessible to anyone who can guess the URL.
 
 If you want to disable a cloud source globally (no users should be able to add files from it), uncheck it here. Existing documents that already use that source remain accessible — only new uploads are blocked.

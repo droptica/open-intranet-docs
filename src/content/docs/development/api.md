@@ -257,7 +257,7 @@ JSON:API in core is intentionally minimal but the ecosystem around it is rich:
 - **[Decoupled Router](https://www.drupal.org/project/decoupled_router)** — resolve any front-end URL to its underlying entity (used by headless front-ends).
 - **[Subrequests](https://www.drupal.org/project/subrequests)** — batch many JSON:API calls into a single round-trip.
 - **[GraphQL](https://www.drupal.org/project/graphql)** — alternative to JSON:API if your client prefers GraphQL over REST.
-- **Webhooks** — there is no built-in webhooks UI; combine [`webhooks`](https://www.drupal.org/project/webhooks) or a custom event subscriber on `hook_entity_insert/update/delete` to push events outwards.
+- **[Webhooks](https://www.drupal.org/project/webhooks)** — adds a UI for sending HTTP webhooks when entities change. For finer control, write a custom event subscriber on `hook_entity_insert / update / delete` to push events to any external system.
 
 ## Building custom endpoints
 
