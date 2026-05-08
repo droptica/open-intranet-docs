@@ -65,11 +65,39 @@ export default defineConfig({
 			],
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
+				Footer: './src/components/Footer.astro',
 			},
 			customCss: ['./src/styles/custom.css'],
 			editLink: {
 				baseUrl: 'https://github.com/droptica/open-intranet-docs/edit/main/',
 			},
+			head: [
+				// Google tag (gtag.js) — same measurement ID as www.open-intranet.com
+				// so the docs are tracked as part of the same property. Consent Mode v2
+				// defaults to denied; the cookie banner (rendered by Footer override)
+				// updates consent when the user accepts.
+				{
+					tag: 'script',
+					attrs: {
+						async: true,
+						src: 'https://www.googletagmanager.com/gtag/js?id=G-R1J6JH6350',
+					},
+				},
+				{
+					tag: 'script',
+					content: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'analytics_storage': 'denied',
+  'ad_storage': 'denied',
+  'wait_for_update': 500,
+});
+gtag('js', new Date());
+gtag('config', 'G-R1J6JH6350');
+`.trim(),
+				},
+			],
 		}),
 	],
 });

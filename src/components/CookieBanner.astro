@@ -1,0 +1,147 @@
+---
+// Cookie consent banner. Default analytics_storage / ad_storage is "denied"
+// (set in the GA tag in astro.config.mjs). The banner asks the user once;
+// the choice is stored in localStorage under the same `cookie-consent` key
+// as on www.open-intranet.com so the consent carries over between the
+// marketing site and the docs.
+---
+
+<div id="cookie-banner" class="oi-cookie-banner" hidden>
+	<div class="oi-cookie-banner__inner">
+		<p class="oi-cookie-banner__text">
+			We use cookies to analyze site traffic.{' '}
+			<a href="https://www.open-intranet.com/privacy-policy/" rel="noopener">Learn more</a>
+		</p>
+		<div class="oi-cookie-banner__actions">
+			<button type="button" id="cookie-decline" class="oi-cookie-banner__btn oi-cookie-banner__btn--secondary">
+				Decline
+			</button>
+			<button type="button" id="cookie-accept" class="oi-cookie-banner__btn oi-cookie-banner__btn--primary">
+				Accept
+			</button>
+		</div>
+	</div>
+</div>
+
+<script is:inline>
+	(function () {
+		var consent = null;
+		try { consent = localStorage.getItem('cookie-consent'); } catch (e) { /* ignore */ }
+
+		function grant() {
+			if (typeof window.gtag === 'function') {
+				window.gtag('consent', 'update', {
+					analytics_storage: 'granted',
+					ad_storage: 'granted',
+				});
+			}
+		}
+
+		if (consent === 'granted') {
+			grant();
+			return;
+		}
+		if (consent === 'denied') {
+			return;
+		}
+
+		var banner = document.getElementById('cookie-banner');
+		if (!banner) return;
+		banner.hidden = false;
+
+		var accept = document.getElementById('cookie-accept');
+		var decline = document.getElementById('cookie-decline');
+
+		if (accept) {
+			accept.addEventListener('click', function () {
+				grant();
+				try { localStorage.setItem('cookie-consent', 'granted'); } catch (e) { /* ignore */ }
+				banner.hidden = true;
+			});
+		}
+		if (decline) {
+			decline.addEventListener('click', function () {
+				try { localStorage.setItem('cookie-consent', 'denied'); } catch (e) { /* ignore */ }
+				banner.hidden = true;
+			});
+		}
+	})();
+</script>
+
+<style>
+	.oi-cookie-banner {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1000;
+		padding: 1rem;
+	}
+	.oi-cookie-banner[hidden] {
+		display: none;
+	}
+	.oi-cookie-banner__inner {
+		max-width: 56rem;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.875rem 1.25rem;
+		background: var(--sl-color-bg);
+		color: var(--sl-color-text);
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 1rem;
+		box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.15);
+	}
+	@media (min-width: 640px) {
+		.oi-cookie-banner__inner {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+	.oi-cookie-banner__text {
+		margin: 0;
+		font-size: var(--sl-text-sm);
+		text-align: center;
+	}
+	@media (min-width: 640px) {
+		.oi-cookie-banner__text {
+			text-align: left;
+			flex: 1;
+		}
+	}
+	.oi-cookie-banner__text a {
+		color: var(--sl-color-text-accent);
+		text-decoration: underline;
+	}
+	.oi-cookie-banner__actions {
+		display: flex;
+		gap: 0.5rem;
+		flex-shrink: 0;
+	}
+	.oi-cookie-banner__btn {
+		padding: 0.5rem 1.25rem;
+		font-size: var(--sl-text-sm);
+		font-weight: 500;
+		border-radius: 9999px;
+		border: 1px solid transparent;
+		cursor: pointer;
+		transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+	}
+	.oi-cookie-banner__btn--primary {
+		background: var(--sl-color-text-accent);
+		color: var(--sl-color-bg);
+	}
+	.oi-cookie-banner__btn--primary:hover {
+		opacity: 0.9;
+	}
+	.oi-cookie-banner__btn--secondary {
+		background: transparent;
+		color: var(--sl-color-text);
+		border-color: var(--sl-color-hairline);
+	}
+	.oi-cookie-banner__btn--secondary:hover {
+		background: var(--sl-color-gray-6);
+	}
+</style>
