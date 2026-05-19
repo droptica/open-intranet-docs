@@ -93,9 +93,9 @@ Users keep the standard Drupal `/user/{id}` URL. The directory itself is at `/em
 
 ## Integration with other features
 
-- **Engagement scoring** — The user profile shows the user's [Engagement](./engagement) segment and R/F/V scores. The reports at `/admin/reports/engagement` group users by department and office for cohort analysis.
+- **Engagement scoring** — The user profile shows the user's [Engagement](/docs/features/engagement/) segment and R/F/V scores. The reports at `/admin/reports/engagement` group users by department and office for cohort analysis.
 - **Access Control & Groups** — Group membership is managed separately at `/admin/oi-group/{id}/members`, but the user's groups can be displayed on their profile through additional blocks.
-- **Messenger** — The [Messenger](./messenger) module sends notifications to users by department, office, role, or individual selection — directly from the user fields documented here.
+- **Messenger** — The [Messenger](/docs/features/messenger/) module sends notifications to users by department, office, role, or individual selection — directly from the user fields documented here.
 - **Comments** — The author of a comment is rendered with the `compact` user view mode (avatar + username).
 - **Articles & Authors** — News articles, KB pages and other content show authors through the `full_embedded` view mode in the byline.
 - **Search** — Users appear alongside articles, pages, KB and documents in the cross-content search.
@@ -127,8 +127,8 @@ Users keep the standard Drupal `/user/{id}` URL. The directory itself is at `/em
 
 ## Learn more
 
-- [How to use it](../../user-guide/employee-directory) — finding colleagues, viewing a profile, editing your own profile
-- [User profile](../../user-guide/user-profile) — what your colleagues see when they look at your profile, and how to update it
-- [How to administer users](../../administration/users) — admin tasks (creating users, role assignments, password policies, masquerade)
-- [Engagement analytics](./engagement) — the segments and RFV scores shown on profiles
-- [Messenger](./messenger) — broadcasting notifications based on department / office / role
+- [How to use it](/docs/user-guide/employee-directory/) — finding colleagues, viewing a profile, editing your own profile
+- [User profile](/docs/user-guide/user-profile/) — what your colleagues see when they look at your profile, and how to update it
+- [How to administer users](/docs/administration/users/) — admin tasks (creating users, role assignments, password policies, masquerade)
+- [Engagement analytics](/docs/features/engagement/) — the segments and RFV scores shown on profiles
+- [Messenger](/docs/features/messenger/) — broadcasting notifications based on department / office / role

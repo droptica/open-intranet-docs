@@ -85,7 +85,7 @@ The **Webform Node** sub-module adds a *Webform* content type. A webform node ha
 
 - Wrap a form in a written introduction (e.g. *Why we ask these questions*).
 - Place the form on a custom URL inside the menu structure (e.g. `/about-us/contact`).
-- Restrict the form to specific groups using the [Access](./access) layer.
+- Restrict the form to specific groups using the [Access](/docs/features/access/) layer.
 
 ### Multi-step / wizard forms
 
@@ -142,8 +142,8 @@ Permissions can be set at three levels: site-wide, per-webform, and per-element 
 
 ## Learn more
 
-- [News and Articles](./news) — *Submit News* webform feeds the editorial pipeline
-- [Messenger](./messenger) — handler integration for broadcast on submit
-- [ECA — no-code workflows](./eca) — react to webform submissions with workflow automation
-- [Multilingual](./multilingual) — per-element translation
+- [News and Articles](/docs/features/news/) — *Submit News* webform feeds the editorial pipeline
+- [Messenger](/docs/features/messenger/) — handler integration for broadcast on submit
+- [ECA — no-code workflows](/docs/features/eca/) — react to webform submissions with workflow automation
+- [Multilingual](/docs/features/multilingual/) — per-element translation
 - [Webform module on drupal.org](https://www.drupal.org/project/webform)

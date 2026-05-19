@@ -74,12 +74,12 @@ Event URLs are aliased automatically by Pathauto using the pattern `/event/[node
 
 ## Integration with other features
 
-- **Engagement scoring** — Viewing an event detail page and interacting with it (where reactions / comments are enabled) feeds the user's [Engagement](./engagement) RFV score.
+- **Engagement scoring** — Viewing an event detail page and interacting with it (where reactions / comments are enabled) feeds the user's [Engagement](/docs/features/engagement/) RFV score.
 - **Search** — Events are indexed by the `default_index` Search API index. Title, body and location are full-text searchable; users can filter results to events only.
 - **Layout Builder** — The single-event display is rendered with Layout Builder, so a site builder can rearrange the date / location / map / body blocks per content type without touching code.
-- **Notifications** — When the [Messenger](./messenger) module is enabled and configured, an admin can broadcast an event invitation by email or SMS to selected groups.
+- **Notifications** — When the [Messenger](/docs/features/messenger/) module is enabled and configured, an admin can broadcast an event invitation by email or SMS to selected groups.
 - **Translations** — When additional languages are enabled, events can be translated; each translation has its own date and location.
-- **Room Booking** — The [Room Booking](./room-booking) recipe ships its own calendar (`room_booking_calendar`) for booking conference rooms; the two calendars sit next to each other on the same site.
+- **Room Booking** — The [Room Booking](/docs/features/room-booking/) recipe ships its own calendar (`room_booking_calendar`) for booking conference rooms; the two calendars sit next to each other on the same site.
 
 ## Permissions
 
@@ -104,6 +104,6 @@ Event URLs are aliased automatically by Pathauto using the pattern `/event/[node
 
 ## Learn more
 
-- [How to use it](../../user-guide/events) — step-by-step procedures for browsing, adding and editing events
-- [Creating content](../../user-guide/creating-content) — common authoring patterns shared by all content types
-- [Room Booking](./room-booking) — the related, opt-in recipe for booking specific rooms / facilities
+- [How to use it](/docs/user-guide/events/) — step-by-step procedures for browsing, adding and editing events
+- [Creating content](/docs/user-guide/creating-content/) — common authoring patterns shared by all content types
+- [Room Booking](/docs/features/room-booking/) — the related, opt-in recipe for booking specific rooms / facilities

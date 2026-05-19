@@ -148,9 +148,9 @@ This is what lets the platform stay coherent as it grows — each new feature ca
 
 ## Integration with other features
 
-- **[Multilingual](./multilingual)** — The manual ships in EN/PL/DE/FR; the active language drives which version is served. Falls back to EN if a translation is missing.
-- **[Search](./search)** — The manual search is a separate full-text search over Markdown files (not part of the Search API content index) for performance reasons. Future versions may unify the two.
-- **[Layout Builder & Frontend Editing](./layout-builder)** — The toolbar block can be placed via Layout Builder on per-bundle layouts (e.g. *show the help toolbar on the Documents detail page*).
+- **[Multilingual](/docs/features/multilingual/)** — The manual ships in EN/PL/DE/FR; the active language drives which version is served. Falls back to EN if a translation is missing.
+- **[Search](/docs/features/search/)** — The manual search is a separate full-text search over Markdown files (not part of the Search API content index) for performance reasons. Future versions may unify the two.
+- **[Layout Builder & Frontend Editing](/docs/features/layout-builder/)** — The toolbar block can be placed via Layout Builder on per-bundle layouts (e.g. *show the help toolbar on the Documents detail page*).
 - **Every other feature** — Each shipped feature module (or recipe) can register its own `OiHelpContent` plugin, so the manual grows organically as the platform is extended.
 
 ## Installing the module
@@ -178,8 +178,8 @@ Once published to drupal.org, Help will install via `composer require drupal/ope
 
 ## Learn more
 
-- [Multilingual](./multilingual) — the language fallback rule that drives manual selection
-- [Search](./search) — the platform's content search (separate from the manual's own search)
-- [Layout Builder & Frontend Editing](./layout-builder) — placing the help toolbar block
+- [Multilingual](/docs/features/multilingual/) — the language fallback rule that drives manual selection
+- [Search](/docs/features/search/) — the platform's content search (separate from the manual's own search)
+- [Layout Builder & Frontend Editing](/docs/features/layout-builder/) — placing the help toolbar block
 - [Open Intranet project on drupal.org](https://www.drupal.org/project/openintranet)
 - [d_help module on drupal.org](https://www.drupal.org/project/d_help) — the conceptual ancestor

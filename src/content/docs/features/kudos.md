@@ -54,7 +54,7 @@ The recipe places a *Users' kudoses* block (`openintranet_theme_users_kudoses`) 
 
 ### Per-user kudos
 
-A user's profile page lists the kudos they have **received** — *the things colleagues thanked them for* — in a chronological feed. This builds up as a public *appreciation history* that pairs naturally with the Engagement scoring on the [Employee Directory](./employee-directory).
+A user's profile page lists the kudos they have **received** — *the things colleagues thanked them for* — in a chronological feed. This builds up as a public *appreciation history* that pairs naturally with the Engagement scoring on the [Employee Directory](/docs/features/employee-directory/).
 
 ## Integration with other features
 
@@ -98,7 +98,7 @@ To remove the recipe, uninstall its modules and delete the kudos content type an
 
 ## Learn more
 
-- [Employee Directory](./employee-directory) — the natural place to see who has received kudos
-- [Social interactions](./social) — kudos pair with the same reactions / comments primitives
-- [Messenger](./messenger) — combine with ECA for *kudos received* notifications
+- [Employee Directory](/docs/features/employee-directory/) — the natural place to see who has received kudos
+- [Social interactions](/docs/features/social/) — kudos pair with the same reactions / comments primitives
+- [Messenger](/docs/features/messenger/) — combine with ECA for *kudos received* notifications
 - [Drupal recipes documentation](https://www.drupal.org/docs/extending-drupal/drupal-recipes)

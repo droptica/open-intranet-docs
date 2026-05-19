@@ -74,7 +74,7 @@ rejected   ← admin marks as not pursuing (with rationale in a comment)
 
 The lifecycle is intentionally *light* — there is no required workflow plugin, no moderation states, no gated transitions. An admin (or a custom role with *edit any oi_idea content* permission) just picks a new value from a dropdown when the status changes. This is by design — innovation programmes work best with low ceremony.
 
-If a more formal workflow is needed (with transitions, approvals, automatic notifications), pair the recipe with **[ECA](./eca)**: a 4-node BPMN model can fire on each status change to broadcast a notification, lock further edits, or require approval.
+If a more formal workflow is needed (with transitions, approvals, automatic notifications), pair the recipe with **[ECA](/docs/features/eca/)**: a 4-node BPMN model can fire on each status change to broadcast a notification, lock further edits, or require approval.
 
 ### Files attachment
 
@@ -82,7 +82,7 @@ The *Files* field lets submitters attach supporting material — a slide deck ex
 
 ## Integration with other features
 
-- **Social interactions** — Idea votes and idea comments are the same Flag and Comment infrastructure used by [Bookmarks / Reactions / Comments](./social), so editors work with one mental model across the site.
+- **Social interactions** — Idea votes and idea comments are the same Flag and Comment infrastructure used by [Bookmarks / Reactions / Comments](/docs/features/social/), so editors work with one mental model across the site.
 - **Search** — Ideas are indexed by *DB Index Content* automatically; a search for *"onboarding"* surfaces ideas alongside News and KB.
 - **Engagement scoring** — Submitting / voting / commenting on an idea contributes to the user's engagement score on their profile.
 - **Messenger** — A custom ECA model can fire a Messenger broadcast when an idea reaches *Selected* state ("*The idea X has been selected for implementation*").
@@ -126,8 +126,8 @@ After applying:
 
 ## Learn more
 
-- [Social interactions](./social) — same Flag / Comment foundations
-- [ECA — no-code workflows](./eca) — to add transition automation on top of the lightweight status field
-- [Messenger](./messenger) — broadcast on status change
-- [AI Assistant in CKEditor](./ai-assistant) — polish the pitch before submitting
+- [Social interactions](/docs/features/social/) — same Flag / Comment foundations
+- [ECA — no-code workflows](/docs/features/eca/) — to add transition automation on top of the lightweight status field
+- [Messenger](/docs/features/messenger/) — broadcast on status change
+- [AI Assistant in CKEditor](/docs/features/ai/) — polish the pitch before submitting
 - [Drupal recipes documentation](https://www.drupal.org/docs/extending-drupal/drupal-recipes)

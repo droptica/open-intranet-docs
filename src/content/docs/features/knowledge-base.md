@@ -11,7 +11,7 @@ The **Knowledge Base** (KB) is the place for long-form, slowly-changing company 
 
 A KB page is a Drupal node of bundle `knowledge_base_page`. Pages are connected through Drupal's core **Book** module, which gives every page a parent / siblings / children relationship. The Book hierarchy is the navigation backbone: opening any KB page renders a sidebar block showing the section it belongs to, the siblings around it and the children below.
 
-Beyond the body and hierarchy, every KB page carries a **Data classification** label (Public, Internal, Confidential, etc.), an optional list of **Related content** to cross-link, **Tags** for taxonomy filtering and **Document references** so the page can pin specific files from the [Documents library](./documents).
+Beyond the body and hierarchy, every KB page carries a **Data classification** label (Public, Internal, Confidential, etc.), an optional list of **Related content** to cross-link, **Tags** for taxonomy filtering and **Document references** so the page can pin specific files from the [Documents library](/docs/features/documents/).
 
 ## Components
 
@@ -24,7 +24,7 @@ Each KB page carries the following editorial fields:
 | **Title** | Plain text | Headline shown in the sidebar tree, breadcrumbs and as `<h1>`. |
 | **Body** | Rich text (CKEditor 5) | The long-form content of the page, with images, embedded media, links and the AI Assistant button. |
 | **Data classification** (`field_data_classification`, required) | List | Information sensitivity label — *Public*, *Internal*, *Confidential*, etc. Rendered as a coloured badge next to the page title. |
-| **Document references** (`field_oi_document_ref`) | OI Document reference (multi-value) | Pin specific files from the [Documents](./documents) library to the page (the file lives in one place but appears here too). |
+| **Document references** (`field_oi_document_ref`) | OI Document reference (multi-value) | Pin specific files from the [Documents](/docs/features/documents/) library to the page (the file lives in one place but appears here too). |
 | **Related content** (`field_related_content`) | Entity reference (multi-value) | Curated list of other pages, articles or events that the reader should consider next. |
 | **Tags** (`field_tags`) | Taxonomy reference (multi-value) | Topic tags used in faceted search and listings. |
 | **Book outline** (core) | Book | The page's position in the Book hierarchy: parent page and weight. |
@@ -66,7 +66,7 @@ KB pages have an extra **ACCESS** tab in the edit form (and a corresponding `/no
 
 This makes the KB usable for sensitive material: a *Confidential* HR runbook can be restricted to *HR* and selected leadership; everyone else sees neither the page nor a "denied" message — it disappears from the sidebar tree, search results and related-content lists.
 
-The full access control story (groups, hierarchy, inheritance, individual users, "bypass" permissions) is on the [Documents administration](../../administration/documents) page.
+The full access control story (groups, hierarchy, inheritance, individual users, "bypass" permissions) is on the [Documents administration](/docs/administration/documents/) page.
 
 ### Custom Book block
 
@@ -87,12 +87,12 @@ KB pages are aliased automatically by Pathauto using the pattern `/knowledge/[no
 
 ## Integration with other features
 
-- **Documents** — Pin files from the [Documents library](./documents) on a KB page through the Document references field; the file lives once in the library and is referenced from the KB page.
-- **Access Control & Groups** — The KB Access tab uses the same `openintranet_access` form, group hierarchy and inheritance rules as Documents. See [Access Control & Groups](./access).
-- **Engagement scoring** — Page views and time-on-page feed the [Engagement](./engagement) RFV score.
+- **Documents** — Pin files from the [Documents library](/docs/features/documents/) on a KB page through the Document references field; the file lives once in the library and is referenced from the KB page.
+- **Access Control & Groups** — The KB Access tab uses the same `openintranet_access` form, group hierarchy and inheritance rules as Documents. See [Access Control & Groups](/docs/features/access/).
+- **Engagement scoring** — Page views and time-on-page feed the [Engagement](/docs/features/engagement/) RFV score.
 - **Search** — Indexed by the `default_index` Search API index alongside articles, events, pages and documents.
-- **Must Read tracking** — A KB page can also be flagged as Must Read to require every employee to read it. See [Must Read tracking](./must-read).
-- **Social interactions** — Bookmarks and recently-read apply to KB pages automatically. See [Social interactions](./social).
+- **Must Read tracking** — A KB page can also be flagged as Must Read to require every employee to read it. See [Must Read tracking](/docs/features/must-read/).
+- **Social interactions** — Bookmarks and recently-read apply to KB pages automatically. See [Social interactions](/docs/features/social/).
 - **Translations** — When additional languages are enabled, KB pages can be translated; each translation has its own revisions.
 
 ## Permissions
@@ -117,7 +117,7 @@ KB pages are aliased automatically by Pathauto using the pattern `/knowledge/[no
 
 ## Learn more
 
-- [How to use it](../../user-guide/knowledge-base) — step-by-step procedures for browsing, adding, editing, linking and reorganising KB pages
-- [Documents](./documents) — the file library that KB pages can pin from
-- [Access Control & Groups](./access) — the group hierarchy that powers per-page restrictions
-- [Must Read tracking](./must-read) — flag a KB page as required reading
+- [How to use it](/docs/user-guide/knowledge-base/) — step-by-step procedures for browsing, adding, editing, linking and reorganising KB pages
+- [Documents](/docs/features/documents/) — the file library that KB pages can pin from
+- [Access Control & Groups](/docs/features/access/) — the group hierarchy that powers per-page restrictions
+- [Must Read tracking](/docs/features/must-read/) — flag a KB page as required reading

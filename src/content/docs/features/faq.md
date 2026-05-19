@@ -91,8 +91,8 @@ After applying:
 
 ## Learn more
 
-- [Knowledge Base](./knowledge-base) — the long-form companion to short Q&A
-- [Search](./search) — FAQ entries are indexed alongside everything else
-- [Multilingual](./multilingual) — translate per-language Q&A
-- [AI Assistant in CKEditor](./ai-assistant) — draft answers fast
+- [Knowledge Base](/docs/features/knowledge-base/) — the long-form companion to short Q&A
+- [Search](/docs/features/search/) — FAQ entries are indexed alongside everything else
+- [Multilingual](/docs/features/multilingual/) — translate per-language Q&A
+- [AI Assistant in CKEditor](/docs/features/ai/) — draft answers fast
 - [Drupal recipes documentation](https://www.drupal.org/docs/extending-drupal/drupal-recipes)

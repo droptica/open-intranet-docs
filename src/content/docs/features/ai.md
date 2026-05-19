@@ -121,6 +121,6 @@ Combined with **AI Agents** this enables a private chatbot ("*ask the intranet a
 ## Learn more
 
 - [Drupal AI ecosystem on drupal.org](https://www.drupal.org/project/ai)
-- [News and Articles](./news), [Knowledge Base](./knowledge-base), [Pages](./pages) — heaviest users of the CKEditor AI button
-- [Multilingual](./multilingual) — pairs naturally with the translate task
-- [Search](./search) — what RAG / vector search re-ranks
+- [News and Articles](/docs/features/news/), [Knowledge Base](/docs/features/knowledge-base/), [Pages](/docs/features/pages/) — heaviest users of the CKEditor AI button
+- [Multilingual](/docs/features/multilingual/) — pairs naturally with the translate task
+- [Search](/docs/features/search/) — what RAG / vector search re-ranks

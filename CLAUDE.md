@@ -58,6 +58,31 @@ src/content/docs/
     └── api.md
 ```
 
+## Writing internal links in content
+
+**ALWAYS use absolute URLs with the `/docs/` prefix and a trailing slash** for any link to another docs page. Do NOT use relative paths.
+
+```md
+[Access Control](/docs/features/access/)
+[Engagement scoring](/docs/features/employee-directory/#engagement-scoring)
+[Users administration](/docs/administration/users/)
+```
+
+Why: Starlight intentionally does NOT rewrite relative markdown links and does NOT prepend the configured `base: '/docs/'` to absolute paths in content (see [Starlight #932](https://github.com/withastro/starlight/issues/932)). So:
+
+- `[X](./access)` → renders as `href="./access"` → resolves browser-side relative to the current page URL `/docs/features/webforms/` → **404 at `/docs/features/webforms/access`**.
+- `[X](./access.md)` → Starlight does NOT strip the `.md`, links to a non-existent file → **404**.
+- `[X](/features/access/)` → Starlight does NOT add the `base` prefix → **404 at `/features/access/`**.
+- `[X](/docs/features/access/)` → works. This is the canonical form.
+
+URL = `/docs/` + path of the `.md` file relative to `src/content/docs/` (minus the `.md`) + trailing slash. So `src/content/docs/features/access.md` → `/docs/features/access/`.
+
+Anchors keep the trailing slash before `#`: `/docs/features/employee-directory/#engagement-scoring`.
+
+Image links (`![alt](...)`) keep using normal relative paths to `src/assets/...` — Astro processes those at build time.
+
+If a bulk fix is ever needed again, the working approach is: walk every `.md` under `src/content/docs/`, parse each link target, resolve it against the source file (try both file-relative and URL-relative interpretations — historical content has both), find the matching `.md` in the tree, and rewrite to its canonical `/docs/...` URL. Skip `![...]` images, protocol links, and already-canonical `/docs/...` targets.
+
 ## Starlight customizations
 
 - **SiteTitle component** (`src/components/SiteTitle.astro`) — overrides default so logo links to `https://www.open-intranet.com` (main site) instead of docs root

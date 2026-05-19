@@ -11,7 +11,7 @@ The **Basic page** content type (`page`) is Open Intranet's general-purpose flex
 
 A page is a Drupal node of bundle `page`. It stores a title, a rich-text body, an optional cover image, optional document attachments, and supports per-article reactions and comments. Pages are aliased under `/pages/{slug}` by default (the `/news-homepage` front page is itself a `page` node).
 
-The body is a CKEditor 5 rich-text field with the AI Assistant button, full media embed support (images, videos, documents from the [Documents library](./documents)) and inline rendering of the same paragraphs library used elsewhere in the site.
+The body is a CKEditor 5 rich-text field with the AI Assistant button, full media embed support (images, videos, documents from the [Documents library](/docs/features/documents/)) and inline rendering of the same paragraphs library used elsewhere in the site.
 
 ## Components
 
@@ -24,7 +24,7 @@ Each page carries the following editorial fields:
 | **Title** | Plain text | Page headline shown as `<h1>` and in the browser tab. |
 | **Body** | Rich text (CKEditor 5) | The main page body, with the AI Assistant, media embeds, links and inline paragraphs. |
 | **Background image** (`field_background_image`) | Media reference | Optional cover image. |
-| **Document references** (`field_oi_document_ref`) | OI Document reference (multi-value) | Attach files from the [Documents library](./documents) to the page (the file lives in one place but appears here too). |
+| **Document references** (`field_oi_document_ref`) | OI Document reference (multi-value) | Attach files from the [Documents library](/docs/features/documents/) to the page (the file lives in one place but appears here too). |
 | **Reaction** (`field_basic_page_reaction`) | Voting reaction | Lets readers click a single "I like this" thumbs-up. Counter is shown next to the button. |
 | **Comments** (`comment_node_page`) | Comment | Threaded comments below the body. |
 
@@ -51,7 +51,7 @@ This is the day-to-day editing experience for content editors: they navigate to 
 
 ### Reactions and comments
 
-Like News articles, pages have a single "I like this" thumbs-up reaction (`field_basic_page_reaction`) and threaded comments (`comment_node_page`). The reaction button and comment thread appear at the bottom of the rendered page, with the same UI shown for News. See [Social interactions](./social) for details.
+Like News articles, pages have a single "I like this" thumbs-up reaction (`field_basic_page_reaction`) and threaded comments (`comment_node_page`). The reaction button and comment thread appear at the bottom of the rendered page, with the same UI shown for News. See [Social interactions](/docs/features/social/) for details.
 
 ### URL pattern
 
@@ -65,14 +65,14 @@ Page Manager pages are managed at `/admin/structure/page_manager`. They are the 
 
 ## Integration with other features
 
-- **Layout Builder** — Pages are the primary content type using Layout Builder per-content layouts. See [Layout Builder & Frontend Editing](./layout-builder).
-- **Documents** — Use **Document references** to attach files from the [Documents library](./documents) directly to a page.
-- **Reactions, Comments, Bookmarks** — All apply to pages. See [Social interactions](./social).
-- **Engagement scoring** — Page views and interactions feed the user's [Engagement](./engagement) RFV score.
+- **Layout Builder** — Pages are the primary content type using Layout Builder per-content layouts. See [Layout Builder & Frontend Editing](/docs/features/layout-builder/).
+- **Documents** — Use **Document references** to attach files from the [Documents library](/docs/features/documents/) directly to a page.
+- **Reactions, Comments, Bookmarks** — All apply to pages. See [Social interactions](/docs/features/social/).
+- **Engagement scoring** — Page views and interactions feed the user's [Engagement](/docs/features/engagement/) RFV score.
 - **Search** — Pages are indexed by the `default_index` Search API index alongside articles, KB pages, documents and users.
 - **Multilingual** — When additional languages are enabled, pages can be translated; each translation has its own revisions, comments and reactions.
 - **Frontend editing** — In-place editing applies to pages out of the box.
-- **AI Assistant** — The CKEditor toolbar in the page body has the AI Assistant button — see [AI Assistant in CKEditor](./ai).
+- **AI Assistant** — The CKEditor toolbar in the page body has the AI Assistant button — see [AI Assistant in CKEditor](/docs/features/ai/).
 
 ## Permissions
 
@@ -103,9 +103,9 @@ Page Manager pages are managed at `/admin/structure/page_manager`. They are the 
 
 ## Learn more
 
-- [How to use it](../../user-guide/pages) — step-by-step procedures for creating, editing, switching layout and using frontend editing on pages
-- [Creating content](../../user-guide/creating-content) — common authoring patterns shared by all content types
-- [Layout Builder & Frontend Editing](./layout-builder) — the per-content layout system
-- [AI Assistant in CKEditor](./ai) — the AI Writer button in the page body
-- [Documents](./documents) — the file library that pages can pin from
-- [Social interactions](./social) — reactions, comments and bookmarks in detail
+- [How to use it](/docs/user-guide/pages/) — step-by-step procedures for creating, editing, switching layout and using frontend editing on pages
+- [Creating content](/docs/user-guide/creating-content/) — common authoring patterns shared by all content types
+- [Layout Builder & Frontend Editing](/docs/features/layout-builder/) — the per-content layout system
+- [AI Assistant in CKEditor](/docs/features/ai/) — the AI Writer button in the page body
+- [Documents](/docs/features/documents/) — the file library that pages can pin from
+- [Social interactions](/docs/features/social/) — reactions, comments and bookmarks in detail

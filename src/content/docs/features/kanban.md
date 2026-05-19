@@ -132,9 +132,9 @@ After applying:
 
 ## Learn more
 
-- [Search](./search) — find tasks by keyword
-- [Multilingual](./multilingual) — translate column labels
-- [ECA — no-code workflows](./eca) — automate follow-ups when a task moves to DONE
+- [Search](/docs/features/search/) — find tasks by keyword
+- [Multilingual](/docs/features/multilingual/) — translate column labels
+- [ECA — no-code workflows](/docs/features/eca/) — automate follow-ups when a task moves to DONE
 - [Drupal recipes documentation](https://www.drupal.org/docs/extending-drupal/drupal-recipes)
 - [Views Kanban project page](https://www.drupal.org/project/views_kanban)
 - [Field States project page](https://www.drupal.org/project/field_states)

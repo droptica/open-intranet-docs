@@ -106,7 +106,7 @@ Access is enforced **at the listing level**, not just on the entity page. That m
 
 A user who lacks access never sees a "denied" message — for them the item simply does not exist. This is the right default for an intranet where leakage of *the existence* of a confidential file (e.g. a redundancy plan) can itself be sensitive.
 
-The full administration walkthrough — bypass roles, audit logs, access-by-group reports — is on the [Documents administration](../../administration/documents) page.
+The full administration walkthrough — bypass roles, audit logs, access-by-group reports — is on the [Documents administration](/docs/administration/documents/) page.
 
 ### Access checker service
 
@@ -129,7 +129,7 @@ This is the same service the runtime hook calls before rendering each listing.
 
 ## Integration with other features
 
-- **Documents** — Folders and documents always have the Access tab. The full permissions story for the file library is on [Documents administration](../../administration/documents).
+- **Documents** — Folders and documents always have the Access tab. The full permissions story for the file library is on [Documents administration](/docs/administration/documents/).
 - **Knowledge Base** — KB pages have an opt-in Access tab; admin enables it from Access settings.
 - **News, Events, Pages** — Any node type can be enabled for Access; once enabled it gets the per-item Access tab.
 - **Search** — Restricted entities are filtered out of search results before they are rendered.
@@ -156,7 +156,7 @@ This is the same service the runtime hook calls before rendering each listing.
 
 ## Learn more
 
-- [Documents administration](../../administration/documents) — the full permissions story applied to folders and documents
-- [Documents](./documents) — the file library that uses this layer most heavily
-- [Knowledge Base](./knowledge-base) — KB pages with opt-in per-page restrictions
-- [Employee Directory](./employee-directory) — user profiles and the user model that backs group membership
+- [Documents administration](/docs/administration/documents/) — the full permissions story applied to folders and documents
+- [Documents](/docs/features/documents/) — the file library that uses this layer most heavily
+- [Knowledge Base](/docs/features/knowledge-base/) — KB pages with opt-in per-page restrictions
+- [Employee Directory](/docs/features/employee-directory/) — user profiles and the user model that backs group membership

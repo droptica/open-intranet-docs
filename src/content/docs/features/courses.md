@@ -13,7 +13,7 @@ The recipe ships:
 
 - A **Course** content type (`course`) — the wrapper for a series of lessons with a cover image, description and ordered lesson list.
 - A **Course Lesson** content type (`course_lesson`) — the individual training unit with full CKEditor content, media library support, and a *Learned* flag for per-user progress tracking.
-- A **Layout Builder** layout for both content types (the only bundle in the default install with Layout Builder enabled — see [Layout Builder & Frontend Editing](./layout-builder)).
+- A **Layout Builder** layout for both content types (the only bundle in the default install with Layout Builder enabled — see [Layout Builder & Frontend Editing](/docs/features/layout-builder/)).
 - A **Lesson Learned** flag (Personal scope) for per-user progress tracking.
 - Two views — *Courses list* (catalogue) and *Current course* (the lesson navigation block embedded inside a lesson page).
 - A custom view mode for lessons that renders them inside a course page in a compact table form.
@@ -97,7 +97,7 @@ The day-to-day flow:
 - **Social interactions** — Lessons can be liked and commented on like any other content. Comments are great for *learner Q&A* under each lesson.
 - **Engagement scoring** — Reading lessons and clicking *Learned* are recorded in the engagement signal on the user's profile.
 - **Search** — Both bundles are indexed by *DB Index Content* automatically.
-- **Multilingual** — Per-language courses and lessons; pair with the [AI assistant](./ai-assistant) for fast translation.
+- **Multilingual** — Per-language courses and lessons; pair with the [AI assistant](/docs/features/ai/) for fast translation.
 - **Access Control & Groups** — Sensitive courses (e.g. an *Executive onboarding* programme) can be restricted to specific groups.
 - **Recently Read** — The *Recently read* block shows the last lessons the user opened, so they can resume where they left off.
 - **ECA — no-code workflows** — A model can fire on a *Lesson Learned* flag event to record completion in another system (e.g. write to an external HRIS via HTTP).
@@ -137,8 +137,8 @@ After applying:
 
 ## Learn more
 
-- [Layout Builder & Frontend Editing](./layout-builder) — the canonical Layout Builder use-case in the platform
-- [Social interactions](./social) — same Flag + Comment foundations as bookmarks / reactions
-- [Search](./search) — courses and lessons indexed alongside everything else
-- [AI Assistant in CKEditor](./ai-assistant) — draft and translate lesson content fast
+- [Layout Builder & Frontend Editing](/docs/features/layout-builder/) — the canonical Layout Builder use-case in the platform
+- [Social interactions](/docs/features/social/) — same Flag + Comment foundations as bookmarks / reactions
+- [Search](/docs/features/search/) — courses and lessons indexed alongside everything else
+- [AI Assistant in CKEditor](/docs/features/ai/) — draft and translate lesson content fast
 - [Drupal recipes documentation](https://www.drupal.org/docs/extending-drupal/drupal-recipes)

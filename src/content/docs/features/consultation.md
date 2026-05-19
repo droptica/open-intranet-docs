@@ -5,7 +5,7 @@ description: A formal consultation workflow for organisational decision-making �
 
 The **Consultation Process** recipe (`consultation_process`) adds a formal **organisational consultation workflow** to the intranet. Use it for the things that require more than a quick comment: policy reviews, budget approvals, document consultations, compliance sign-offs, change-management decisions.
 
-The workflow is opinionated and relies heavily on **[ECA](./eca)** for automation: the author submits a *Consultation* with a deadline, a type, a description and a list of reviewers; ECA *automatically* creates a *Consultation Review* node for each reviewer; each reviewer files their opinion (Pending → Completed) on their assigned review; views aggregate progress; the original author marks the consultation Accepted or Rejected.
+The workflow is opinionated and relies heavily on **[ECA](/docs/features/eca/)** for automation: the author submits a *Consultation* with a deadline, a type, a description and a list of reviewers; ECA *automatically* creates a *Consultation Review* node for each reviewer; each reviewer files their opinion (Pending → Completed) on their assigned review; views aggregate progress; the original author marks the consultation Accepted or Rejected.
 
 It is a recipe, so it is **opt-in** — install with `drush recipe recipes/consultation_process` when the company is ready to formalise decision-making.
 
@@ -60,7 +60,7 @@ Three BPMN models drive the automation (visible at `/admin/config/workflow/eca`)
 2. **On Consultation update / reviewer removed** — When a reviewer is removed from a consultation, find the corresponding *Consultation Review* node and delete it (so stale tasks do not pile up).
 3. **On Consultation deadline reached** — A cron-based model that checks the deadline field; consultations past their deadline are auto-marked or auto-notified depending on configuration.
 
-The full models are visible in the [ECA admin](./eca) and editable through the BPMN.io modeller — the recipe is essentially a *worked example* of what ECA can do.
+The full models are visible in the [ECA admin](/docs/features/eca/) and editable through the BPMN.io modeller — the recipe is essentially a *worked example* of what ECA can do.
 
 ### Views
 
@@ -139,8 +139,8 @@ After applying:
 
 ## Learn more
 
-- [ECA — no-code workflows](./eca) — the engine behind the automation, with the three Consultation models as worked examples
-- [Messenger](./messenger) — broadcast on review-task creation
-- [Search](./search) — find consultations by keyword, type, status
-- [AI Assistant in CKEditor](./ai-assistant) — draft proposals and summarise reviews
+- [ECA — no-code workflows](/docs/features/eca/) — the engine behind the automation, with the three Consultation models as worked examples
+- [Messenger](/docs/features/messenger/) — broadcast on review-task creation
+- [Search](/docs/features/search/) — find consultations by keyword, type, status
+- [AI Assistant in CKEditor](/docs/features/ai/) — draft proposals and summarise reviews
 - [Drupal recipes documentation](https://www.drupal.org/docs/extending-drupal/drupal-recipes)

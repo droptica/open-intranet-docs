@@ -123,7 +123,7 @@ After applying:
 
 ## Learn more
 
-- [Search](./search) — find an item by serial / model / location
-- [Access Control & Groups](./access) — restrict sensitive items
-- [ECA — no-code workflows](./eca) — automate notifications on assignment events
+- [Search](/docs/features/search/) — find an item by serial / model / location
+- [Access Control & Groups](/docs/features/access/) — restrict sensitive items
+- [ECA — no-code workflows](/docs/features/eca/) — automate notifications on assignment events
 - [Drupal recipes documentation](https://www.drupal.org/docs/extending-drupal/drupal-recipes)

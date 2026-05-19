@@ -131,6 +131,6 @@ Contrib:
 
 ## Learn more
 
-- [News and Articles](./news), [Knowledge Base](./knowledge-base), [Pages](./pages), [Events](./events), [Documents](./documents) — every content type can opt into translation
-- [Search](./search) — per-language search results
+- [News and Articles](/docs/features/news/), [Knowledge Base](/docs/features/knowledge-base/), [Pages](/docs/features/pages/), [Events](/docs/features/events/), [Documents](/docs/features/documents/) — every content type can opt into translation
+- [Search](/docs/features/search/) — per-language search results
 - Drupal's [multilingual handbook](https://www.drupal.org/docs/multilingual-guide)

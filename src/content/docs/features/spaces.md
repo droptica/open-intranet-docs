@@ -21,7 +21,7 @@ Spaces ships:
 - An **`oi_space_membership`** relationship table — *who is in this Space, and in what role* (owner / manager / editor / member / viewer).
 - A `field_space` reference field added to every relevant content type — News, Pages, Documents, Events, Knowledge Base, Webforms — that says *"this content lives in this Space"*.
 - Per-Space landing pages and aggregated lists (`/hr` is the HR landing, `/hr/news` the HR news listing, etc.).
-- Optional **automatic access propagation** — when a Space is linked to an OI Group, content in the Space automatically inherits the group restrictions through [Access Control & Groups](./access).
+- Optional **automatic access propagation** — when a Space is linked to an OI Group, content in the Space automatically inherits the group restrictions through [Access Control & Groups](/docs/features/access/).
 
 ## Components
 
@@ -38,7 +38,7 @@ The central entity. Each Space has:
 | **Status** | Active / inactive. Inactive Spaces are hidden from the listing. |
 | **Owner (uid)** | The user who created / owns the Space. |
 | **Image / colour / icon** | Visual identity used on the landing page and in the Spaces list. |
-| **Linked OI Group** | Optional reference to an [OI Group](./access). When set, enables automatic access propagation. |
+| **Linked OI Group** | Optional reference to an [OI Group](/docs/features/access/). When set, enables automatic access propagation. |
 | **Auto-access** | Boolean. When `true`, every content item in the Space is automatically restricted to the linked group's members. |
 
 A user can belong to **any number** of Spaces — there is no limit. Many users will be members of *Berlin Office* + *Marketing Berlin* + *Project Atlas* simultaneously.
@@ -134,13 +134,13 @@ Combined with the *auto-access* flag and the linked OI Group, this gives four co
 
 ## Integration with other features
 
-- **[Access Control & Groups](./access)** — Auto-access ties a Space to an OI Group and propagates the group restrictions to every content item in the Space. Saves *manually setting* Access on each item.
-- **[News](./news), [Events](./events), [Documents](./documents), [Knowledge Base](./knowledge-base), [Pages](./pages), [Webforms](./webforms)** — All gain a `field_space` reference; per-Space listings and aggregations are built on top of standard Drupal views.
-- **[Search](./search)** — Search results can be scoped to the active Space (when invoked from `/hr/search`) or to the whole site (from `/search`).
-- **[Layout Builder & Frontend Editing](./layout-builder)** — Each Space landing page is a Layout Builder layout that managers can customise.
-- **[Engagement scoring](./employee-directory#engagement-scoring)** — Activity inside a Space is recorded against the user; *most-engaged Spaces* dashboards become possible.
-- **[Messenger](./messenger)** — A future channel plugin can resolve recipients via Space membership ("*notify everyone in HR*").
-- **[ECA — no-code workflows](./eca)** — Models can react to *Insert content into a Space* events to fire welcome notifications, auto-tag, or trigger approvals.
+- **[Access Control & Groups](/docs/features/access/)** — Auto-access ties a Space to an OI Group and propagates the group restrictions to every content item in the Space. Saves *manually setting* Access on each item.
+- **[News](/docs/features/news/), [Events](/docs/features/events/), [Documents](/docs/features/documents/), [Knowledge Base](/docs/features/knowledge-base/), [Pages](/docs/features/pages/), [Webforms](/docs/features/webforms/)** — All gain a `field_space` reference; per-Space listings and aggregations are built on top of standard Drupal views.
+- **[Search](/docs/features/search/)** — Search results can be scoped to the active Space (when invoked from `/hr/search`) or to the whole site (from `/search`).
+- **[Layout Builder & Frontend Editing](/docs/features/layout-builder/)** — Each Space landing page is a Layout Builder layout that managers can customise.
+- **[Engagement scoring](/docs/features/employee-directory/#engagement-scoring)** — Activity inside a Space is recorded against the user; *most-engaged Spaces* dashboards become possible.
+- **[Messenger](/docs/features/messenger/)** — A future channel plugin can resolve recipients via Space membership ("*notify everyone in HR*").
+- **[ECA — no-code workflows](/docs/features/eca/)** — Models can react to *Insert content into a Space* events to fire welcome notifications, auto-tag, or trigger approvals.
 
 ## Permissions
 
@@ -182,8 +182,8 @@ Once published to drupal.org (planned for the next minor release of Open Intrane
 
 ## Learn more
 
-- [Access Control & Groups](./access) — the layer Spaces auto-access integrates with
-- [News](./news), [Events](./events), [Documents](./documents), [Knowledge Base](./knowledge-base), [Pages](./pages), [Webforms](./webforms) — all participate in the Space aggregation
-- [Layout Builder & Frontend Editing](./layout-builder) — used for per-Space landing pages
-- [Engagement scoring](./employee-directory#engagement-scoring) — Space-scoped engagement dashboards
+- [Access Control & Groups](/docs/features/access/) — the layer Spaces auto-access integrates with
+- [News](/docs/features/news/), [Events](/docs/features/events/), [Documents](/docs/features/documents/), [Knowledge Base](/docs/features/knowledge-base/), [Pages](/docs/features/pages/), [Webforms](/docs/features/webforms/) — all participate in the Space aggregation
+- [Layout Builder & Frontend Editing](/docs/features/layout-builder/) — used for per-Space landing pages
+- [Engagement scoring](/docs/features/employee-directory/#engagement-scoring) — Space-scoped engagement dashboards
 - [Open Intranet project on drupal.org](https://www.drupal.org/project/openintranet)

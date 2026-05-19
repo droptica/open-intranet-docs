@@ -76,7 +76,7 @@ The granularity matters — sensitive fields (e.g. *Author*, *Created date*, *Pu
 Out of the box Frontend Editing supports:
 
 - **Plain-text fields** — title, name, simple text fields. Inline input.
-- **Long-text fields** — body, descriptions. Opens a modal with the same CKEditor 5 instance as the full edit form (so the [AI assistant](./ai-assistant) is available too).
+- **Long-text fields** — body, descriptions. Opens a modal with the same CKEditor 5 instance as the full edit form (so the [AI assistant](/docs/features/ai/) is available too).
 - **Image / file fields** — upload + alt text from the modal.
 - **Entity reference fields** — autocomplete in the modal.
 - **Layout Builder regions** — when both modules are enabled, FE icons cover Layout Builder blocks too.
@@ -123,8 +123,8 @@ Frontend Editing respects existing entity permissions: the user must have *edit*
 
 ## Learn more
 
-- [Pages](./pages) — primary Layout Builder use-case
-- [Knowledge Base](./knowledge-base) — also a strong fit for Layout Builder landing layouts
-- [AI Assistant in CKEditor](./ai-assistant) — pairs perfectly with the Frontend Editing modal
-- [Courses recipe](./courses) — ships with Layout Builder enabled by default
+- [Pages](/docs/features/pages/) — primary Layout Builder use-case
+- [Knowledge Base](/docs/features/knowledge-base/) — also a strong fit for Layout Builder landing layouts
+- [AI Assistant in CKEditor](/docs/features/ai/) — pairs perfectly with the Frontend Editing modal
+- [Courses recipe](/docs/features/courses/) — ships with Layout Builder enabled by default
 - [Drupal Layout Builder docs](https://www.drupal.org/docs/8/core/modules/layout-builder)

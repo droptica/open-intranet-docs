@@ -30,7 +30,7 @@ Both run on the **DB Server** (database backend) — no extra service required. 
 - **Result list** — title, thumbnail, age (e.g. *1 year 2 months ago*), author, tags.
 - **Pagination** — 10 per page by default.
 
-The view honours the [access control layer](./access). Items the user is not allowed to see are filtered out **before** the result list is built — so the count and the listing are both consistent with what the user can actually open.
+The view honours the [access control layer](/docs/features/access/). Items the user is not allowed to see are filtered out **before** the result list is built — so the count and the listing are both consistent with what the user can actually open.
 
 ### What gets indexed
 
@@ -68,7 +68,7 @@ The search page uses the [Better Exposed Filters](https://www.drupal.org/project
 
 The Search API content index includes a **node_grants** field that captures Drupal's access grants at index time. At query time the same grants are intersected with the current user's grants. The result is that every search query is automatically filtered to *what this specific user is allowed to see* — restricted Documents, KB pages and other content disappear from the listing for users who are not in the right group.
 
-The full access story is on the [Access Control & Groups](./access) page.
+The full access story is on the [Access Control & Groups](/docs/features/access/) page.
 
 ### Optional Apache Solr
 
@@ -111,8 +111,8 @@ A small **search block** lives in the site header (the magnifying-glass field ne
 
 ## Learn more
 
-- [News and Articles](./news) — heaviest user of the content search
-- [Documents](./documents) — also indexed by `db_index_content`; folder hierarchy is used as a facet on the Documents browser
-- [Knowledge Base](./knowledge-base) — KB pages are indexed and surfaced through the same search
-- [Employee Directory](./employee-directory) — uses the dedicated `db_index_users` index
-- [Access Control & Groups](./access) — how access grants are applied to search results
+- [News and Articles](/docs/features/news/) — heaviest user of the content search
+- [Documents](/docs/features/documents/) — also indexed by `db_index_content`; folder hierarchy is used as a facet on the Documents browser
+- [Knowledge Base](/docs/features/knowledge-base/) — KB pages are indexed and surfaced through the same search
+- [Employee Directory](/docs/features/employee-directory/) — uses the dedicated `db_index_users` index
+- [Access Control & Groups](/docs/features/access/) — how access grants are applied to search results

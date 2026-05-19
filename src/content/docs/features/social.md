@@ -27,7 +27,7 @@ Every reaction is stored as a row in `votingapi_vote`. That means views can list
 
 - *Most-liked News this week*
 - *Articles you have liked*
-- *Top reactors* (used by the [Engagement scoring](./employee-directory#engagement-scoring) feature)
+- *Top reactors* (used by the [Engagement scoring](/docs/features/employee-directory/#engagement-scoring) feature)
 
 The default install ships *Most-liked News this week* on the homepage and *Articles you have liked* on the user dashboard.
 
@@ -54,7 +54,7 @@ Each enabled content type renders an **Add new comment** form below the main con
 - **Threaded** — replies indent under their parent.
 - **Pagination** — long threads paginate (default: 50 comments per page).
 - **Email notifications** — an admin-configurable subscription system sends a digest to subscribers when a new comment is posted (off by default).
-- **Editor** — comments use the same CKEditor 5 instance as the parent content, so authors can format text, embed images, paste tables, and use the [AI assistant](./ai-assistant).
+- **Editor** — comments use the same CKEditor 5 instance as the parent content, so authors can format text, embed images, paste tables, and use the [AI assistant](/docs/features/ai/).
 
 ### Moderation
 
@@ -143,7 +143,7 @@ Together these four primitives feed the **engagement layer**:
 
 This data is the input to:
 
-- The **Engagement score** on each [employee profile](./employee-directory#engagement-scoring).
+- The **Engagement score** on each [employee profile](/docs/features/employee-directory/#engagement-scoring).
 - The **Most engaged content this week** dashboard block.
 - The "*People who read this also read*" recommendations.
 - The **Must Read** report's *who-actually-read-it* check (recently-read is treated as a "read" signal alongside the explicit Read flag).
@@ -167,7 +167,7 @@ This data is the input to:
 
 ## Learn more
 
-- [News and Articles](./news) — heaviest user of reactions and comments
-- [Knowledge Base](./knowledge-base) — KB pages enable the same primitives
-- [Must Read tracking](./must-read) — uses the Read flag and recently-read as evidence
-- [Employee Directory](./employee-directory) — engagement scoring derived from these primitives
+- [News and Articles](/docs/features/news/) — heaviest user of reactions and comments
+- [Knowledge Base](/docs/features/knowledge-base/) — KB pages enable the same primitives
+- [Must Read tracking](/docs/features/must-read/) — uses the Read flag and recently-read as evidence
+- [Employee Directory](/docs/features/employee-directory/) — engagement scoring derived from these primitives

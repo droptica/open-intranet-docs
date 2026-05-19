@@ -113,8 +113,8 @@ Then configure the endpoints at `/admin/config/services/openid-connect/keycloak`
 
 ## Learn more
 
-- [Employee Directory & User Profiles](./employee-directory) — the user-profile fields populated from IdP claims
-- [Access Control & Groups](./access) — combine SSO group claims with OI Groups for unified org structure
+- [Employee Directory & User Profiles](/docs/features/employee-directory/) — the user-profile fields populated from IdP claims
+- [Access Control & Groups](/docs/features/access/) — combine SSO group claims with OI Groups for unified org structure
 - [Keycloak documentation](https://www.keycloak.org/documentation)
 - [OpenID Connect module on drupal.org](https://www.drupal.org/project/openid_connect)
 - [Drupal recipes documentation](https://www.drupal.org/docs/extending-drupal/drupal-recipes)

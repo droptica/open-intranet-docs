@@ -155,9 +155,9 @@ ECA models themselves run with the **same permissions as the user that triggered
 
 ## Learn more
 
-- [News and Articles](./news) — heaviest user of ECA in the bundle (notify-on-publish)
-- [Messenger](./messenger) — the natural action target for cross-channel notifications
-- [Webforms](./webforms) — submissions are first-class ECA events
-- [AI Assistant in CKEditor](./ai-assistant) — combine with ECA for *summarise / translate on save* automation
+- [News and Articles](/docs/features/news/) — heaviest user of ECA in the bundle (notify-on-publish)
+- [Messenger](/docs/features/messenger/) — the natural action target for cross-channel notifications
+- [Webforms](/docs/features/webforms/) — submissions are first-class ECA events
+- [AI Assistant in CKEditor](/docs/features/ai/) — combine with ECA for *summarise / translate on save* automation
 - [ECA module on drupal.org](https://www.drupal.org/project/eca) — the full event / condition / action catalogue
 - [BPMN.io](https://bpmn.io/) — the underlying open-source BPMN modeller

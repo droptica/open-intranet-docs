@@ -141,6 +141,6 @@ These tools share a *small but always-on* design philosophy:
 
 ## Learn more
 
-- [News](./news), [Knowledge Base](./knowledge-base), [Pages](./pages), [Events](./events) — every revisioned content type pairs with **Diff**
-- [Multilingual](./multilingual) — pairs with **Theme Switcher** (per-language theme) and **Sitemap** (per-language sitemaps)
-- [Access Control & Groups](./access) — informs **Auto Logout** policy and **Masquerade** permissions
+- [News](/docs/features/news/), [Knowledge Base](/docs/features/knowledge-base/), [Pages](/docs/features/pages/), [Events](/docs/features/events/) — every revisioned content type pairs with **Diff**
+- [Multilingual](/docs/features/multilingual/) — pairs with **Theme Switcher** (per-language theme) and **Sitemap** (per-language sitemaps)
+- [Access Control & Groups](/docs/features/access/) — informs **Auto Logout** policy and **Masquerade** permissions

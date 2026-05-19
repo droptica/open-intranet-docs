@@ -27,7 +27,7 @@ Each News article carries the following editorial fields:
 | **Background image** (`field_background_image`) | Media reference | Cover image shown behind the title on the article page and as the listing thumbnail. |
 | **Tags** (`field_tags`) | Taxonomy reference (multi-value) | Categorisation; used for filtering, related-content and faceted search. |
 | **Document references** (`field_oi_document_ref`) | OI Document reference (multi-value) | Attach files from the **Documents** library to the article. |
-| **Mark as Must Read** (`field_mark_as_must_read`) | Boolean | When checked, the article appears on every user's Must Read list until they mark it as read. See the [Must Read tracking](./must-read) feature page. |
+| **Mark as Must Read** (`field_mark_as_must_read`) | Boolean | When checked, the article appears on every user's Must Read list until they mark it as read. See the [Must Read tracking](/docs/features/must-read/) feature page. |
 | **Notify all users** (`field_notify_all_users_about_new`) | Boolean | When checked at publish time, an email is sent to all users about the new article. |
 | **Reaction** (`field_news_article_reaction`) | Voting reaction | Lets readers click a single "I like this" thumbs-up. Counter is shown next to the button. |
 | **Comments** (`comment_node_article`) | Comment | Threaded comments below the article body. |
@@ -98,12 +98,12 @@ News articles are aliased automatically by Pathauto using the pattern `/news/[no
 
 News is the most-integrated content type in Open Intranet. It connects to:
 
-- **Must Read tracking** — Toggle `Mark as Must Read` on any article and it appears on every user's Must Read list until they explicitly mark it as read. Editors can audit who has and has not read a given article from the [Must Read report](./must-read).
-- **Engagement scoring** — Article views, likes and comments all add to the user's [Engagement](./engagement) RFV score.
+- **Must Read tracking** — Toggle `Mark as Must Read` on any article and it appears on every user's Must Read list until they explicitly mark it as read. Editors can audit who has and has not read a given article from the [Must Read report](/docs/features/must-read/).
+- **Engagement scoring** — Article views, likes and comments all add to the user's [Engagement](/docs/features/engagement/) RFV score.
 - **Search** — Articles are indexed by the `default_index` Search API index alongside pages, KB pages, documents and users. Full-text search across title, intro and body.
 - **Notifications** — When `Notify all users about new` is checked at publish time, the platform fires an email broadcast.
-- **Documents** — Use **Document references** to attach files from the [Documents](./documents) library directly to an article (single source of truth for binaries — they are not duplicated).
-- **Bookmarks / Recently read** — Both apply to articles automatically. See [Social interactions](./social).
+- **Documents** — Use **Document references** to attach files from the [Documents](/docs/features/documents/) library directly to an article (single source of truth for binaries — they are not duplicated).
+- **Bookmarks / Recently read** — Both apply to articles automatically. See [Social interactions](/docs/features/social/).
 - **Translations** — When additional languages are enabled, articles can be translated; each translation has its own revisions and comments.
 
 ## Permissions
@@ -134,8 +134,8 @@ News is the most-integrated content type in Open Intranet. It connects to:
 
 ## Learn more
 
-- [How to use it](../../user-guide/news) — step-by-step procedures for adding, editing, commenting on, bookmarking, pinning and reverting news articles
-- [Creating content](../../user-guide/creating-content) — common authoring patterns shared by all content types
-- [Must Read tracking](./must-read) — full description of the Must Read feature triggered by `field_mark_as_must_read`
-- [Engagement analytics](./engagement) — how article activity feeds the RFV score
-- [Social interactions](./social) — reactions, comments, bookmarks and recently-read in detail
+- [How to use it](/docs/user-guide/news/) — step-by-step procedures for adding, editing, commenting on, bookmarking, pinning and reverting news articles
+- [Creating content](/docs/user-guide/creating-content/) — common authoring patterns shared by all content types
+- [Must Read tracking](/docs/features/must-read/) — full description of the Must Read feature triggered by `field_mark_as_must_read`
+- [Engagement analytics](/docs/features/engagement/) — how article activity feeds the RFV score
+- [Social interactions](/docs/features/social/) — reactions, comments, bookmarks and recently-read in detail

@@ -86,15 +86,15 @@ Every folder and every document has an **Access** tab (`/documents/folder/{id}/a
 
 Folder restrictions are inherited by documents inside the folder unless the document overrides them.
 
-The full administration story for groups, group hierarchy and access enforcement lives on the [Documents administration](../../administration/documents) page.
+The full administration story for groups, group hierarchy and access enforcement lives on the [Documents administration](/docs/administration/documents/) page.
 
 ## Integration with other features
 
-- **Access Control & Groups** — `openintranet_access` provides the per-item access form, the group hierarchy and the inheritance rules used by Documents. See [Access Control & Groups](./access).
+- **Access Control & Groups** — `openintranet_access` provides the per-item access form, the group hierarchy and the inheritance rules used by Documents. See [Access Control & Groups](/docs/features/access/).
 - **News articles** — Articles can attach Document references via the `field_oi_document_ref` field, so the same file appears on the article and in the library without being uploaded twice.
-- **Engagement scoring** — Document views and downloads feed the user's [Engagement](./engagement) RFV score.
+- **Engagement scoring** — Document views and downloads feed the user's [Engagement](/docs/features/engagement/) RFV score.
 - **Search** — Documents are indexed by the `default_index` Search API index alongside articles, pages, KB pages and users.
-- **Must Read** — When [Must Read tracking](./must-read) is enabled on a content type that references documents, the reminder includes the attached files.
+- **Must Read** — When [Must Read tracking](/docs/features/must-read/) is enabled on a content type that references documents, the reminder includes the attached files.
 
 ## Permissions
 
@@ -123,7 +123,7 @@ The full administration story for groups, group hierarchy and access enforcement
 
 ## Learn more
 
-- [How to use it](../../user-guide/documents) — step-by-step procedures for browsing, adding, editing, previewing and bookmarking documents
-- [How to configure it](../../administration/documents) — admin configuration: enabling document sources, setting up groups, per-item access, the access settings page, full permissions reference
-- [Access Control & Groups](./access) — the group hierarchy that powers Documents permissions
-- [Must Read tracking](./must-read) — flag a document as required reading and report on who has read it
+- [How to use it](/docs/user-guide/documents/) — step-by-step procedures for browsing, adding, editing, previewing and bookmarking documents
+- [How to configure it](/docs/administration/documents/) — admin configuration: enabling document sources, setting up groups, per-item access, the access settings page, full permissions reference
+- [Access Control & Groups](/docs/features/access/) — the group hierarchy that powers Documents permissions
+- [Must Read tracking](/docs/features/must-read/) — flag a document as required reading and report on who has read it

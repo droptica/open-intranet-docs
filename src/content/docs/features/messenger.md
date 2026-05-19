@@ -126,7 +126,7 @@ This is how internal features like *notify all users about new* on News articles
 
 - **News articles** — The `field_notify_all_users_about_new` toggle on a News article triggers a Messenger broadcast at publish time (audience: all active users).
 - **Must Read tracking** — The **Send a reminder email** action on a Must Read report posts to the [Views Send](https://www.drupal.org/project/views_send) form, which uses the same email infrastructure.
-- **Employee Directory** — Recipient selection by department / office uses the same taxonomies as the [Employee Directory](./employee-directory).
+- **Employee Directory** — Recipient selection by department / office uses the same taxonomies as the [Employee Directory](/docs/features/employee-directory/).
 - **Access Control & Groups** — A future channel plugin can resolve recipients via OI Group membership (e.g. "all active users in *Berlin Office* and its descendants"); the resolver service is plugin-aware.
 - **ECA — no-code workflows** — A custom ECA action can fire a notification on any modelled event (entity insert / update / delete, cron, user login).
 
@@ -151,7 +151,7 @@ Permissions are intentionally restrictive — broadcasting to the entire company
 
 ## Learn more
 
-- [How to administer it](../../administration/users) — admin tasks for users (Messenger administration sits in the same area)
-- [Must Read tracking](./must-read) — the read-tracking feature whose reminder emails go through Messenger plumbing
-- [News and Articles](./news) — the article-publish broadcast that uses Messenger
+- [How to administer it](/docs/administration/users/) — admin tasks for users (Messenger administration sits in the same area)
+- [Must Read tracking](/docs/features/must-read/) — the read-tracking feature whose reminder emails go through Messenger plumbing
+- [News and Articles](/docs/features/news/) — the article-publish broadcast that uses Messenger
 - [SMSAPI module on drupal.org](https://www.drupal.org/project/smsapi)
