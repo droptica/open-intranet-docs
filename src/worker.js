@@ -1,25 +1,45 @@
+/**
+ * Map public /docs/* URLs to files in dist/ (built with base:/docs/ but no dist/docs/ folder).
+ */
+function docsUrlToAssetPath(pathname) {
+	let path = pathname.replace(/^\/docs\/?/, '/') || '/';
+	if (!path.startsWith('/')) {
+		path = `/${path}`;
+	}
+
+	const lastSegment = path.split('/').pop() ?? '';
+	const hasFileExtension = lastSegment.includes('.');
+
+	if (hasFileExtension) {
+		return path;
+	}
+
+	if (path.endsWith('/')) {
+		return `${path}index.html`;
+	}
+
+	return `${path}/index.html`;
+}
+
 export default {
 	async fetch(request, env) {
 		const url = new URL(request.url);
 
-		// Redirect /docs without trailing slash to /docs/
 		if (url.pathname === '/docs') {
 			url.pathname = '/docs/';
 			return Response.redirect(url.toString(), 301);
 		}
 
-		// Redirect bare root to /docs/ (for direct domain access e.g. docs.open-intranet.com)
 		if (url.pathname === '/') {
 			url.pathname = '/docs/';
 			return Response.redirect(url.toString(), 302);
 		}
 
-		// Strip /docs prefix — Astro builds with base:/docs/ for correct links,
-		// but files are in dist/ root, so we need to map /docs/* → /*
-		if (url.pathname.startsWith('/docs')) {
-			url.pathname = url.pathname.replace(/^\/docs/, '') || '/';
+		if (!url.pathname.startsWith('/docs')) {
+			return env.ASSETS.fetch(request);
 		}
 
-		return env.ASSETS.fetch(new Request(url, request));
+		url.pathname = docsUrlToAssetPath(url.pathname);
+		return env.ASSETS.fetch(new Request(url.toString(), request));
 	},
 };
