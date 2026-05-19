@@ -4,7 +4,7 @@
 
 Official documentation for [Open Intranet](https://www.drupal.org/project/openintranet) — a free, open-source intranet platform built on Drupal by [Droptica](https://www.droptica.com).
 
-**Live site:** [www.open-intranet.com/docs](https://www.open-intranet.com/docs/)
+**Live site:** [www.open-intranet.com/docs/](https://www.open-intranet.com/docs/)
 
 ## What is Open Intranet?
 

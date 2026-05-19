@@ -28,7 +28,7 @@ The docs are served at `open-intranet.com/docs/*` via a Cloudflare Worker revers
 1. **Astro config** has `base: '/docs/'` — all generated links include `/docs/` prefix
 2. **Build output** goes to `dist/` (files are NOT in `dist/docs/`, Astro only prefixes URLs)
 3. **Worker script** (`src/worker.js`) strips `/docs` from the request path before fetching from static assets
-4. **CF Route** `www.open-intranet.com/docs/*` → `open-intranet-docs` Worker
+4. **CF Routes** `www.open-intranet.com/docs` **and** `www.open-intranet.com/docs/*` → `open-intranet-docs` Worker (both are required — `docs/*` alone does **not** match `/docs` without a trailing slash, so that URL hits the marketing site and returns 404)
 5. **Custom domain** `docs.open-intranet.com` hides the `*.workers.dev` URL
 
 Flow: `open-intranet.com/docs/getting-started/installation/`
@@ -100,4 +100,5 @@ If a bulk fix is ever needed again, the working approach is: walk every `.md` un
 - The worker script is required because CF serves from `dist/` root but requests come with `/docs/` prefix
 - `wrangler.json` must have `"binding": "ASSETS"` for the worker script to access static files
 - CF Workers Builds sometimes doesn't trigger on push — an empty commit can force a rebuild
+- **`/docs` vs `/docs/`** — always link to `https://www.open-intranet.com/docs/` (trailing slash). Without it, users get the marketing site's 404 unless the exact `/docs` route is wired to the docs worker
 - The worker was deployed to `devops@droptica` CF account (not personal) — `wrangler deploy` from CLI requires login to that account

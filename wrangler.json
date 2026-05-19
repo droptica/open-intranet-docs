@@ -4,6 +4,16 @@
 	"account_id": "f1be21e4d3549cc744b8381c380eb0af",
 	"main": "src/worker.js",
 	"compatibility_date": "2025-09-27",
+	"routes": [
+		{
+			"pattern": "www.open-intranet.com/docs",
+			"zone_name": "open-intranet.com"
+		},
+		{
+			"pattern": "www.open-intranet.com/docs/*",
+			"zone_name": "open-intranet.com"
+		}
+	],
 	"assets": {
 		"directory": "dist",
 		"binding": "ASSETS",
