@@ -27,7 +27,7 @@ Every reaction is stored as a row in `votingapi_vote`. That means views can list
 
 - *Most-liked News this week*
 - *Articles you have liked*
-- *Top reactors* (used by the [Engagement scoring](/docs/features/employee-directory/#engagement-scoring) feature)
+- *Top reactors* (used by the [Engagement scoring](/docs/features/engagement/) feature)
 
 The default install ships *Most-liked News this week* on the homepage and *Articles you have liked* on the user dashboard.
 
@@ -143,7 +143,7 @@ Together these four primitives feed the **engagement layer**:
 
 This data is the input to:
 
-- The **Engagement score** on each [employee profile](/docs/features/employee-directory/#engagement-scoring).
+- The **Engagement score** on each [employee profile](/docs/features/engagement/#user-scores).
 - The **Most engaged content this week** dashboard block.
 - The "*People who read this also read*" recommendations.
 - The **Must Read** report's *who-actually-read-it* check (recently-read is treated as a "read" signal alongside the explicit Read flag).

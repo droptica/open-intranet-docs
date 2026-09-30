@@ -3,6 +3,10 @@ title: Consultation Process recipe — formal reviews
 description: A formal consultation workflow for organisational decision-making — author submits a proposal with deadlines and reviewers, ECA automatically creates a review task per reviewer, each reviewer files an opinion, and the consultation closes Accepted or Rejected.
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="optional" />
+
 The **Consultation Process** recipe (`consultation_process`) adds a formal **organisational consultation workflow** to the intranet. Use it for the things that require more than a quick comment: policy reviews, budget approvals, document consultations, compliance sign-offs, change-management decisions.
 
 The workflow is opinionated and relies heavily on **[ECA](/docs/features/eca/)** for automation: the author submits a *Consultation* with a deadline, a type, a description and a list of reviewers; ECA *automatically* creates a *Consultation Review* node for each reviewer; each reviewer files their opinion (Pending → Completed) on their assigned review; views aggregate progress; the original author marks the consultation Accepted or Rejected.

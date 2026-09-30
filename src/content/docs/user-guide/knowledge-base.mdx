@@ -2,8 +2,11 @@
 title: Knowledge Base
 description: Browse internal documentation organized in a book structure.
 sidebar:
-  order: 4
+  order: 5
 ---
+
+import Audience from '../../../components/Audience.astro';
+
 
 The **Knowledge Base** is the central hub for internal documentation. It organizes articles into a hierarchical book structure, making it easy to find policies, procedures, department-specific information, and more.
 
@@ -42,3 +45,9 @@ The article itself displays:
 Use the sidebar to move between pages within the same book. Click any title to jump directly. Use the expand/collapse arrows to reveal or hide sub-pages.
 
 The book structure lets your organization maintain living documentation that evolves over time, with clear ownership and a logical hierarchy.
+
+## Adding and editing pages
+
+<Audience level="editors" />
+
+Users with an editor role create Knowledge Base pages from **Create > Knowledge Base Page**; see [Creating a knowledge base page](/docs/user-guide/creating-content/#creating-a-knowledge-base-page). Placing a page in the book structure is done by an administrator ([how](/docs/user-guide/creating-content/#adding-pages-to-the-book-hierarchy)).

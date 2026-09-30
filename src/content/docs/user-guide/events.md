@@ -2,7 +2,7 @@
 title: Events
 description: View upcoming events, browse the calendar, and read event details.
 sidebar:
-  order: 3
+  order: 4
 ---
 
 The **Events** section helps you stay informed about company meetings, team outings, training sessions, and other scheduled activities.

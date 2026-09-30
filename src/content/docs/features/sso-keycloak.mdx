@@ -3,6 +3,10 @@ title: SSO with Keycloak recipe
 description: Single Sign-On with a Keycloak identity provider via OpenID Connect. Authenticate users against your existing IdP, auto-provision Drupal accounts on first login, and stop maintaining a second user list.
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="optional" />
+
 The **SSO Keycloak** recipe (`openintranet_sso_keycloak`) wires Open Intranet up to a [Keycloak](https://www.keycloak.org/) identity provider over **OpenID Connect**. After applying the recipe and filling in three Keycloak endpoints, employees authenticate against the company's existing IdP — no second password, no second user list, no second offboarding workflow.
 
 It is a recipe, so it is **opt-in** — install with `drush recipe recipes/openintranet_sso_keycloak` when the company has Keycloak (or any other OIDC-compatible IdP — Auth0, Okta, Azure AD, AWS Cognito, Google Workspace, …) and wants to consolidate login.

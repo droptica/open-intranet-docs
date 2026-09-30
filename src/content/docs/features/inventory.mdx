@@ -3,6 +3,10 @@ title: Inventory Management recipe — assets, locations, assignments
 description: A three-content-type asset-management system. Track every laptop, monitor, phone or office chair through its lifecycle — where it lives, who has it now, when it should come back, with full history.
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="optional" />
+
 The **Inventory Management** recipe (`openintranet_inventory`) turns the intranet into a real **asset-tracking system**. It models three entities — **items** (the physical things), **locations** (where they live by default) and **assignments** (the time-bounded handovers to a user) — and ties them together with a set of views that answer the questions IT and facilities actually ask: *"who has the MacBook with serial XYZ?"*, *"what's in the Berlin storeroom right now?"*, *"which laptops are out of warranty?"*.
 
 It is a recipe, so it is **opt-in** — install with `drush recipe recipes/openintranet_inventory` when the company outgrows the *spreadsheet of assets in Drive*.

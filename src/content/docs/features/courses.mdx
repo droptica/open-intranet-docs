@@ -3,6 +3,10 @@ title: Courses recipe — internal LMS
 description: A lightweight learning-management system. Build a course of any length from individual lessons, deliver it to employees, and track who has completed which lesson with a personal "Learned" flag.
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="optional" />
+
 The **Courses** recipe (`openintranet_courses`) turns Open Intranet into a small but complete **internal LMS**. It models two content types — **courses** and **lessons** — links them with a parent-child entity reference, ships Layout Builder-driven course pages, and tracks per-user lesson completion with a *Learned* flag.
 
 It is a recipe, so it is **opt-in** — install with `drush recipe recipes/openintranet_courses` when the company is ready to deliver onboarding, compliance training, or upskilling content directly inside the intranet.

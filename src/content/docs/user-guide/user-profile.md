@@ -2,7 +2,7 @@
 title: Your Profile
 description: View and edit your personal profile.
 sidebar:
-  order: 8
+  order: 9
 ---
 
 Your **user profile** is your digital identity within the intranet. It shows your contact information, department, and recent activity.

@@ -2,7 +2,7 @@
 title: Homepage & Navigation
 description: Understand the intranet homepage layout and how to navigate.
 sidebar:
-  order: 1
+  order: 2
 ---
 
 The homepage is the first screen you see after logging in. It gives you a quick overview of what is happening in the organization.

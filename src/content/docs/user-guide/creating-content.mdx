@@ -2,14 +2,19 @@
 title: Creating Content
 description: How to create news articles, events, knowledge base pages, and other content in Open Intranet.
 sidebar:
-  order: 11
+  order: 12
 ---
 
-Users with the **Content Editor** role can create and publish content directly from the administration interface. This page walks through the available content types and how to create each one.
+import { Steps } from '@astrojs/starlight/components';
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="editors" />
+
+Users with the **Content editor** role (or one of the scoped editor roles, such as *Content Editor - News Article*; see [Default roles](/docs/administration/users/#default-roles)) can create and publish content directly from the administration interface. This page walks through the available content types and how to create each one.
 
 ## Accessing the content creation page
 
-To create new content, use the **Create** menu in the top administration toolbar. Clicking it reveals links to every content type you have permission to add.
+To create new content, click **Create** in the administration sidebar on the left. It lists every content type you have permission to add.
 
 ![Add content item page showing available content types](../../../assets/user-guide/add-content-item.png)
 
@@ -39,6 +44,17 @@ Navigate to **Create > News article** to open the article form.
 | **Tags** | No | Categorize the article (e.g. Company, Innovation, Team Spirit). Multiple tags can be selected |
 | **Background image** | No | A hero/teaser image displayed at the top of the article and in listing cards. Upload or select from the media library |
 | **Related documents** | No | Link to documents stored in the Document Management section |
+
+### CONTENT and TOOLS tabs
+
+The News article form has two tabs. **CONTENT** holds the fields above. **TOOLS** holds two switches, both off by default, and stays hidden until you click the tab:
+
+| Switch | What it does |
+|---|---|
+| **Must Read** | Adds a **Mark as read** button to the article and lets you track on the dashboard who has read it and who has not. See [Must Read](/docs/features/must-read/) |
+| **Notify all users about new content** | Sends an email to all users about the article. An administrator can change the subject and body in the ECA model *Notify users about new article* |
+
+![TOOLS tab of the Create News article form with the Must Read and Notify all users switches](../../../assets/user-guide/create-news-tools-tab.png)
 
 ### Sidebar options
 
@@ -98,21 +114,55 @@ Navigate to **Create > Knowledge Base Page** to open the form.
 The Knowledge Base Page form has two tabs:
 
 - **CONTENT** — all the fields described above
-- **ACCESS** — control which groups (organizational units) can view this page. By default, knowledge base pages may be visible to all authenticated users, but editors can restrict access to specific groups
+- **ACCESS** — the required **Data classification** label (*Public*, *Internal*, *Confidential* or *Restricted*; *Public* by default), shown as a badge next to the page title
+
+To restrict who can open a page to specific groups or people, save the page and open its **Access** tab (next to **Edit** and **Revisions**). This needs the *Set entity access restrictions* permission, which the **Content editor** role has. See [Access Control](/docs/features/access/).
 
 ### Adding pages to the book hierarchy
 
-After saving a Knowledge Base Page, you can organize it within the book structure:
+<Audience level="administrators" />
 
-1. Edit the page and look for the **Book outline** section.
-2. Choose a **parent** page to nest it under, or select **\<top-level>** to make it a root-level section.
-3. The page will then appear in the sidebar navigation of the Knowledge Base.
+The **Book outline** and **Menu settings** panels in the right sidebar are shown to administrators only, so editors do not see them. After you save a Knowledge Base Page, ask an administrator to place it in the book structure, or do it yourself if you are one:
+
+<Steps>
+
+1. Edit the page and expand the **Book outline** panel.
+2. Choose the **Book** (the department section) the page belongs to.
+3. Choose the **Parent item**: the book's own top page to place the page directly under the book, or another page to nest it below.
+4. Optionally set the **Weight** to change the order among sibling pages, then save.
+
+</Steps>
+
+The page then appears in the sidebar navigation of the Knowledge Base.
 
 ## Creating a basic page
 
-Navigate to **Create > Basic page**. The form is similar to the Knowledge Base Page with a title and rich-text body. Basic pages are used for static, standalone content like department overviews, company policies, or informational landing pages.
+Basic pages are static, standalone pages such as an About page, a department overview or a company policy. To add one:
+
+<Steps>
+
+1. Click **Create** in the administration sidebar and choose **Basic page**.
+2. Enter a **Title** (required).
+3. Write the page in the **Content** editor (see [Working with the rich-text editor](#working-with-the-rich-text-editor)). Keep the default **Full HTML** text format unless you have a reason to change it.
+4. Optionally add a **Background image** (**Add media**) and **Related documents** (start typing a document title).
+5. Optionally describe the change in **Revision log message** in the right sidebar.
+6. Click **Save**. The page is published immediately.
+
+</Steps>
+
+![Create Basic page form with title, content editor, text format, background image and related documents](../../../assets/user-guide/create-basic-page.png)
+
+A saved page gets an address based on its title: a page titled "Office parking policy" is available at `/pages/office-parking-policy`. A new page does not appear in any menu on its own. Share the link, or ask an administrator to add it to the navigation: they tick **Provide a menu link** in the **Menu settings** panel of the edit form (see [Menu management](/docs/administration/menu-management/)).
 
 Basic pages do not appear in the book hierarchy — they exist as independent pages accessible via their URL or linked from menus and other content.
+
+### Editing an existing page
+
+Open the page and click the **Edit** tab, or find it under **Content** in the administration sidebar. Change it and click **Save**. Every save creates a revision: use the **Revisions** tab to see earlier versions, and the **Revision log message** to note what you changed.
+
+## Creating a webform page
+
+Choose **Create > Webform** to add a page with an embedded form (surveys, feedback, applications). It has a **Title**, a **Body** and a **Webform** field that selects the form to show. Building the form itself is covered in [Webforms](/docs/features/webforms/).
 
 ## Working with the rich-text editor
 
@@ -136,6 +186,6 @@ Below the editor you will find a **Text format** dropdown. In most cases, keep t
 Once you save content:
 
 - It is immediately published and visible to users with appropriate access.
-- A URL alias is auto-generated from the title (e.g. a news article titled "Q1 Results" becomes `/news/q1-results`).
+- A URL alias is auto-generated from the title: news articles get `/news/...` (e.g. "Q1 Results" becomes `/news/q1-results`), basic pages `/pages/...` and knowledge base pages `/knowledge/...`.
 - The content appears in relevant listing pages (news feed, events calendar, knowledge base sidebar).
 - Search indexes are updated so the content becomes discoverable via the site-wide search.

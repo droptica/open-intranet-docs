@@ -1,45 +1,55 @@
 ---
 title: Pages
-description: Browse static pages like About Company and department pages.
+description: Find static pages such as About Company, department pages and legal pages.
 sidebar:
-  order: 5
+  order: 6
 ---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import Audience from '../../../components/Audience.astro';
 
 **Pages** are static content pages that provide information about the organization, departments, policies, and other resources that do not change frequently.
 
-## Accessing pages
+## Finding pages
 
-Pages are typically accessible through the main navigation menu under:
+Most pages are in the main menu. Point at **About Company** to open its submenu, and click any entry to open the page.
 
-- **About Company** — General information about the organization, department pages, and legal documents.
-- **Tools** — Forms, help requests, and other utilities.
+![The About Company submenu with Legal, Department Pages and About Company](../../../assets/user-guide/pages/about-company-menu.png)
 
-Some pages are also linked from the footer under **Legal & Compliance** and **Quick Links**.
+<Tabs>
+  <TabItem label="Department pages">
 
-## Types of pages
+    Each department can have its own page with relevant information, contacts and resources. You find them under **About Company > Department Pages**:
 
-### Department pages
+    - Customer support
+    - Finance
+    - Marketing
+    - IT
+    - HR
 
-Each department may have its own page with relevant information, contacts, and resources. These are accessible under **About Company > Department Pages** in the menu:
+    ![The HR department page](../../../assets/user-guide/pages/department-page.png)
 
-- HR
-- IT
-- Customer Support
-- Marketing
-- Finance
+  </TabItem>
+  <TabItem label="Legal and compliance">
 
-### Legal & compliance pages
+    Under **About Company > Legal** you find **Policies & Regulations**, **Compliance** and **Contracts**. The footer of every page also links to important documents under **Legal & Compliance**:
 
-The footer of every page links to important legal documents:
+    - **Code of Conduct**
+    - **GDPR & Data Protection**
+    - **Privacy Policy**
+    - **Terms of Use**
 
-- **Code of Conduct**
-- **GDPR & Data Protection**
-- **Privacy Policy**
-- **Terms of Use**
+    ![The footer with the Legal & Compliance and Quick Links columns](../../../assets/user-guide/pages/footer-legal.png)
 
-### Company information
+  </TabItem>
+  <TabItem label="Company information">
 
-General pages about the company, including the welcome page, are accessible through the navigation menu.
+    General information about the company is on the **About Company** page, the first entry of the **About Company** submenu. The footer **Quick Links** column points to frequently used places such as the company directory and IT support.
+
+    Forms such as **Training Request**, **Help Requests**, **Employee Survey** and **Submit News** are under **Tools > Forms**.
+
+  </TabItem>
+</Tabs>
 
 ## Page features
 
@@ -49,3 +59,15 @@ Static pages can include:
 - Embedded images and media
 - Links to other intranet pages or external resources
 - File attachments for downloadable documents
+
+## Adding or editing a page
+
+<Audience level="editors" />
+
+Users with an editor role can add and edit basic pages. See [Creating a basic page](/docs/user-guide/creating-content/#creating-a-basic-page) for the step-by-step instructions, including how a new page gets into the navigation.
+
+## Related
+
+- [Knowledge Base](/docs/user-guide/knowledge-base/): longer internal documentation
+- [Search](/docs/user-guide/search/): find a page by a word from it
+- [Creating Content](/docs/user-guide/creating-content/): for editors

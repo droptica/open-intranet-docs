@@ -3,6 +3,10 @@ title: User management
 description: Managing users, roles, permissions and the user profile in Open Intranet — adding/editing accounts, bulk import, roles shipped out of the box, registration policy, masquerade, and where to extend with SSO/LDAP.
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="administrators" />
+
 Every person who uses your Open Intranet has a user account, and what they can see and do is decided by the **roles** assigned to that account. This page covers what ships out of the box, the most common admin tasks, and the modules you can add when you outgrow the basics.
 
 The admin UI lives at **People** in the toolbar, or `/admin/people`.
@@ -34,7 +38,7 @@ The default user profile has more than the bare Drupal minimum. Out of the box e
 
 You can add custom fields to the user entity at **Configuration → People → Account settings → Manage fields** (`/admin/config/people/accounts/fields`). Common additions: employee ID, hire date, contract type, certifications, internal Slack handle.
 
-These fields drive the [Employee Directory](/docs/features/) — anything you add here can be exposed in the directory's filters and cards by editing the Views display.
+These fields drive the [Employee Directory](/docs/features/employee-directory/) — anything you add here can be exposed in the directory's filters and cards by editing the Views display.
 
 ## Default roles
 
@@ -44,14 +48,14 @@ Open Intranet ships with a set of roles tailored to a typical intranet. You can 
 | --- | --- | --- |
 | `administrator` | Administrator | Full unrestricted access to everything (bypasses content access checks). Keep on as few accounts as possible. |
 | `content_editor` | Content editor | Generic content editor — can create/edit all editorial content types. |
-| `content_editor_basic_page` | Content Editor – Basic Page | Scoped editor: only basic pages. |
-| `content_editor_news_article` | Content Editor – News Article | Scoped editor: only news. |
-| `content_editor_event` | Content Editor – Event | Scoped editor: only events. |
-| `content_editor_knowledge_base` | Content Editor – Knowledge Base | Scoped editor: only KB pages. |
-| `content_editor_oi_document` | Content Editor – Documents | Scoped editor: only the Documents library. |
-| `content_editor_webform` | Content Editor – Webform | Form builder — can create and edit Webforms. |
-| `user_accounts_manager` | User Accounts Manager | Can create / edit / block users and assign non-admin roles, without touching content or site config. |
-| `rmb_room_manager` | RMB – Room Manager | Manages rooms and bookings (only relevant when the [Room Booking](/docs/features/room-booking/) recipe is applied). |
+| `content_editor_basic_page` | Content Editor - Basic Page | Scoped editor: only basic pages. |
+| `content_editor_news_article` | Content Editor - News Article | Scoped editor: only news. |
+| `content_editor_event` | Content Editor - Event | Scoped editor: only events. |
+| `content_editor_knowledge_base` | Content Editor - Knowledge Base | Scoped editor: only KB pages. |
+| `content_editor_oi_document` | Content Editor - Documents | Scoped editor: only the Documents library. |
+| `content_editor_webform` | Content Editor - Webform | Form builder — can create and edit Webforms. |
+| `user_accounts_manager` | User Accounts Manager | Can create / edit / block users and give them roles, without touching content. It can give *any* role, including Administrator, so treat it as highly privileged (see [Roles and permissions](/docs/administration/roles-and-permissions/#who-can-manage-roles)). |
+| `rmb_room_manager` | RMB - Room Manager | Manages rooms and bookings (only relevant when the [Room Booking](/docs/features/room-booking/) recipe is applied). |
 | `authenticated` | Authenticated user | Every logged-in user gets this automatically — gives baseline read access to intranet content. |
 | `anonymous` | Anonymous user | Pre-login state. By default very limited; you decide whether the public sees anything. |
 
@@ -131,20 +135,22 @@ Or generate a one-time login link for the user and send it to them out of band:
 drush user:login username
 ```
 
-From the UI, **People → Edit user → Password** also works, and the user's own *"Forgot password"* link on `/user/password` self-services them by email.
+From the UI, **People → Edit user → Account** tab → **Password** also works.
+
+Users cannot reset their own password by default. Self-service reset (`/user/password`) is switched off in a stock install: the *No Request New Password* setting at `/admin/config/people/noreqnewpass` is on, and anonymous visitors are redirected to the login page. Plan for an administrator to set a new password or send a one-time login link.
 
 ### Assign or change roles
 
-Edit a user, tick/untick role checkboxes, save. For doing this at scale, use the **bulk operations** on `/admin/people` (see above).
+Edit a user, open the **Account** tab, switch the role toggles under **Roles** and save. For doing this at scale, use the **bulk operations** on `/admin/people` (see above).
 
-To create a brand-new role: **People → Roles → Add role** (`/admin/people/roles/add`), give it a name, save. Then click **Edit permissions** to grant it specific capabilities, and assign it to users. Many small roles are usually better than a few all-encompassing ones.
+To create a brand-new role: **People → Roles → Add role** (`/admin/people/roles/add`), give it a name, save. Then click **Edit permissions** to grant it specific capabilities, and assign it to users. Many small roles are usually better than a few all-encompassing ones. The full walkthrough, with screenshots and an example, is on [Roles and permissions](/docs/administration/roles-and-permissions/).
 
 ### Masquerade as another user (debugging permissions)
 
 Open Intranet ships [Masquerade](https://www.drupal.org/project/masquerade). When investigating *"User X says they cannot see Y"* problems, browsing the site as that user is much faster than reading permission tables.
 
 1. As an administrator, open the user's profile page (`/user/<id>`).
-2. Click **Masquerade as <username>**.
+2. Click **Masquerade as \<username>**.
 3. You are now logged in as that user. Browse, reproduce the problem.
 4. Click **Unmasquerade** (in the user account dropdown) to return to your own session.
 
@@ -166,7 +172,7 @@ For an internal-only intranet, leave registration closed and provision users man
 
 ## Permissions
 
-Permissions live at `/admin/people/permissions` — one giant table, rows are permissions, columns are roles, ticks decide who has what. A few things to keep in mind:
+Permissions live at `/admin/people/permissions` — one giant table, rows are permissions, columns are roles, ticks decide who has what. See [Roles and permissions](/docs/administration/roles-and-permissions/) for how to work with them. A few things to keep in mind:
 
 - **Be stingy with the *Administrator* role.** It bypasses every access check, including per-entity rules. Limit it to two or three trusted accounts and use `user_accounts_manager` / scoped editor roles for everything else.
 - **Test changes by masquerading.** After you tick a permission, masquerade as a normal user with that role and confirm they see what you expect.

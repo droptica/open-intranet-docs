@@ -2,7 +2,7 @@
 title: Employee Directory
 description: Find colleagues and view the organization chart.
 sidebar:
-  order: 7
+  order: 8
 ---
 
 The **Employee Directory** helps you find colleagues across the organization. It includes a searchable directory and an interactive organization chart.

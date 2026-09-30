@@ -1,48 +1,72 @@
 ---
 title: Social Features
-description: Bookmarks, comments, and reactions across the intranet.
+description: Bookmark content, comment and react to it across the intranet.
 sidebar:
-  order: 9
+  order: 10
 ---
+
+import { Steps, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 Open Intranet includes social features that let you interact with content, save items for later, and engage with colleagues.
 
+<CardGrid>
+  <LinkCard title="Bookmarks" description="Save an article, event or knowledge base page for later." href="/docs/user-guide/social-features/#bookmarks" />
+  <LinkCard title="Comments" description="Share feedback, ask questions and reply to colleagues." href="/docs/user-guide/social-features/#comments" />
+  <LinkCard title="Reactions" description="Say thanks with one click." href="/docs/user-guide/social-features/#reactions" />
+</CardGrid>
+
 ## Bookmarks
 
-Bookmarks let you save any piece of content — news articles, events, Knowledge Base pages — for quick access later.
+Bookmarks let you save news articles, events and Knowledge Base pages for quick access later.
 
 ### Adding a bookmark
 
-On any bookmarkable page, click the **Add to Bookmarks** button (or the bookmark icon). The item is added to your personal bookmarks list.
+<Steps>
+
+1. Open the article, event or Knowledge Base page.
+2. Click **Add to Bookmarks**. You find it at the end of the page, below the comments. News cards on the homepage also show a bookmark icon in the corner.
+
+</Steps>
+
+![The Add to Bookmarks link below the comment form](../../../assets/user-guide/social/bookmark-article.png)
+
+The link then changes to **Remove from Bookmarks**; click it to take the page off your list.
 
 ### Viewing your bookmarks
 
-Access your bookmarks from the user menu:
+<Steps>
 
 1. Click your name in the top-right corner.
-2. Select **My bookmarks**.
+2. Choose **My bookmarks**.
 
-The bookmarks page shows all your saved items. You can click any title to navigate back to the content.
+</Steps>
 
-On the homepage, the **My Last Bookmarks** widget shows your most recent bookmarks for quick access.
+The **Bookmarks** page lists everything you saved, with its content type and the date you saved it. Click a title to go back to the content.
+
+![The Bookmarks page listing a saved news article](../../../assets/user-guide/social/my-bookmarks.png)
+
+On the homepage, the **My Last Bookmarks** widget shows your most recent bookmarks, with an **All my bookmarks** link.
 
 ## Comments
 
-Many content types — including news articles — support comments. Commenting lets you share feedback, ask questions, or start discussions.
+Many content types, including news articles, support comments. Commenting lets you share feedback, ask questions, or start discussions.
 
 ### Posting a comment
 
+<Steps>
+
 1. Scroll to the **Add new comment** section at the bottom of an article.
-2. Type your comment in the text field.
+2. Type your comment in the text box.
 3. Click **Save**.
 
-Your comment appears immediately below the article, visible to all users.
+</Steps>
+
+![A comment typed into the Add new comment box, with the Save button](../../../assets/user-guide/social/comment-form.png)
+
+Your comment appears immediately below the article, visible to all users. To answer a colleague, click **Reply** under their comment: replies are shown indented below it.
 
 ## Reactions
 
-The **like** feature lets you express appreciation for content without writing a comment:
+The like feature lets you express appreciation for content without writing a comment. Under a news article, click **I like this**. The counter with the thumbs-up on the right shows how many people reacted. Reactions are available on news articles and basic pages, and they are a lightweight way to acknowledge content and help surface popular articles.
 
-- Click the **thumbs-up** (👍) icon below a news article.
-- The like counter increments, showing how many people have reacted.
-
-Reactions are a lightweight way to acknowledge content and help surface popular articles.
+![The I like this button and the like counter above the comments](../../../assets/user-guide/social/like.png)

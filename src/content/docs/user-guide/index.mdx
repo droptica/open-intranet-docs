@@ -5,16 +5,41 @@ sidebar:
   order: 0
 ---
 
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import Audience from '../../../components/Audience.astro';
+
 This guide covers the features available to every employee using Open Intranet. Whether you need to read company news, find a colleague, browse documents, or submit a form, you will find step-by-step instructions here.
+
+<LinkCard
+  title="New here? Start with Your first day"
+  description="Sign in, look around, read and react to news, search, update your profile and find help."
+  href="/docs/user-guide/first-day/"
+/>
+
+## I want to...
+
+<CardGrid>
+  <LinkCard title="Add a page" description="Create a basic page and find out how it gets into the menu." href="/docs/user-guide/creating-content/#creating-a-basic-page" />
+  <LinkCard title="Publish news" description="Write a news article, mark it Must Read or notify everyone." href="/docs/user-guide/creating-content/#creating-a-news-article" />
+  <LinkCard title="Upload a document" description="Add a file or a cloud link to the document library." href="/docs/user-guide/documents/#adding-folders-and-documents" />
+  <LinkCard title="Book a room" description="Check the calendar and reserve a meeting room." href="/docs/user-guide/room-booking/" />
+  <LinkCard title="Find a colleague" description="Search the directory and open the organization chart." href="/docs/user-guide/employee-directory/" />
+  <LinkCard title="See what I can do" description="The default roles and what each of them allows." href="/docs/user-guide/roles/" />
+</CardGrid>
 
 ## Who is this guide for?
 
-This guide is written for **authenticated users** — employees who log into the intranet with their account. It assumes no administrative privileges; administrators should also consult the [Administration](/docs/administration/users/) section.
+This guide is written for **authenticated users**: employees who log into the intranet with their account. It assumes no administrative privileges; administrators should also consult the [Administration](/docs/administration/users/) section. Pages and sections without a badge are for every logged-in user. A badge tells you when something needs more (point at it for an explanation):
+
+- <Audience level="editors" /> people with an editor role, for example [Creating Content](/docs/user-guide/creating-content/)
+- <Audience level="administrators" /> administrators
+- <Audience level="optional" /> only available if your administrator has enabled it
 
 ## What you will find
 
 | Section | What it covers |
 |---------|---------------|
+| [Your first day](/docs/user-guide/first-day/) | A short walk through the intranet for new users |
 | [Homepage & Navigation](/docs/user-guide/homepage/) | The dashboard, main menu, and header bar |
 | [News](/docs/user-guide/news/) | Reading and browsing company news |
 | [Events](/docs/user-guide/events/) | Upcoming events, calendar, and event details |
@@ -25,4 +50,6 @@ This guide is written for **authenticated users** — employees who log into the
 | [Your Profile](/docs/user-guide/user-profile/) | Viewing and editing your personal profile |
 | [Social Features](/docs/user-guide/social-features/) | Bookmarks, comments, and reactions |
 | [Search](/docs/user-guide/search/) | Finding content across the entire intranet |
-| [Creating Content](/docs/user-guide/creating-content/) | How to create news articles, events, and knowledge base pages |
+| [Creating Content](/docs/user-guide/creating-content/) | For editors: creating and editing basic pages, news articles, events, knowledge base pages and webform pages |
+| [Room Booking](/docs/user-guide/room-booking/) | Checking the room calendar and booking a meeting room |
+| [Roles: what you can do](/docs/user-guide/roles/) | What the default roles allow |

@@ -3,6 +3,10 @@ title: Kanban Board recipe (experimental)
 description: An experimental task tracker with a Trello-style kanban board view. Tasks have a status field with TODO / IN PROGRESS / REVIEW / DONE columns, drag-and-drop reordering, plus assignors, priority, story points and a history log.
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="optional" />
+
 The **Kanban Board** recipe (`openintranet_kanban`) is an **experimental** task-tracking module built around two contrib modules — [Field States](https://www.drupal.org/project/field_states) (a state-list field type) and [Views Kanban](https://www.drupal.org/project/views_kanban) (a kanban-board Views display). It adds a **Task** content type with the fields you would expect on a Trello card or a Jira issue, and a **Kanban** view that renders tasks as cards on columns by status with drag-and-drop reordering between columns.
 
 It is marked **experimental** because the underlying `views_kanban` module is itself in early development and the experience is not as polished as the rest of the platform. For most teams a dedicated tool (Jira, Linear, Trello) is still the better answer — but for a small intranet team that wants their backlog *inside* the company portal, this recipe is an option.

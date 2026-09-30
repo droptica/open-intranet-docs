@@ -3,6 +3,10 @@ title: Kudos recipe — employee recognition
 description: A lightweight peer-to-peer recognition system. Any employee can grant kudos to one or more colleagues with a public thank-you message; kudos appear on profiles, on a public listing and in the recipient's notification stream.
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="optional" />
+
 The **Kudos** recipe (`openintranet_kudos`) adds a peer-to-peer recognition system to the intranet — *say thanks publicly*. Any employee can grant kudos to one or more colleagues with a short message describing what the recognition is for. Granted kudos show up on the recipient's profile, on a global *Kudos* listing, and inside dashboard blocks ("*Kudos for the team this week*").
 
 Kudos is a **recipe**, not a default-installed module — install it with `drush recipe recipes/openintranet_kudos` (or pick it from the *Add components* page during install) when you decide your intranet should make recognition a first-class action.

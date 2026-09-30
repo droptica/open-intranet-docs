@@ -2,8 +2,13 @@
 title: Document Management
 description: Browse folders, upload local or cloud files, preview, search, and share documents in Open Intranet.
 sidebar:
-  order: 6
+  order: 7
 ---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import Audience from '../../../components/Audience.astro';
+
+Browsing, searching and downloading are for everyone. Sections marked **Editors** need an editor role: **Content Editor - Documents** to add, edit and delete files, and **Content editor** to restrict who can see them.
 
 The **Documents** section is a hierarchical file library shared by the whole company. You can browse folders, upload files from your computer or link to files stored in Google Drive, OneDrive, Dropbox or Box, preview most file types directly in the browser, and search across every folder. Each document tracks its own revision history and — if your administrator has set it up — can be restricted to specific groups (for example, "Finance" or "Berlin Sales") or to individual users.
 
@@ -32,21 +37,35 @@ The columns mirror what is on disk:
 
 ## Adding folders and documents
 
+<Audience level="editors" />
+
 Click **+ Add** above the listing to see the full menu. The available options depend on which sources your administrator has enabled in **Settings** (see [Administration → Documents](/docs/administration/documents/#enabling-document-sources)). Out of the box it shows **Add Folder** and **Upload Local File**; once cloud sources are turned on you also get **Add from Google Drive**, **Add from Dropbox**, **Add from OneDrive**, and **Add from Box**.
 
 ![+ Add dropdown menu showing Add Folder plus all five document sources: Google Drive, Dropbox, OneDrive, Box and Upload Local File](../../../assets/user-guide/documents/add-menu.png)
 
 ### Add a folder
 
-Choose **Add Folder** to open the folder form. You only have to give the folder a **Name** — the **Description** and **Parent folder** are optional. The **Active** toggle controls visibility: leaving it on shows the folder in the browser; turning it off hides the folder without deleting it (useful for archiving).
+<Steps>
+
+1. Click **+ Add** above the listing and choose **Add Folder**.
+2. Enter a **Name**. The **Description** and **Parent folder** are optional. If you opened the form from inside a folder, using its own **+ Add** menu, the **Parent folder** is already filled in. Otherwise the new folder is created at the top level.
+3. Leave **Active** on to show the folder in the browser. Turning it off hides the folder without deleting it, which is useful for archiving.
+4. Click **Save**.
+
+</Steps>
 
 ![Add folder form showing Name, Description, Parent folder, Author and the Active toggle](../../../assets/user-guide/documents/add-folder-form.png)
 
-If you opened the form from inside a folder (using its own **+ Add** menu), the **Parent folder** is pre-filled for you. Otherwise the new folder is created at the top level.
-
 ### Upload a local file
 
-Choose **Upload Local File** to upload a file from your computer. Fill in the **Title** (this is what colleagues will see — it doesn't have to match the filename), an optional **Description**, pick a **Folder** from the autocomplete, and choose your **File**.
+<Steps>
+
+1. Click **+ Add** and choose **Upload Local File**.
+2. Enter a **Title**. This is what colleagues will see, and it does not have to match the filename.
+3. Optionally add a **Description**, pick a **Folder** from the autocomplete and choose your **File**.
+4. Click **Save**.
+
+</Steps>
 
 ![Upload document form showing Title, Description, Folder autocomplete and File picker](../../../assets/user-guide/documents/upload-local-file.png)
 
@@ -54,14 +73,34 @@ The maximum upload size is set by your administrator (50 MB by default).
 
 ### Add a file from Google Drive, OneDrive, Dropbox or Box
 
-Choosing one of the cloud-source options opens a similar form, but instead of a file picker you get a URL field labelled with the source name (for example, **Google Drive URL**). Paste the sharing link from the cloud provider, give the document a **Title** and optional **Description**, and pick a **Folder**.
+Choosing a cloud source opens a similar form, but instead of a file picker you get a URL field named after the source. Paste a sharing link, give the document a **Title** and optional **Description**, and pick a **Folder**. Open Intranet only embeds the link and does not copy the file, so the file must be shared on the source platform for people to see it.
+
+<Tabs>
+  <TabItem label="Google Drive">
+
+    Field: **Google Drive URL**. Paste the sharing link, for example `https://drive.google.com/file/d/.../view`. Share the file publicly or with "Anyone with the link".
+
+  </TabItem>
+  <TabItem label="OneDrive">
+
+    Field: **OneDrive URL**. Paste the sharing link or the embed link. Links from `onedrive.live.com`, `1drv.ms` and SharePoint (`*.sharepoint.com`) are accepted. Share the file publicly or with "Anyone with the link".
+
+  </TabItem>
+  <TabItem label="Dropbox">
+
+    Field: **Dropbox URL**, for example `https://www.dropbox.com/s/abc123/file.pdf?dl=0`. The file must be shared with a public link.
+
+  </TabItem>
+  <TabItem label="Box">
+
+    Field: **Box URL**, for example `https://app.box.com/s/abc123xyz`. The file must be shared with a public link.
+
+  </TabItem>
+</Tabs>
 
 ![Add document form for Google Drive showing Title, Description, Folder and Google Drive URL fields](../../../assets/user-guide/documents/add-google-drive.png)
 
-Two things to keep in mind for cloud sources:
-
-- **The file must be shared publicly** (or via "Anyone with the link") on the source platform — Open Intranet only embeds the link; it does not pull the file content.
-- The **URL is validated** against each provider's known URL patterns, so a random URL or a private link will be rejected.
+A link that does not match the chosen source, such as a private or unrelated address, is rejected with an error message.
 
 ## Browsing inside a folder
 
@@ -89,6 +128,8 @@ If the document is referenced by any other intranet content (a news article that
 
 ## Editing and deleting
 
+<Audience level="editors" />
+
 Click **Edit** on the detail page (or the inline pencil in the folder listing) to change the **Title**, **Description**, **Folder** or replace the **File**. The **Published** toggle keeps the document on the site without removing it; unpublishing hides it from non-editors but preserves the entity and its revisions.
 
 ![Edit document form for Employee Handbook v2.1 showing Title, Description, Folder, current File and Published toggle](../../../assets/user-guide/documents/edit-document.png)
@@ -96,6 +137,8 @@ Click **Edit** on the detail page (or the inline pencil in the folder listing) t
 **Delete** is available on the document detail page (Quick actions → Delete document) and on the folder listing's actions menu. Deleting a folder asks for confirmation and removes the folder, its subfolders and any documents inside.
 
 ## Revision history
+
+<Audience level="editors" />
 
 Every save of a document creates a new **revision**. Open the **Revisions** tab on the detail page to see the timeline.
 
@@ -139,6 +182,8 @@ Owners (the user who uploaded the document) always retain access to their own fi
 
 ### Reading the Access tab
 
+<Audience level="editors" />
+
 If you have permission, every document and every folder has an **Access** tab that shows exactly who can see it. The tab lives at `/documents/document/{id}/access` and `/documents/folder/{id}/access` and is described in detail in [Administration → Documents → Access control](/docs/administration/documents/#access-control-on-folders-and-documents).
 
 The short version: the form has two sections — **Groups with access** (a checkbox list of all defined groups) and **Individual users with access** (a free-form user picker). When a folder or document has *no* boxes ticked and no users picked, it falls back to the standard intranet permissions and is visible to everyone with the *View document* permission.
@@ -158,19 +203,21 @@ The short version: the form has two sections — **Groups with access** (a check
 | **See older versions** | Open the document → **Revisions** tab. |
 | **Roll back to an older version** | **Revisions** tab → **Revert** on the row you want. |
 | **Search** | Search bar in the toolbar, or `/documents/search`. |
-| **See who can access a document** | Open the document → **Access** tab (admin permission required). |
+| **See who can access a document** | Open the document → **Access** tab (needs the *Set entity access restrictions* permission). |
 
 ## Required permissions
 
 | To do this, you need this permission | Comes with |
 | --- | --- |
 | Browse folders and view documents | *View folder* and *View document* (granted to **Authenticated user** by default) |
-| Upload files and create folders | *Create document*, *Create folder* (granted to **Content editor**) |
-| Edit any document or folder | *Edit document*, *Edit folder* (granted to **Content editor**) |
-| Delete documents or folders | *Delete document*, *Delete folder* (granted to **Content editor**) |
-| Revert / delete document revisions | *Revert document revision*, *Delete document revision* |
-| Restrict who can see a folder/document | *Set entity access restrictions* (granted to **Administrator**) |
+| Upload files and create folders | *Create document*, *Create folder* (granted to **Content Editor - Documents**) |
+| Edit any document or folder | *Edit document*, *Edit folder* (granted to **Content Editor - Documents**) |
+| Delete documents or folders | *Delete document*, *Delete folder* (granted to **Content Editor - Documents**) |
+| Revert / delete document revisions | *Revert document revision*, *Delete document revision* (granted to **Content Editor - Documents**) |
+| Restrict who can see a folder/document | *Set entity access restrictions* (granted to **Content editor** and **Administrator**) |
 | Bypass all restrictions | *Bypass access restrictions* (granted to **Administrator**) |
-| Configure document sources and module settings | *Administer documents* (granted to **Administrator**) |
+| Configure document sources and module settings | *Administer documents* (granted to **Administrator** and **Content Editor - Documents**) |
+
+The generic **Content editor** role has no Documents library permissions, and **Content Editor - Documents** cannot set access restrictions. Give both roles to a person who needs to manage documents and restrict who sees them.
 
 A complete reference, including the access-control permissions and group management, is in [Administration → Documents](/docs/administration/documents/#permissions-reference).

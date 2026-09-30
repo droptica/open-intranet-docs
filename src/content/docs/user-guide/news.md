@@ -2,7 +2,7 @@
 title: News
 description: Browse and read company news articles.
 sidebar:
-  order: 2
+  order: 3
 ---
 
 The **News** section keeps you up to date with company announcements, project updates, and organizational changes.

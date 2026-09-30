@@ -3,6 +3,10 @@ title: Document administration
 description: Configure document sources, set up groups and per-folder/per-document access control, manage permissions for the Open Intranet document library.
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="administrators" />
+
 This page covers the administration side of the document library: enabling cloud sources, configuring per-folder and per-document access restrictions, managing the **groups** that drive those restrictions, and the full permissions reference. The end-user side (browsing, uploading, searching, sharing) is covered in [User guide → Document Management](/docs/user-guide/documents/).
 
 The document library is provided by two cooperating modules:
@@ -200,20 +204,20 @@ Notes on the consequences:
 
 | Permission | Default role(s) | Description |
 | --- | --- | --- |
-| **Administer documents** | Administrator | Full admin on documents (CRUD plus settings). Restricted access. |
-| **Administer folders** | Administrator | Full admin on folders. Restricted access. |
+| **Administer documents** | Administrator, Content Editor - Documents | Full admin on documents (CRUD plus settings). Restricted access. |
+| **Administer folders** | Administrator, Content Editor - Documents | Full admin on folders. Restricted access. |
 | **View document** | Authenticated user | See documents in listings and on the detail page. |
 | **View folder** | Authenticated user | Browse folders. |
-| **Create document** | Content editor | Upload new documents (any source). |
-| **Create folder** | Content editor | Create new folders. |
-| **Edit document** | Content editor | Edit existing documents. |
-| **Edit folder** | Content editor | Edit existing folders. |
-| **Delete document** | Content editor | Remove documents. |
-| **Delete folder** | Content editor | Remove folders (and their contents). |
+| **Create document** | Content Editor - Documents | Upload new documents (any source). |
+| **Create folder** | Content Editor - Documents | Create new folders. |
+| **Edit document** | Content Editor - Documents | Edit existing documents. |
+| **Edit folder** | Content Editor - Documents | Edit existing folders. |
+| **Delete document** | Content Editor - Documents | Remove documents. |
+| **Delete folder** | Content Editor - Documents | Remove folders (and their contents). |
 | **Download document** | Authenticated user | Use the **Download** button — separate from view so you can let someone *see* a document but not get the file. |
-| **View document revision** | Editorial roles | See the **Revisions** tab and old revisions. |
-| **Revert document revision** | Editorial roles | Roll back to an older revision. |
-| **Delete document revision** | Administrator | Permanently remove an old revision. |
+| **View document revision** | Content Editor - Documents | See the **Revisions** tab and old revisions. |
+| **Revert document revision** | Content Editor - Documents | Roll back to an older revision. |
+| **Delete document revision** | Administrator, Content Editor - Documents | Permanently remove an old revision. |
 
 ### `openintranet_access`
 
@@ -225,9 +229,9 @@ Notes on the consequences:
 | **Manage group members** | Administrator | Add/remove users from groups. Does not grant edit on the group itself. |
 | **View groups** | (none by default) | See the groups list and group details — useful for read-only auditors. |
 | **Bypass access restrictions** | Administrator | View every item regardless of restrictions. Restricted access — give this only to people who are allowed to see *everything*. |
-| **Set entity access restrictions** | Administrator | Open the **Access** tab and modify groups/users on a folder, document or node. |
+| **Set entity access restrictions** | Administrator, Content editor | Open the **Access** tab and modify groups/users on a folder, document or node. |
 
-In a typical install, the **Administrator** role gets everything; **Content editor** gets the create/edit/delete on documents and folders but no group management and no access-restriction permission; **Authenticated user** can only browse, view, download and search.
+In a typical install, the **Administrator** role gets everything; **Content Editor - Documents** gets create/edit/delete on documents and folders and revision handling, but no group management and no access-restriction permission; the generic **Content editor** role can set access restrictions but has no Documents library permissions (give a person both roles if they need both); **Authenticated user** can only browse, view, download and search.
 
 ## Operational tips
 

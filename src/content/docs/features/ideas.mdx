@@ -3,6 +3,10 @@ title: Ideas recipe — submission and voting
 description: A lightweight idea-management workflow. Employees submit ideas, vote them up using the Flag module, comment in dedicated idea-comment threads, and see the idea move through Proposed → Selected → Implemented (or Rejected).
 ---
 
+import Audience from '../../../components/Audience.astro';
+
+<Audience level="optional" />
+
 The **Ideas** recipe (`openintranet_ideas`) adds an idea-submission and voting system to the intranet. Anyone can post a new idea, every authenticated user gets one upvote per idea, ideas stream into a dedicated *Ideas* listing, and the admin (or a designated *Innovation manager*) progresses each idea through a four-state lifecycle — *Proposed* → *Selected* → *Implemented* (or *Rejected*).
 
 It is a recipe, so it is **opt-in** — install with `drush recipe recipes/openintranet_ideas` when the company is ready to ask for input from the floor.
