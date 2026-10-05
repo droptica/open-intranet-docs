@@ -83,6 +83,43 @@ Image links (`![alt](...)`) keep using normal relative paths to `src/assets/...`
 
 If a bulk fix is ever needed again, the working approach is: walk every `.md` under `src/content/docs/`, parse each link target, resolve it against the source file (try both file-relative and URL-relative interpretations — historical content has both), find the matching `.md` in the tree, and rewrite to its canonical `/docs/...` URL. Skip `![...]` images, protocol links, and already-canonical `/docs/...` targets.
 
+## Components and MDX
+
+Pages are plain `.md` by default. Rename a page to `.mdx` (`git mv`, the URL does not change) only when it needs a component:
+
+- `Steps` for numbered procedures, `Tabs`/`TabItem` for variants (for example the cloud sources of the document library), `CardGrid`/`LinkCard` for the "I want to..." cards — all from `@astrojs/starlight/components`.
+- `Audience` (`src/components/Audience.astro`) for audience badges, see below.
+
+MDX rules: import components right after the frontmatter; keep a blank line after `<Steps>` and before `</Steps>` so the list parses; escape `<` and `{` in prose or put them in backticks (`\<username>`); do not add `{#id}` heading ids, Starlight slugs headings itself; links stay absolute `/docs/.../`.
+
+### Audience badges
+
+`<Audience level="editors" />`, `level="administrators"` or `level="optional"` shows a badge that explains itself on hover and keyboard focus. The wording lives only in the component.
+
+- **No badge means the page or section is for every logged-in user.** There is deliberately no "Everyone" badge.
+- Put the badge at the top of a page when the whole page is for that audience, or right under a section heading when only that section is (for example "Adding folders and documents" needs an editor role).
+- `administrators`: every page of the Administration section. `optional`: pages of features that come from a separate opt-in recipe (Room Booking, Courses, FAQ, Ideas, Inventory, Kanban, Kudos, Consultation, SSO Keycloak). `editors`: pages or sections that need an editor role.
+- The audience comes from the real permissions: check `recipes/openintranet/config/user.role.*.yml` (or the demo) before labelling a page.
+
+## Screenshots
+
+- Files live in `src/assets/user-guide/` (and `administration/`), referenced as `![alt](../../../assets/.../name.png)`. A new screenshot with the same file name keeps every reference valid.
+- All screenshots are PNG, **1938x1275**, light theme, expanded admin sidebar, taken on a **clean demo install of upstream Open Intranet**. Never use a client deployment: no client data, names or roles in public docs.
+- Front-end pages are shown as an ordinary employee with a full profile (the demo user Sophie Dupont), editor forms as a user with `content_editor`, document management as `content_editor_oi_document`, settings as administrator.
+- The room calendar is shown in **list** view because the week and month views are styled badly in the demo theme.
+
+To recreate the demo:
+
+```bash
+git clone git@github.com:droptica/openintranet.git openintranet-demo && cd openintranet-demo
+./launch-intranet.sh -y
+ddev drush site-install openintranet install_configure_form.enable_demo_content=1 --account-name=admin --account-pass=<password> -y
+ddev exec "cd /var/www/html/web && php core/scripts/drupal recipe ../recipes/openintranet_rmb" && ddev drush cr
+ddev drush config:set openintranet_documents.settings enabled_sources '[local_file, google_drive, dropbox, onedrive, box_com]' --input-format=yaml -y
+```
+
+Then create users with `ddev drush user:create` and `user:role:add` (`content_editor`, `content_editor_oi_document`, an ordinary user), add a few room bookings for the current week and a second revision of a document. Before shooting: set `$config['system.logging']['error_level'] = 'hide'` in `web/sites/default/settings.ddev.php` (PHP 8.5 notices from the `flag` module otherwise show on every form) and hide the autosave badge with CSS (`#autosave-notification { display: none }`).
+
 ## Starlight customizations
 
 - **SiteTitle component** (`src/components/SiteTitle.astro`) — overrides default so logo links to `https://www.open-intranet.com` (main site) instead of docs root

@@ -17,7 +17,7 @@ News articles are deeply integrated with the rest of the platform. They can be r
 
 ### The article content type
 
-Each News article carries the following editorial fields:
+Each News article carries the following editorial fields. The edit form has two tabs, **CONTENT** and **TOOLS**; the two switches (Must Read and Notify all users) are on the **TOOLS** tab.
 
 | Field | Type | Purpose |
 | --- | --- | --- |
@@ -27,8 +27,8 @@ Each News article carries the following editorial fields:
 | **Background image** (`field_background_image`) | Media reference | Cover image shown behind the title on the article page and as the listing thumbnail. |
 | **Tags** (`field_tags`) | Taxonomy reference (multi-value) | Categorisation; used for filtering, related-content and faceted search. |
 | **Document references** (`field_oi_document_ref`) | OI Document reference (multi-value) | Attach files from the **Documents** library to the article. |
-| **Mark as Must Read** (`field_mark_as_must_read`) | Boolean | When checked, the article appears on every user's Must Read list until they mark it as read. See the [Must Read tracking](/docs/features/must-read/) feature page. |
-| **Notify all users** (`field_notify_all_users_about_new`) | Boolean | When checked at publish time, an email is sent to all users about the new article. |
+| **Must Read** (`field_mark_as_must_read`) | Boolean (TOOLS tab) | When switched on, a **Mark as read** button is added to the article, so you can track on the dashboard who has read it and who has not. See the [Must Read tracking](/docs/features/must-read/) feature page. |
+| **Notify all users about new content** (`field_notify_all_users_about_new`) | Boolean (TOOLS tab) | When switched on, an email is sent to all users about the article. The subject and body are set in the ECA model *Notify users about new article*. |
 | **Reaction** (`field_news_article_reaction`) | Voting reaction | Lets readers click a single "I like this" thumbs-up. Counter is shown next to the button. |
 | **Comments** (`comment_node_article`) | Comment | Threaded comments below the article body. |
 
@@ -98,10 +98,10 @@ News articles are aliased automatically by Pathauto using the pattern `/news/[no
 
 News is the most-integrated content type in Open Intranet. It connects to:
 
-- **Must Read tracking** — Toggle `Mark as Must Read` on any article and it appears on every user's Must Read list until they explicitly mark it as read. Editors can audit who has and has not read a given article from the [Must Read report](/docs/features/must-read/).
+- **Must Read tracking** — Switch on **Must Read** (on the **TOOLS** tab) and the article gets a **Mark as read** button. Editors can audit who has and has not read a given article from the [Must Read report](/docs/features/must-read/).
 - **Engagement scoring** — Article views, likes and comments all add to the user's [Engagement](/docs/features/engagement/) RFV score.
 - **Search** — Articles are indexed by the `default_index` Search API index alongside pages, KB pages, documents and users. Full-text search across title, intro and body.
-- **Notifications** — When `Notify all users about new` is checked at publish time, the platform fires an email broadcast.
+- **Notifications** — When **Notify all users about new content** (on the **TOOLS** tab) is switched on, the platform sends an email to all users.
 - **Documents** — Use **Document references** to attach files from the [Documents](/docs/features/documents/) library directly to an article (single source of truth for binaries — they are not duplicated).
 - **Bookmarks / Recently read** — Both apply to articles automatically. See [Social interactions](/docs/features/social/).
 - **Translations** — When additional languages are enabled, articles can be translated; each translation has its own revisions and comments.
@@ -113,8 +113,8 @@ News is the most-integrated content type in Open Intranet. It connects to:
 | View published articles | Authenticated user |
 | Create / edit / delete own articles | Content editor |
 | Edit / delete any article | Content editor, Administrator |
-| Toggle "Mark as Must Read" | Content editor (via standard edit permission) |
-| Toggle "Notify all users about new" | Content editor |
+| Switch "Must Read" on or off (TOOLS tab) | Content editor (via standard edit permission) |
+| Switch "Notify all users about new content" on or off (TOOLS tab) | Content editor |
 | Like an article (`create reaction on node:article:field_news_article_reaction`) | Authenticated user |
 | Post comments | Authenticated user |
 | Bookmark / unbookmark | Authenticated user |

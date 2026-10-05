@@ -1,0 +1,36 @@
+---
+title: "Roles: what you can do"
+description: What the default roles in Open Intranet allow - reading, editing content, managing documents and users.
+sidebar:
+  order: 14
+---
+
+Your **role** decides what you can do in Open Intranet. Everyone who logs in has the **Authenticated user** role, and an administrator can give you more roles. Roles add up: if you have several, you can do everything any of them allows.
+
+Roles decide what you can *do*. Which restricted pages and documents you can *see* is decided separately, by department groups (see [Access Control](/docs/features/access/)).
+
+## What each default role can do
+
+| Role | You can | You cannot |
+|---|---|---|
+| **Authenticated user** (everyone who is logged in) | Read published content; comment and edit your own comments; like news articles and basic pages; bookmark items; browse and download documents; see user profiles; set your own notification preferences; book rooms, if Room Booking is enabled, and edit or cancel your own bookings | Create or edit pages, news articles, events or knowledge base pages; upload documents |
+| **Content editor** | Everything above, plus create, edit and delete Basic pages, News articles, Events, Knowledge Base pages and Webform pages; restrict who can see a page with its **Access** tab; use the **Create** menu | Manage the documents library; manage users; change menus or the book structure |
+| **Content Editor - Basic Page**, **- News Article**, **- Event**, **- Knowledge Base**, **- Webform** | The same as a Content editor, but for one content type only | Work with the other content types; restrict who can see a page |
+| **Content Editor - Documents** | Upload, edit and delete documents and folders; work with document revisions; open the documents settings | Restrict who can see a document; create other content |
+| **User Accounts Manager** | Open the user list; create, edit and block user accounts; give any role to any user, including Administrator | Create or edit content |
+| **RMB - Room Manager** (only if Room Booking is enabled) | Create rooms and edit or delete any room; create bookings and edit or delete any booking | Use the administration menu |
+| **Administrator** | Everything, including menus, the book structure, roles and permissions | Nothing is off limits |
+
+:::caution
+A **User Accounts Manager** can give any role, including Administrator, to any user. Administrators should give this role only to people they would trust as administrators. See [Roles and permissions](/docs/administration/roles-and-permissions/#who-can-manage-roles).
+:::
+
+## Why is a button missing for me?
+
+If you cannot see a **Create** menu, an **Edit** tab or an **Access** tab, your roles do not include that permission. Ask your administrator to check your roles: they see them on the **People** page. Editing pages and managing documents are separate roles, so a Content editor cannot manage documents unless they also have the **Content Editor - Documents** role.
+
+## Related
+
+- [Creating Content](/docs/user-guide/creating-content/): what editors can create
+- [Document Management](/docs/user-guide/documents/): who can do what with documents
+- [Roles and permissions](/docs/administration/roles-and-permissions/): how administrators add roles and change permissions

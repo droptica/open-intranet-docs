@@ -138,7 +138,7 @@ Combined with the *auto-access* flag and the linked OI Group, this gives four co
 - **[News](/docs/features/news/), [Events](/docs/features/events/), [Documents](/docs/features/documents/), [Knowledge Base](/docs/features/knowledge-base/), [Pages](/docs/features/pages/), [Webforms](/docs/features/webforms/)** — All gain a `field_space` reference; per-Space listings and aggregations are built on top of standard Drupal views.
 - **[Search](/docs/features/search/)** — Search results can be scoped to the active Space (when invoked from `/hr/search`) or to the whole site (from `/search`).
 - **[Layout Builder & Frontend Editing](/docs/features/layout-builder/)** — Each Space landing page is a Layout Builder layout that managers can customise.
-- **[Engagement scoring](/docs/features/employee-directory/#engagement-scoring)** — Activity inside a Space is recorded against the user; *most-engaged Spaces* dashboards become possible.
+- **[Engagement scoring](/docs/features/engagement/)** — Activity inside a Space is recorded against the user; *most-engaged Spaces* dashboards become possible.
 - **[Messenger](/docs/features/messenger/)** — A future channel plugin can resolve recipients via Space membership ("*notify everyone in HR*").
 - **[ECA — no-code workflows](/docs/features/eca/)** — Models can react to *Insert content into a Space* events to fire welcome notifications, auto-tag, or trigger approvals.
 
@@ -185,5 +185,5 @@ Once published to drupal.org (planned for the next minor release of Open Intrane
 - [Access Control & Groups](/docs/features/access/) — the layer Spaces auto-access integrates with
 - [News](/docs/features/news/), [Events](/docs/features/events/), [Documents](/docs/features/documents/), [Knowledge Base](/docs/features/knowledge-base/), [Pages](/docs/features/pages/), [Webforms](/docs/features/webforms/) — all participate in the Space aggregation
 - [Layout Builder & Frontend Editing](/docs/features/layout-builder/) — used for per-Space landing pages
-- [Engagement scoring](/docs/features/employee-directory/#engagement-scoring) — Space-scoped engagement dashboards
+- [Engagement scoring](/docs/features/engagement/) — Space-scoped engagement dashboards
 - [Open Intranet project on drupal.org](https://www.drupal.org/project/openintranet)

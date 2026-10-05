@@ -2,7 +2,7 @@
 title: Search
 description: Find content across the entire intranet.
 sidebar:
-  order: 10
+  order: 11
 ---
 
 The **search** feature lets you find any content across the intranet — articles, events, Knowledge Base pages, documents, and more.
